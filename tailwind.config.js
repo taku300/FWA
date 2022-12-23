@@ -12,7 +12,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'noto-sans': ['"Noto Sans JP"'],
             },
+            backgroundImage: {
+                'header-bg': "url('/images/layout/header_parts_pc.png')",
+            }
         },
     },
 
