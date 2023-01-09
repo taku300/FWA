@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <!-- movie_title -->
+            <!-- movie_title この部分はmovieのsessionだがデザインの都合上本sessionに含める-->
             <div class="absolute left-[160px] bottom-[400px] pc:left-[100px] sp:left-2/4 sp:-translate-x-2/4 sp:bottom-[300px]">
                 <x-top.title color="white">
                     @slot('en')
