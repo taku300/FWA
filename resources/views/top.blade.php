@@ -13,7 +13,10 @@
             </x-top.title>
         </div>
         <!-- list -->
-        <x-list.lists></x-list.lists>
+        <div class="mx-40 s-pc:mx-16 pc:mx-12 sp:mx-4">
+            <x-list.lists></x-list.lists>
+            <x-parts.button-arrow>お知らせ一覧</x-parts.button-arrow>
+        </div>
     </session>
 
     <!-- image-center -->
@@ -97,12 +100,12 @@
     <!-- movie -->
     <session>
         <div class="w-full h-[2000px] pc:h-[1800px] sp:h-[1200px]">
-            <div class="w-[91%] sp:w-full h-[78%] bg-black m-auto mt-[80px]">
+            <div class="w-[91%] sp:w-full aspect-[80/100] pc:aspect-[60/100] pc-sp:aspect-[50/100] sp:aspect-[45/100] bg-black m-auto mt-[80px]">
                 <p class=" mx-[10%] py-24 text-white">福岡県ウエイトリフティング協会は、選手の活躍をより多くの人に知ってもらうため、公益財団法人福岡県スポーツ推進基金と連携して動画配信事業を行っています。</p>
-                <div class="w-[65%] pc:w-[90%] sp:w-[90%] h-[55%] sp:h-[60%] mx-auto bg-white">
-                    <iframe class="w-[89%] h-[45%] mx-auto pt-11" src="https://www.youtube.com/embed/OGPG-b5OOg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="w-[65%] aspect-[80/100] pc:w-[90%] pc-sp:aspect-[75/100] mx-auto bg-white">
+                    <iframe class="w-[89%] aspect-[560/360] sp:aspect-[560/380] mx-auto pt-11" src="https://www.youtube.com/embed/OGPG-b5OOg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     <a class="" href="https://fukuokasports.org/">
-                        <img class="w-[90%] h-[37%] mx-auto mt-[105px] sp:mt-[60px]" src="/images/top/f_sports.png" alt="公益財団法人福岡県スポーツ推進基金">
+                        <img class="w-[90%] aspect-[65/35] mx-auto mt-[100px] sp:mt-[60px]" src="/images/top/f_sports.png" alt="公益財団法人福岡県スポーツ推進基金">
                     </a>
                 </div>
             </div>

@@ -1,9 +1,28 @@
 $(document).ready(function () {
     //////////////////////
+    //ヘッダーの透明度の調整
+    var $headerLeftParts = $("#header-left-parts");
+    console.log($(window).scrollTop());
+    //初期位置が482より下だった時
+    if ($(window).scrollTop() >= 482) {
+        $headerLeftParts.removeClass("opacity-60");
+    }
+    //スクロールした時
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 482) {
+            $headerLeftParts.removeClass("opacity-60");
+        } else {
+            $headerLeftParts.addClass("opacity-60");
+        }
+    });
+    //////////////////////
+
+
+    //////////////////////
     //top-heroの切り替え
-    const images = $('.top-image')
+    const images = $('.top-image');
     let imageIndex = -1;
-    images.hide()
+    images.hide();
     showNextImage();
     //////////////////////
 
