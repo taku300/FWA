@@ -12,6 +12,17 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                'noto-sans': ['Noto Sans JP', 'sans-serif'],
+            },
+            backgroundImage: {
+                'header-bg': "url('/images/layout/header_parts_pc.png')",
+            },
+            screens: {
+                'l-pc': { max: '1440px' },
+                's-pc': { max: '1100px' },
+                'pc': { max: '960px' },
+                'pc-sp': { max: '764px' },
+                'sp': { max: '520px' },
             },
         },
     },
