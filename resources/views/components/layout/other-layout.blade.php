@@ -9,20 +9,21 @@
     <x-layout.header></x-layout.header>
     <!-- hero -->
     <x-layout.other-img>
-        <x-slot name="en">{{ $en }}</x-slot>
-        <x-slot name="ja">{{ $ja }}</x-slot>
+        @slot('en')
+            RECORDS
+        @endslot
+        @slot('ja')
+            大会記録
+        @endslot
     </x-layout.other-img>
     <!-- sidemenu -->
     <x-layout.side-menu></x-layout.side-menu>
-    <!-- hero以下のflowする部分 -->
-    <div class="h-full w-full absolute top-[627px] z-10">
-        <!-- main -->
-        <main class="min-h-[2000px] bg-white ">
-            {{ $slot }}
-        </main>
-        <!-- footer -->
-        <x-layout.footer></x-layout.footer>
-    </div>
+    <!-- main -->
+    <main class="min-h-[2000px] bg-white ">
+        {{ $slot }}
+    </main>
+    <!-- footer -->
+    <x-layout.footer></x-layout.footer>
 </body>
 
 </html>
