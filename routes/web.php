@@ -15,10 +15,10 @@ use App\Http\Controllers\Top;
 |
 */
 
-Route::get('/', [Top::class, 'index']);
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Route::get('/', [Top::class, 'index']);
+Route::get('/', function () {
+    return view('records.index');
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
