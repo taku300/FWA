@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Affiliation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Affiliation;
 
 class AffiliationSeeder extends Seeder
 {
@@ -19,7 +19,9 @@ class AffiliationSeeder extends Seeder
     public function run()
     {
         //システム管理者
-        Affiliation::factory()->create();
+        Affiliation::factory()
+            ->system_admin()
+            ->create();
 
         //管理者作成
         Affiliation::factory()

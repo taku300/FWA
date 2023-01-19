@@ -17,7 +17,10 @@ class NewsFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'category' => $this->faker->numberBetween(1, 2),
+            'noticed_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'title' => $this->faker->prefecture() . '選手権大会が開催されます。',
+            // 'note' => $this->faker->realText(20),
         ];
     }
 }

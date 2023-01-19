@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $fillable = [
+        'document_path',
+        'document_type'
+    ];
 }

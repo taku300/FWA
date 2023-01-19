@@ -14,10 +14,17 @@ class ResultFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    private static int $Number = 1;
+
     public function definition()
     {
+        $date = $this->faker->dateTimeBetween('-1 week', '+1 week');
         return [
-            //
+            'started_at' => $date->format('Y-m-d'),
+            'ended_at' => $date->modify('+1day')->format('Y-m-d'),
+            'name' => self::$Number++ . '選手権大会',
+            'venue' => $this->faker->city(),
         ];
     }
 }

@@ -2,23 +2,21 @@
 
 namespace Database\Seeders;
 
-use Carbon\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Lifter;
+use App\Models\User;
 
-class LifterSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-
     public function run()
     {
-        Lifter::factory()
-            ->count(20)
-            ->create();
+        User::factory()->system_admin()->create();
+        User::factory()->admin()->create();
+        User::factory()->count(3)->create();
     }
 }

@@ -20,12 +20,20 @@ class AffiliationFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'システム管理者',
         ];
     }
 
     //いかstateメソッドを使って登録するデータの状態を作成する
     //定期したものはfactoryのメソッドとして使用できる。
+    public function system_admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'name' => 'システム管理者',
+            ];
+        });
+    }
+
     public function admin()
     {
         return $this->state(function (array $attributes) {
