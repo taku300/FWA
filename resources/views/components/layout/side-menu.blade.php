@@ -4,20 +4,22 @@
         </div>
         <div class="h-full w-[250px] bg-black">
             <div class="mt-[17px]">
-                <img class="h-[26px] m-auto" src="/images/layout/logo_white_strate.png" alt="福岡県ウエイトリフティング協会">
+                <a href="{{ route('top') }}">
+                    <img class="h-[26px] m-auto" src="/images/layout/logo_white_strate.png" alt="福岡県ウエイトリフティング協会">
+                </a>
             </div>
-            <nav class="text-white mt-[70px] ml-[40px]">
-                <p class="mb-[16px]">TOP画面</p>
-                <p class="mb-[16px]">協会について</p>
-                <p class="mb-[16px]">　協会概要</p>
-                <p class="mb-[20px]">　協会の歩み</p>
-                <p class="mb-[20px]">　年間計画</p>
-                <p class="mb-[16px]">試合関連</p>
-                <p class="mb-[16px]">　要項・結果</p>
-                <p class="mb-[20px]">　大会記録</p>
-                <p class="mb-[20px]">選手紹介</p>
-                <p class="mb-[20px]">お知らせ</p>
-                <p class="mb-[20px]">お問い合わせ</p>
+            <nav class="text-white mt-[70px] ml-[40px] flex flex-col">
+                <a class="mb-3" href="{{ route('top') }}">TOP画面</a>
+                <p class="mb-3 mt-3">協会について</p>
+                <a class="mb-3" href="{{ route('about') }}">　協会概要</a>
+                <a class="mb-3" href="{{ route('history') }}">　協会の歩み</a>
+                <a class="mb-3" href="{{ route('plans') }}">　年間計画</a>
+                <p class="mb-3 mt-3">試合関連</p>
+                <a class="mb-3" href="{{ route('results') }}">　要項・結果</a>
+                <a class="mb-3" href="{{ route('records') }}">　大会記録</a>
+                <a class="mb-3 mt-3" href="{{ route('lifters') }}">選手紹介</a>
+                <a class="mb-3 mt-3" href="{{ route('news') }}">お知らせ</a>
+                <a class="mb-3 mt-3" href="{{ route('contact') }}">お問い合わせ</a>
             </nav>
         </div>
     </div>
