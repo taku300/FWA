@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 /**
- * 要項・結果
+ * トップ画面
  *
  */
 class TopController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('top.index');
     }
 }

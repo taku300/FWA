@@ -3,7 +3,7 @@
         <div class="relative">
             <div id="header-left-parts" class="h-[210px] bg-[url('/public/images/layout/header.png')] bg-contain bg-no-repeat  pc:bg-[length:315px_150px] sp:bg-[length:315px_110px] opacity-60">
             </div>
-            <a href="{{ route('top') }}">
+            <a href="{{ route('index') }}">     <!-- トップに遷移 -->
                 <img class="w-[230px] pc:w-[160px] sp:w-[160px] absolute top-[25px] left-[25px] sp:top-[16px] sp:left-[16px]" src="/images/layout/logo_white.png" alt="福岡県ウエイトリフティング協会">
             </a>
         </div>
