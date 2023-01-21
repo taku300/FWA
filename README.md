@@ -11,6 +11,8 @@
 `vendor/bin/sail up -d --build`  
 `cp .env.local .env`  
 `vendor/bin/sail artisan migrate --seed`  
+`php artisan:storage link`
+`vendor/bin/sail artisan migrate --seed`  
 `vendor/bin/sail npm install`  
 `vendor/bin/sail npm run dev` このコマンドを実行した状態で開発を進める
 
