@@ -1,24 +1,23 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href=""><img src="/public/images/layout/logo_white_strate.png" width="400" alt="福岡県ウエイトリフティング協会ロゴ"></a>
+<a href=""><img src="/public/images/top/top1.png" width="400" alt="福岡県ウエイトリフティング協会トップ画像"></a><br>
 </p>
 
 # How to Setup
 
-`git checkout -b bugfix`  
-`bundle install`  
-`rails db:create`  
-`rails db:migrate`  
-`rails db:seed`  
-`rails server`  
+`git clone https://github.com/taku300/FWA.git`  
+`cd FWA`  
+`composer install`  
+`vendor/bin/sail up -d --build`  
+`cp .env.local .env`  
+`vendor/bin/sail artisan migrate --seed`  
+`vendor/bin/sail npm install`  
+`vendor/bin/sail npm run dev` このコマンドを実行した状態で開発を進める
+
+`localhost:3000` でアクセス
 
 # Check All Bugs fixed
-
-`bundle exec rspec spec`
+`vendor/bin/sail test`
 
 ### System Versions
 
