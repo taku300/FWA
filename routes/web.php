@@ -59,7 +59,7 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     //選手登録画面CRUD
     Route::resource('/lifters', LiftersController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     //お知らせ登録画面CRUD
-    Route::resource('/lifters', LiftersController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('/news', NewsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     //メール送信処理
     Route::resource('/contact', ContactController::class, ['only' => ['store']]);
     //年間計画編集
