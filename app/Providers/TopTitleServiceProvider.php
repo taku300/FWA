@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Consts\TitleConst;
-use Illuminate\Support\Facades\Route;
+use App\Common\TitleCommon;
+use App\Facades\TitleCommon as FacadesTitleCommon;
 use Illuminate\Support\ServiceProvider;
 
 class TopTitleServiceProvider extends ServiceProvider
@@ -15,30 +15,22 @@ class TopTitleServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /**
+         * TitleCommon alias
+         */
+        $this->app->bind(
+            'TitleCommon',
+            'App\Common\TitleCommon'
+        );
+
+        // タイトル
         app()->bind('en', function () {
-            $controller = explode("@", Route::currentRouteAction());
-            $controllerActionName = explode('\\', $controller[0]);
-            $controllerName = $controllerActionName[3];
-
-            return TitleConst::TITLE_LIST[$controllerName]['en'];
+            return TitleCommon::getTitle('en');
         });
 
+        // サブタイトル
         app()->bind('ja', function () {
-            $controller = explode("@", Route::currentRouteAction());
-            $controllerActionName = explode('\\', $controller[0]);
-            $controllerName = $controllerActionName[3];
-
-            return TitleConst::TITLE_LIST[$controllerName]['ja'];
+            return TitleCommon::getTitle('ja');
         });
-    }
-
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
     }
 }

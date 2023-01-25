@@ -210,7 +210,10 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        /**
+         * TitleCommon alias
+         */
+        'TitleCommon' => App\Facades\TitleCommon::class,
     ])->toArray(),
 
 ];
