@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TopTitleServiceProvider::class,
 
     ],
 
@@ -209,7 +210,10 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        /**
+         * TitleCommon alias
+         */
+        'TitleCommon' => App\Facades\TitleCommon::class,
     ])->toArray(),
 
 ];
