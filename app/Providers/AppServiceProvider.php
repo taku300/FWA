@@ -13,6 +13,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Common\TitleCommon');
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
     }
 }

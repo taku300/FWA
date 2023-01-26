@@ -5,6 +5,10 @@ namespace App\Consts;
 class TitleConst
 {
     const TITLE_LIST = [
+        'Top' => [
+            'en' => 'ABOUT',
+            'ja' => '協会について'
+        ],
         'About' => [
             'en' => 'ABOUT',
             'ja' => '協会について'

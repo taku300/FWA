@@ -15,6 +15,7 @@
     <div class="h-full w-full absolute top-[627px] z-10">
         <!-- main -->
         <main class="min-h-[2000px] bg-white ">
+            @php echo $en @endphp
             {{ $slot }}
         </main>
         <!-- footer -->
