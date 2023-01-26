@@ -62,7 +62,7 @@
                 </div>
             </div>
             <!-- ota -->
-            <div class="absolute top-[2700px] left-[4.5%] sp:top-[1850px]">
+            <div class="absolute top-[2700px] left-[4.5%] sp:top-[1850px] sp:left-[10%]">
                 <img class="w-[518px] pc:w-[350px] sp:w-[200px]" src="/images/top/ota.jpg" alt="">
                 <div class="absolute top-[25%] left-[70%] sp:left-[50%]">
                     <div class="w-[500px] h-[500px]  pc:w-[400px] pc:h-[450px] sp:w-[200px] sp:h-[400px] text-white">
@@ -73,11 +73,11 @@
                             <p class="mt-7 text-3xl pc:text-2xl sp:text-base">ロンドンオリンピック出場</p>
                             <p class="mt-3 text-2xl pc:text-1xl sp:text-base">全日本選手権○連覇</p>
                             <!-- pc -->
-                            <div class="absolute bottom-0 text-2xl pc:text-1xl sp:hidden">
+                            <div class="absolute bottom-0 text-2xl pc:text-xl sp:hidden">
                                 <p>現在は教員として<br>若手選手を支える福岡のスーパースター</p>
                             </div>
                             <!-- sp -->
-                            <div class="absolute hidden bottom-0 text-base sp:block">
+                            <div class="absolute hidden bottom-0 text-base sp:block sp:bottom-1/4">
                                 <p>現在は教員として<br>若手選手を支える<br>福岡のスーパースター</p>
                             </div>
                         </div>
@@ -99,14 +99,22 @@
     </session>
     <!-- movie -->
     <session>
-        <div class="w-full h-[2000px] pc:h-[1800px] sp:h-[1200px]">
-            <div class="w-[91%] sp:w-full aspect-[80/100] pc:aspect-[60/100] pc-sp:aspect-[50/100] sp:aspect-[45/100] bg-black m-auto mt-[80px]">
-                <p class=" mx-[10%] py-24 text-white">福岡県ウエイトリフティング協会は、選手の活躍をより多くの人に知ってもらうため、公益財団法人福岡県スポーツ推進基金と連携して動画配信事業を行っています。</p>
-                <div class="w-[65%] aspect-[80/100] pc:w-[90%] pc-sp:aspect-[75/100] mx-auto bg-white">
-                    <iframe class="w-[89%] aspect-[560/360] sp:aspect-[560/380] mx-auto pt-11" src="https://www.youtube.com/embed/OGPG-b5OOg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <a class="" href="https://fukuokasports.org/">
-                        <img class="w-[90%] aspect-[65/35] mx-auto mt-[100px] sp:mt-[60px]" src="/images/top/f_sports.png" alt="公益財団法人福岡県スポーツ推進基金">
-                    </a>
+        <div class="w-full aspect-[1000/1200]  flex items-center pc:aspect-[1000/1500] sp:aspect-[1000/2000]">
+            <div class="w-11/12 h-full bg-black m-auto flex flex-col sp:w-full">
+                <div class=" mx-[10%] py-24 text-white pc:py-12">
+                    <p class=" text-white">福岡県ウエイトリフティング協会は、選手の活躍をより多くの人に知ってもらうため、公益財団法人福岡県スポーツ推進基金と連携して動画配信事業を行っています。</p>
+                </div>
+                <div class="flex-1 flex items-center">
+                    <div class="w-[65%] h-5/6 mx-auto bg-white flex flex-col pc:w-[90%]">
+                        <div class=" flex-1 flex justify-center items-center">
+                            <iframe class="w-[90%] aspect-[560/320]" src="https://www.youtube.com/embed/OGPG-b5OOg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class=" flex-1 flex justify-center items-center">
+                            <a class="" href="https://fukuokasports.org/">
+                                <img class="w-[90%] aspect-[65/35] m-auto" src="/images/top/f_sports.png" alt="公益財団法人福岡県スポーツ推進基金">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
