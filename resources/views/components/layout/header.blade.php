@@ -3,7 +3,9 @@
         <div class="relative">
             <div id="header-left-parts" class="h-[210px] bg-[url('/public/images/layout/header.png')] bg-contain bg-no-repeat  pc:bg-[length:315px_150px] sp:bg-[length:315px_110px] opacity-60">
             </div>
-            <img class="w-[230px] pc:w-[160px] sp:w-[160px] absolute top-[25px] left-[25px] sp:top-[16px] sp:left-[16px]" src="/images/layout/logo_white.png" alt="福岡県ウエイトリフティング協会">
+            <a href="{{ route('index') }}">     <!-- トップに遷移 -->
+                <img class="w-[230px] pc:w-[160px] sp:w-[160px] absolute top-[25px] left-[25px] sp:top-[16px] sp:left-[16px]" src="/images/layout/logo_white.png" alt="福岡県ウエイトリフティング協会">
+            </a>
         </div>
         <div class="absolute top-[25px] right-[25px] sp:top-[16px] sp:right-[16px] hover:bg-blue-200 active:bg-blue-300  focus:ring-blue-200">
             <button id="hamburger" class="w-[30px] h-[30px] relative">
