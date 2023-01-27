@@ -47,7 +47,7 @@ services:
         networks:
             - sail
         healthcheck:
-            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
+            test: ["CMD", "mysqladmin", "ping", "-ppassword"]
             retries: 3
             timeout: 5s
     redis:
