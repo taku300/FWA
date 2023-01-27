@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Libs\GetTitleName;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -33,13 +32,13 @@ class TopTitleServiceProvider extends ServiceProvider
              * 
              * @return string title
              */
-            $view->with('title', GetTitleName::getTitle(0));
+            $view->with('title', \GetTitleName::getTitle(0));
             /**
              * サブタイトル（日）
              * 
              * @return string subTitle
              */
-            $view->with('subTitle', GetTitleName::getTitle(1));
+            $view->with('subTitle', \GetTitleName::getTitle(1));
         });
     }
 }
