@@ -4,38 +4,46 @@ namespace App\Consts;
 
 class TitleConst
 {
+    /**
+     * タイトルネーム
+     * 
+     * 0:タイトル
+     * 1:サブタイトル
+     * 
+     * @return array
+     */
     const TITLE_LIST = [
         'About' => [
-            'en' => 'ABOUT',
-            'ja' => '協会について'
+            0 => 'ABOUT',
+            1 => '協会について'
         ],
         'History' => [
-            'en' => 'HISTORY',
-            'ja' => '協会の歩み'
+            0 => 'HISTORY',
+            1 => '協会の歩み'
         ],
         'Plan' => [
-            'en' => 'PLAN',
-            'ja' => '年間計画'
+            0 => 'PLAN',
+            1 => '年間計画'
         ],
         'Result' => [
-            'en' => 'RESULT',
-            'ja' => '要項・結果'
+            0 => 'RESULT',
+            1 => '要項・結果'
         ],
         'Record' => [
-            'en' => 'RECORD',
-            'ja' => '大会記録'
+            0 => 'RECORD',
+            1 => '大会記録'
         ],
         'Lifters' => [
-            'en' => 'LIFTERS',
-            'ja' => '選手紹介'
+            0 => 'LIFTERS',
+            1 => '選手紹介'
         ],
         'News' => [
-            'en' => 'NEWS',
-            'ja' => 'お知らせ'
+            0 => 'NEWS',
+            1 => 'お知らせ'
         ],
         'Contact' => [
-            'en' => 'CONTACT',
-            'ja' => 'お問い合わせ'
+            0 => 'CONTACT',
+            1 => 'お問い合わせ'
         ],
     ];
 }
