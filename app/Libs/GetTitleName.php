@@ -18,6 +18,14 @@ class GetTitleName
         $controllerName = explode('\\', $controller[0]);
         $titleKey = mb_substr($controllerName[3], 0, -10);
 
+        /**
+         * ひとまずTopControllerのみエラー回避
+         * エラー回避どこで入れるか応相談
+         * 「Undefined array key "Top"」
+         */
+        if ($titleKey == 'Top') {
+            return '';
+        }
         return \TitleConst::TITLE_LIST[$titleKey][$key];
     }
 }
