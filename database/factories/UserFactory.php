@@ -45,8 +45,7 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'name' => '福田　匠磨',
-                'email' => 'test1@test.co.jp', //あとで必ず変更すること
-                'role' => 0,
+                'email' => 'fukuda.takuma695@mail.kyutech.jp',                'role' => 0,
                 'affiliation_id' => 1,
             ];
         });
@@ -57,7 +56,7 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'name' => ' 福岡県ウエイトリフティング協会',
-                'email' => 'test2@test.co.jp', //あとで必ず変更すること
+                'email' => 'fukuokaweight@gmail.com',
                 'role' => 1,
                 'affiliation_id' => 2,
             ];
