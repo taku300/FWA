@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Common\TitleCommon;
-use App\Facades\TitleCommon as FacadesTitleCommon;
+use App\Libs\GetTitleName;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class TopTitleServiceProvider extends ServiceProvider
 {
@@ -15,22 +15,31 @@ class TopTitleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /**
-         * TitleCommon alias
-         */
-        $this->app->bind(
-            'TitleCommon',
-            'App\Common\TitleCommon'
-        );
+    }
 
-        // タイトル
-        app()->bind('en', function () {
-            return TitleCommon::getTitle('en');
-        });
-
-        // サブタイトル
-        app()->bind('ja', function () {
-            return TitleCommon::getTitle('ja');
+    /**
+     * タイトルネーム
+     * 
+     * 0:タイトル
+     * 1:サブタイトル
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        View::composer('*', function ($view) {
+            /**
+             * タイトル（英）
+             * 
+             * @return string title
+             */
+            $view->with('title', GetTitleName::getTitle(0));
+            /**
+             * サブタイトル（日）
+             * 
+             * @return string subTitle
+             */
+            $view->with('subTitle', GetTitleName::getTitle(1));
         });
     }
 }
