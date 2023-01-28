@@ -35,4 +35,14 @@ class News extends Model
     {
         return $this->hasMany(NewsDocument::class);
     }
+
+    /**
+     * お知らせ情報 トップページ用 お知らせ日順 10件
+     * 
+     * @return collection
+     */
+    public function getNewsList(): collection
+    {
+        return News::orderBy('noticed_at', 'DESC')->take('10')->get();
+    }
 }
