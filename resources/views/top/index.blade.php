@@ -45,13 +45,6 @@
                     <x-top.lifters-explanation :$lifterList></x-top.lifters-explanation>
                 </div>
             </div>
-            <!-- lifter2 -->
-            <div class="absolute top-[1200px] sp:top-[800px] left-[4.5%]">
-                <x-top.lifters-image src="/images/top/lifter1.png" alt="/images/top/lifter1.png"></x-top.lifters-image>
-                <div class="absolute top-[70%] left-[60%] sp:left-[20%]">
-                    <x-top.lifters-explanation></x-top.lifters-explanation>
-                </div>
-            </div>
 
             <!-- olympian -->
             <!-- olympian-title-vertical -->
