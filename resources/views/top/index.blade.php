@@ -5,16 +5,17 @@
         <div class="flex justify-center items-center flex-col h-[700px]">
             <x-top.title>
                 @slot('en')
-                    TOPICS
+                TOPICS
                 @endslot
                 @slot('ja')
-                    トピックス
+                トピックス
                 @endslot
             </x-top.title>
         </div>
         <!-- list -->
         <div class="mx-40 s-pc:mx-16 pc:mx-12 sp:mx-4">
-            <x-list.lists></x-list.lists>
+            <!-- $newsList = お知らせ情報 -->
+            <x-list.lists :$newsList></x-list.lists>
             <x-parts.button-arrow>お知らせ一覧</x-parts.button-arrow>
         </div>
     </session>
@@ -30,10 +31,10 @@
             <div class="absolute left-[9%] top-[60px] sp:left-[50%] sp:translate-x-[-50%]">
                 <x-top.title>
                     @slot('en')
-                        LIFTERS
+                    LIFTERS
                     @endslot
                     @slot('ja')
-                        選手紹介
+                    選手紹介
                     @endslot
                 </x-top.title>
             </div>
@@ -88,10 +89,10 @@
             <div class="absolute left-[160px] bottom-[400px] pc:left-[100px] sp:left-2/4 sp:-translate-x-2/4 sp:bottom-[300px]">
                 <x-top.title color="white">
                     @slot('en')
-                        MOVIE
+                    MOVIE
                     @endslot
                     @slot('ja')
-                        動画配信
+                    動画配信
                     @endslot
                 </x-top.title>
             </div>

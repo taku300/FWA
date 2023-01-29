@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 
 /**
@@ -10,8 +11,23 @@ use Illuminate\Http\Request;
  */
 class TopController extends Controller
 {
+    public $news;
+
+    /**
+     * News $news
+     */
+    public function __construct(News $news)
+    {
+        $this->news = $news;
+    }
+
+    /**
+     * @param collection $newsList
+     */
     public function index()
     {
-        return view('top.index');
+        $newsList = $this->news->getNewsList();
+
+        return view('top.index')->with(['newsList' => $newsList]);
     }
 }

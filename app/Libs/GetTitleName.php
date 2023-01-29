@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Common;
+namespace App\Libs;
 
-use App\Consts\TitleConst;
 use Illuminate\Support\Facades\Route;
 
-class TitleCommon
+class GetTitleName
 {
     /**
-     * Get controller name
+     * コントローラー名取得
      * 
      * @param  string  $key
-     * 
      * @return string
      */
     public static function getTitle($key)
@@ -20,6 +18,11 @@ class TitleCommon
         $controllerName = explode('\\', $controller[0]);
         $titleKey = mb_substr($controllerName[3], 0, -10);
 
-        return TitleConst::TITLE_LIST[$titleKey][$key];
+        /**
+         * 定義されているときのみreturn
+         */
+        if (!empty(\TitleConst::TITLE_LIST[$titleKey])) {
+            return \TitleConst::TITLE_LIST[$titleKey][$key];
+        }
     }
 }

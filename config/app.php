@@ -211,9 +211,17 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         /**
-         * TitleCommon alias
+         * お知らせカテゴリ定義
          */
-        'TitleCommon' => App\Facades\TitleCommon::class,
+        'CategoryConst' => App\Consts\CategoryConst::class,
+        /**
+         * タイトルネーム定義
+         */
+        'TitleConst' => App\Consts\TitleConst::class,
+        /**
+         * タイトルネーム取得
+         */
+        'GetTitleName' => App\Libs\GetTitleName::class,
     ])->toArray(),
 
 ];
