@@ -10,6 +10,12 @@ use App\Models\Affiliation;
 class Lifter extends Model
 {
     use HasFactory;
+
+    protected $appends = [
+        'test',
+        'testss'
+    ];
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -23,8 +29,14 @@ class Lifter extends Model
         'performance',
         'birthday',
         'comment',
-        'top_post_flag'
+        'top_post_flag',
     ];
+
+    public function setTestAttribute()
+    {
+        return 'aaa';
+    }
+
 
     public function affiliation()
     {
@@ -56,7 +68,13 @@ class Lifter extends Model
          * top_post_flag = 1 掲載
          */
         if ($this->getRoute() == 'Top') {
-            return Lifter::with('affiliation')->where('top_post_flag', 1)->orderBy('updated_at', 'DESC')->take(2);
+            $query = Lifter::with('affiliation')->where('top_post_flag', 1)->orderBy('updated_at', 'DESC')->take(2);
+            foreach ($query as $value) {
+                $value->test = 'aaa';
+                $value->save();
+            }
+
+            return $query;
         }
 
         /**
