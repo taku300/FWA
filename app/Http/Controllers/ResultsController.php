@@ -14,4 +14,9 @@ class ResultsController extends Controller
     {
         return view('results.index');
     }
+
+    public function create()
+    {
+        return view('results.create');
+    }
 }

@@ -14,4 +14,9 @@ class NewsController extends Controller
     {
         return view('news.index');
     }
+
+    public function create()
+    {
+        return view('news.create');
+    }
 }

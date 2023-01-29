@@ -53,7 +53,9 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //トップ画面編集
-    Route::resource('/top', TopController::class, ['only' => ['edit', 'update']]);
+    Route::get('/top/edit', [TopController::class, 'edit'])->name('top.edit');
+    Route::get('/top/update', [TopController::class, 'update'])->name('top.update');
+    // Route::resource('/top', TopController::class, ['only' => ['edit', 'update']]);
     //試合・要項結果登録画面CRUD
     Route::resource('/results', ResultsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     //選手登録画面CRUD
@@ -65,7 +67,8 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     //年間計画編集
     Route::resource('/plans', PlansController::class, ['only' => ['update']]);
     //ドキュメント編集
-    Route::resource('/document', DocumentsController::class, ['only' => ['edit', 'update']]);
+    Route::get('/documents/edit', [DocumentsController::class, 'edit'])->name('documents.edit');
+    Route::get('/documents/update', [DocumentsController::class, 'update'])->name('documents.update');
 });
 
 
