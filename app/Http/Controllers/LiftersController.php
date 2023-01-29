@@ -14,4 +14,9 @@ class LiftersController extends Controller
     {
         return view('lifters.index');
     }
+
+    public function create()
+    {
+        return view('lifters.create');
+    }
 }

@@ -30,4 +30,11 @@ class TopController extends Controller
 
         return view('top.index')->with(['newsList' => $newsList]);
     }
+
+    public function edit()
+    {
+        $newsList = $this->news->getNewsList();
+
+        return view('top.edit')->with(['newsList' => $newsList]);
+    }
 }

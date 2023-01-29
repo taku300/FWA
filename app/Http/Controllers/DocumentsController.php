@@ -10,5 +10,8 @@ use Illuminate\Http\Request;
  */
 class DocumentsController extends Controller
 {
-
+  public function edit()
+  {
+    return view('news.edit');
+  }
 }

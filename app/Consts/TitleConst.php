@@ -13,6 +13,11 @@ class TitleConst
      * @param array
      */
     const TITLE_LIST = [
+        'Top' => [
+            0 => 'TOP',
+            1 => 'トップ',
+            2 => 'images/top/top1.png'
+        ],
         'About' => [
             0 => 'ABOUT',
             1 => '協会について',
@@ -24,17 +29,17 @@ class TitleConst
             2 => 'images/top/top1.png'
         ],
         'Plans' => [
-            0 => 'PLAN',
+            0 => 'PLANS',
             1 => '年間計画',
             2 => 'images/top/top1.png'
         ],
         'Results' => [
-            0 => 'RESULT',
+            0 => 'RESULTS',
             1 => '要項・結果',
             2 => 'images/top/top1.png'
         ],
         'Records' => [
-            0 => 'RECORD',
+            0 => 'RECORDS',
             1 => '大会記録',
             2 => 'images/top/top1.png'
         ],
