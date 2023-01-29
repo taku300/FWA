@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Result;
+use Illuminate\Support\Facades\Route;
 use App\Models\NewsLink;
 use App\Models\NewsDocument;
+use App\Models\Result;
 
 class News extends Model
 {
@@ -37,12 +38,36 @@ class News extends Model
     }
 
     /**
-     * お知らせ情報 トップページ用 お知らせ日順 10件
+     * コントローラー名取得
+     */
+    public function getRoute()
+    {
+        $controller = explode("@", Route::currentRouteAction());
+        $controllerName = explode('\\', $controller[0]);
+        $key = mb_substr($controllerName[3], 0, -10);
+
+        return $key;
+    }
+
+    /**
+     * お知らせ情報 取得
      * 
      * @return collection
      */
-    public function getNewsList(): collection
+    public function getNewsList()
     {
-        return News::orderBy('noticed_at', 'DESC')->take('10')->get();
+        /**
+         * トップページ用 お知らせ日順 10件
+         */
+        if ($this->getRoute() == 'Top') {
+            return News::orderBy('noticed_at', 'DESC')->take('10')->get();
+        }
+
+        /**
+         * お知らせページ用 お知らせ日順
+         */
+        if ($this->getRoute() == 'News') {
+            return News::orderBy('noticed_at', 'DESC')->get();
+        }
     }
 }
