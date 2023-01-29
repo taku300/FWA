@@ -19,13 +19,10 @@ class GetTitleName
         $titleKey = mb_substr($controllerName[3], 0, -10);
 
         /**
-         * ひとまずTopControllerのみエラー回避
-         * エラー回避どこで入れるか応相談
-         * 「Undefined array key "Top"」
+         * 定義されているときのみreturn
          */
-        if ($titleKey == 'Top') {
-            return '';
+        if (!empty(\TitleConst::TITLE_LIST[$titleKey])) {
+            return \TitleConst::TITLE_LIST[$titleKey][$key];
         }
-        return \TitleConst::TITLE_LIST[$titleKey][$key];
     }
 }

@@ -14,6 +14,7 @@ class TopTitleServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // 
     }
 
     /**
