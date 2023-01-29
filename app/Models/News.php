@@ -67,7 +67,7 @@ class News extends Model
          * お知らせページ用 お知らせ日順
          */
         if ($this->getRoute() == 'News') {
-            return News::orderBy('noticed_at', 'DESC')->get();
+            return News::orderBy('noticed_at', 'DESC')->paginate(10);
         }
     }
 }
