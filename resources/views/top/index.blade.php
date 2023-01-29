@@ -4,10 +4,10 @@
         <!-- title -->
         <div class="flex justify-center items-center flex-col h-[700px]">
             <x-top.title>
-                @slot('en')
+                @slot('title')
                 TOPICS
                 @endslot
-                @slot('ja')
+                @slot('subTitle')
                 トピックス
                 @endslot
             </x-top.title>
@@ -30,10 +30,10 @@
             <!-- lifters-title -->
             <div class="absolute left-[9%] top-[60px] sp:left-[50%] sp:translate-x-[-50%]">
                 <x-top.title>
-                    @slot('en')
+                    @slot('title')
                     LIFTERS
                     @endslot
-                    @slot('ja')
+                    @slot('subTitle')
                     選手紹介
                     @endslot
                 </x-top.title>
@@ -87,11 +87,11 @@
             </div>
             <!-- movie_title この部分はmovieのsessionだがデザインの都合上本sessionに含める-->
             <div class="absolute left-[160px] bottom-[400px] pc:left-[100px] sp:left-2/4 sp:-translate-x-2/4 sp:bottom-[300px]">
-                <x-top.title color="white">
-                    @slot('en')
+                <x-top.title fontColor="white">
+                    @slot('title')
                     MOVIE
                     @endslot
-                    @slot('ja')
+                    @slot('subTitle')
                     動画配信
                     @endslot
                 </x-top.title>
