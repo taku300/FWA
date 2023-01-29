@@ -1,5 +1,5 @@
 @props([
-    "bg_color" => "black",
+    "bgColor" => "black",
 ])
 
 @php
@@ -12,7 +12,7 @@
     }
 @endphp
 
-<button class="flex justify-between items-center px-4 w-80 sp:w-full h-12 {{ getBgColorArrowButton($bg_color) }}">
+<button class="flex justify-between items-center px-4 w-80 sp:w-full h-12 {{ getBgColorArrowButton($bgColor) }}">
     <div class="text-white">{{ $slot }}</div>
     <img class=" h-3" src="/images/parts/arrow.png" alt="矢印">
 </button>
