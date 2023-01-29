@@ -211,6 +211,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         /**
+         * お知らせカテゴリ定義
+         */
+        'CategoryConst' => App\Consts\CategoryConst::class,
+        /**
          * タイトルネーム定義
          */
         'TitleConst' => App\Consts\TitleConst::class,

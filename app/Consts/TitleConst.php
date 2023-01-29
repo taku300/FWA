@@ -10,7 +10,7 @@ class TitleConst
      * 0:タイトル
      * 1:サブタイトル
      * 
-     * @return array
+     * @param array
      */
     const TITLE_LIST = [
         'About' => [
