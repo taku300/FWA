@@ -22,8 +22,8 @@ class LifterSeeder extends Seeder
             ->create();
 
         Lifter::factory()
-            ->topLifter()
             ->count(2)
+            ->topLifter()
             ->create();
     }
 }
