@@ -211,6 +211,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         /**
+         * かな->ヘボン変換用リスト
+         */
+        'CodeConvertConst' => App\Consts\CodeConvertConst::class,
+        /**
          * お知らせカテゴリ定義
          */
         'CategoryConst' => App\Consts\CategoryConst::class,
