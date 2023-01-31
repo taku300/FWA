@@ -211,9 +211,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         /**
-         * かな->ヘボン変換用リスト
+         * 文字変換
          */
-        'CodeConvertConst' => App\Consts\CodeConvertConst::class,
+        'Convert' => App\Libs\Convert::class,
         /**
          * お知らせカテゴリ定義
          */

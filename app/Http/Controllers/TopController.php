@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libs\Convert;
 use App\Models\News;
 use App\Models\Lifter;
 use Illuminate\Http\Request;
