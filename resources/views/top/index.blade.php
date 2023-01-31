@@ -1,5 +1,4 @@
 <x-layout.top-layout>
-    @dd($lifterList)
     <!-- TOPICS -->
     <session>
         <!-- title -->
