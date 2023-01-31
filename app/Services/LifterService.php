@@ -27,7 +27,7 @@ class LifterService
         $lifters = $this->lifter->getTopLifter();
         foreach ($lifters as $key => $value) {
             // １人目 カラム追加データ取得
-            if ($key === array_key_first($lifters)) {
+            if ($key === 0) {
                 $firstLifter = $this->addColumn($value['first_name_kana'], $value['last_name_kana'], $value);
             }
             // ２人目 カラム追加データ取得
