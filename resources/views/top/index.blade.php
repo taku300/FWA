@@ -1,6 +1,6 @@
 <x-layout.top-layout>
     <!-- TOPICS -->
-    <session>
+    <section>
         <!-- title -->
         <div class="flex justify-center items-center flex-col h-[700px]">
             <x-top.title>
@@ -18,14 +18,14 @@
             <x-list.lists :$newsList></x-list.lists>
             <x-parts.button-arrow>お知らせ一覧</x-parts.button-arrow>
         </div>
-    </session>
+    </section>
 
     <!-- image-center -->
     <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-[url('/public/images/top/top_center.png')] bg-center bg-cover">
     </div>
 
     <!-- lifters -->
-    <session>
+    <section>
         <div class="w-full h-[5000px] sp:h-[3000px] bg-[url('/public/images/top/center_parts.png')] bg-center bg-cover relative">
             <!-- lifters-title -->
             <div class="absolute left-[9%] top-[60px] sp:left-[50%] sp:translate-x-[-50%]">
@@ -97,9 +97,9 @@
                 </x-top.title>
             </div>
         </div>
-    </session>
+    </section>
     <!-- movie -->
-    <session>
+    <section>
         <div class="w-full aspect-[1000/1200]  flex items-center pc:aspect-[1000/1500] sp:aspect-[1000/2000]">
             <div class="w-11/12 h-full bg-black m-auto flex flex-col sp:w-full">
                 <div class=" mx-[10%] py-24 text-white pc:py-12">
@@ -119,5 +119,5 @@
                 </div>
             </div>
         </div>
-    </session>
+    </section>
 </x-layout.top-layout>
