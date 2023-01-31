@@ -70,8 +70,8 @@ class Lifter extends Model
             $last = new Convert(mb_convert_kana($lname, "Hc"));
             $subResult = $last->getHebon();
             $subQuery = [
-                'first_name_kana_hebon' => ucfirst(implode('', $result)),
-                'last_name_kana_hebon' => ucfirst(implode('', $subResult))
+                'first_name_hebon' => ucfirst(implode('', $result)),
+                'last_name_hebon' => ucfirst(implode('', $subResult))
             ];
             $firstQuery = $firstQuery + $subQuery;
             return $firstQuery;
