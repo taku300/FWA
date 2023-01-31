@@ -28,11 +28,11 @@ class LifterService
         foreach ($lifters as $key => $value) {
             // １人目 カラム追加データ取得
             if ($key === 0) {
-                $firstLifter = $this->addColumn($value['first_name_kana'], $value['last_name_kana'], $value);
+                $firstLifter = $this->addColumn($value);
             }
             // ２人目 カラム追加データ取得
             if ($key === 1) {
-                $secondLifter = $this->addColumn($value['first_name_kana'], $value['last_name_kana'], $value);
+                $secondLifter = $this->addColumn($value);
             }
         }
         // まとめてreturn
@@ -48,15 +48,15 @@ class LifterService
      * 
      * @return array
      */
-    public function addColumn($firstName, $lastName, $lifter): array
+    public function addColumn($value): array
     {
-        $firstName = $this->codeConvert($firstName);
-        $lastName = $this->codeConvert($lastName);
+        $firstName = $this->codeConvert($value['first_name_kana']);
+        $lastName = $this->codeConvert($value['last_name_kana']);
         $addColumn = [
             'first_name_hebon' => ucfirst(implode('', $firstName)),
             'last_name_hebon' => ucfirst(implode('', $lastName))
         ];
-        return $lifter + $addColumn;
+        return $value + $addColumn;
     }
 
     /**
