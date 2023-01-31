@@ -28,21 +28,15 @@ class LifterService
         foreach ($lifters as $key => $value) {
             // １人目 カラム追加データ取得
             if ($key === array_key_first($lifters)) {
-                $firstLifter = $value;
-                $fname = $value['first_name_kana'];
-                $lname = $value['last_name_kana'];
+                $firstLifter = $this->addColumn($value['first_name_kana'], $value['last_name_kana'], $value);
             }
             // ２人目 カラム追加データ取得
             if ($key === 1) {
-                $secondLifter = $value;
-                $secondfname = $value['first_name_kana'];
-                $secondlname = $value['last_name_kana'];
+                $secondLifter = $this->addColumn($value['first_name_kana'], $value['last_name_kana'], $value);
             }
         }
         // １人目
-        $firstLifter = $this->addColumn($fname, $lname, $firstLifter);
         // ２人目
-        $secondLifter = $this->addColumn($secondfname, $secondlname, $secondLifter);
         // まとめてreturn
         return [$firstLifter, $secondLifter];
     }
