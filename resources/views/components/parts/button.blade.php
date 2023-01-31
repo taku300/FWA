@@ -9,6 +9,7 @@
             return match ($theme) {
                 "orange" => "bg-orange-400",
                 "red" => "bg-red-600",
+                "black" => "bg-black",
             };
         }
     }
