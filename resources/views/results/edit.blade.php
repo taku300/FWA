@@ -1,4 +1,4 @@
 <x-layout.layout>
     <!-- main -->
-    <session></session>
+    <section></section>
 </x-layout.layout>

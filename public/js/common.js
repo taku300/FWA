@@ -29,15 +29,29 @@ $(document).ready(function () {
 
     //////////////////////
     // ハンバーガーメニュー
-    var $hamburger = $("#hamburger");
+    var $showSideMenu = $("#show-side-menu");
     var $sideMenu = $("#side-menu");
     // ハンバーガーメニューフェードイン
-    $hamburger.click(function () {
+    $showSideMenu.click(function () {
         $sideMenu.fadeIn();
     })
     // ハンバーガーメニューフェードアウト
     $sideMenu.children().children().eq(0).click(function (e) {
         $sideMenu.fadeOut();
+    })
+    //////////////////////
+
+       //////////////////////
+    // 検索メニュー
+    var $showSearchMenu = $("#show-search-menu");
+    var $searchMenu = $("#search-menu");
+    // 検索メニューフェードイン
+    $showSearchMenu.click(function () {
+        $searchMenu.fadeIn();
+    })
+    // 検索メニューフェードアウト
+    $searchMenu.children().children().eq(0).click(function (e) {
+        $searchMenu.fadeOut();
     })
     //////////////////////
 

@@ -8,7 +8,7 @@
             </a>
         </div>
         <div class="absolute top-[25px] right-[25px] sp:top-[16px] sp:right-[16px] hover:bg-blue-200 active:bg-blue-300  focus:ring-blue-200">
-            <button id="hamburger" class="w-[30px] h-[30px] relative">
+            <button id="show-side-menu" class="w-[30px] h-[30px] relative">
                 <span class="block w-full h-[2px] bg-blue-800 bg-opacity-80 absolute top-0"></span>
                 <span class="block w-full h-[2px] bg-blue-800 bg-opacity-80"></span>
                 <span class="block w-full h-[2px] bg-blue-800 bg-opacity-80 absolute bottom-0"></span>
