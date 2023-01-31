@@ -50,11 +50,11 @@ class LifterService
      */
     public function addColumn($firstName, $lastName, $lifter): array
     {
-        $result = $this->codeConvert($firstName);
-        $subResult = $this->codeConvert($lastName);
+        $firstName = $this->codeConvert($firstName);
+        $lastName = $this->codeConvert($lastName);
         $addColumn = [
-            'first_name_hebon' => ucfirst(implode('', $result)),
-            'last_name_hebon' => ucfirst(implode('', $subResult))
+            'first_name_hebon' => ucfirst(implode('', $firstName)),
+            'last_name_hebon' => ucfirst(implode('', $lastName))
         ];
         return $lifter + $addColumn;
     }
