@@ -35,8 +35,6 @@ class LifterService
                 $secondLifter = $this->addColumn($value['first_name_kana'], $value['last_name_kana'], $value);
             }
         }
-        // １人目
-        // ２人目
         // まとめてreturn
         return [$firstLifter, $secondLifter];
     }
