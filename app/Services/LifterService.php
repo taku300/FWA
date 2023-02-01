@@ -35,9 +35,7 @@ class LifterService
     /**
      * ヘボン式ローマ字を成形して追加したカラムへ格納
      * 
-     * @param  string  $firstName
-     * @param  string  $lastName
-     * @param  array  $lifter
+     * @param  array  $value
      * 
      * @return array
      */
