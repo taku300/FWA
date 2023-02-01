@@ -14,7 +14,7 @@
                 <!-- 検索サイドメニュー -->
                 <x-layout.side-menu status="search-menu">
                     <div class="ml-8 mt-60">
-                        <x-search.archive></x-search.archive>
+                        <x-search.archive :$archiveYears></x-search.archive>
                     </div>
                 </x-layout.side-menu>
                 <div>
@@ -29,20 +29,7 @@
                         </ul>
                     </div>
                     <!-- TODO:該当するデータがない場合は該当するデータがありませんと表示 -->
-                    @php
-                    $data=[
-                    '12/11 ~ 12/13',
-                    '12/11 ~ 11/13',
-                    '12/11 ~ 10/13',
-                    '12/11 ~ 9/13',
-                    '12/11 ~ 8/13',
-                    '12/11 ~ 7/13',
-                    '12/11 ~ 6/13',
-                    '12/11 ~ 5/13',
-                    '12/11 ~ 4/13',
-                    ]
-                    @endphp
-                    @foreach ($data as $data)
+                    @foreach ($resultList as $data)
                     <div>
                         <ul class="flex border-spacing-1 pc-sp:block pc-sp:border-t pc-sp:border-inherit">
                             <li class="shrink-[5] w-40 h-11 s-pc:hidden"></li>
