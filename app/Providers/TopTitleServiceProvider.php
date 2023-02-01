@@ -14,32 +14,30 @@ class TopTitleServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // 
+        //
     }
 
-    /**
-     * タイトルネーム
-     * 
-     * 0:タイトル
-     * 1:サブタイトル
-     *
-     * @return void
-     */
     public function boot()
     {
         View::composer('*', function ($view) {
             /**
              * タイトル（英）
-             * 
+             *
              * @return string title
              */
-            $view->with('title', \GetTitleName::getTitle(0));
+            $view->with('heroTitle', \GetTitleName::getTitle(0));
             /**
              * サブタイトル（日）
-             * 
+             *
              * @return string subTitle
              */
-            $view->with('subTitle', \GetTitleName::getTitle(1));
+            $view->with('heroSubTitle', \GetTitleName::getTitle(1));
+            /**
+             * 画像URL
+             *
+             * @return string subTitle
+             */
+            $view->with('heroUrl', \GetTitleName::getTitle(2));
         });
     }
 }

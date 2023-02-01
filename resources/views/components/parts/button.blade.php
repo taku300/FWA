@@ -1,6 +1,6 @@
 @props([
-    "bg_color" => "orange",
-    "font_color" => "white",
+    "bgColor" => "orange",
+    "fontColor" => "white",
 ])
 
 @php
@@ -9,9 +9,18 @@
             return match ($theme) {
                 "orange" => "bg-orange-400",
                 "red" => "bg-red-600",
+                "black" => "bg-black",
+            };
+        }
+    }
+    if (!function_exists("getFontColorButton")) {
+        function getFontColorButton($theme) {
+            return match ($theme) {
+                "white" => "text-white",
+                "black" => "text-black",
             };
         }
     }
 @endphp
 
-<button class=" bg-redw-[86px] h-[25px] text-white px-2 {{ getBgColorButton($bg_color) }}">{{ $slot }}</button>
+<button class=" h-[25px] text-white px-2 {{ getBgColorButton($bgColor) }} {{ getFontColorButton($fontColor) }}">{{ $slot }}</button>
