@@ -38,36 +38,12 @@ class News extends Model
     }
 
     /**
-     * コントローラー名取得
-     */
-    public function getRoute()
-    {
-        $controller = explode("@", Route::currentRouteAction());
-        $controllerName = explode('\\', $controller[0]);
-        $key = mb_substr($controllerName[3], 0, -10);
-
-        return $key;
-    }
-
-    /**
-     * お知らせ情報 取得
+     * トップページ用 お知らせ日順 10件
      * 
      * @return collection
      */
-    public function getNewsList()
+    public function getTopNewsList()
     {
-        /**
-         * トップページ用 お知らせ日順 10件
-         */
-        if ($this->getRoute() == 'Top') {
-            return News::orderBy('noticed_at', 'DESC')->take('10')->get();
-        }
-
-        /**
-         * お知らせページ用 お知らせ日順
-         */
-        if ($this->getRoute() == 'News') {
-            return News::orderBy('noticed_at', 'DESC')->get();
-        }
+        return News::orderBy('noticed_at', 'DESC')->take('10')->get();
     }
 }

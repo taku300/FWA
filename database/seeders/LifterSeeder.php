@@ -20,5 +20,10 @@ class LifterSeeder extends Seeder
         Lifter::factory()
             ->count(20)
             ->create();
+
+        Lifter::factory()
+            ->count(2)
+            ->topLifter()
+            ->create();
     }
 }

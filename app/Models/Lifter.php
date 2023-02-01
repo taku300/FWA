@@ -27,6 +27,18 @@ class Lifter extends Model
 
     public function affiliation()
     {
-        return $this->hasOne(Affiliation::class);
+        return $this->belongsTo(Affiliation::class);
+    }
+
+    /**
+     * トップページ用 選手情報
+     * top_post_flag = 0 非掲載
+     * top_post_flag = 1 掲載
+     * 
+     * @return array
+     */
+    public function getTopLifter(): array
+    {
+        return Lifter::with('affiliation')->where('top_post_flag', 1)->orderBy('updated_at', 'DESC')->get()->toArray();
     }
 }
