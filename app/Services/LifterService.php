@@ -27,7 +27,7 @@ class LifterService
         $lifters = $this->lifter->getTopLifter();
         $topLifters = [];
         foreach ($lifters as $value) {
-            $topLifters = array_merge($topLifters, array($value + $this->addColumn($value)));
+            $topLifters[] = $this->addColumn($value);
         }
         return $topLifters;
     }
