@@ -39,6 +39,6 @@ class Lifter extends Model
      */
     public function getTopLifter(): array
     {
-        return Lifter::with('affiliation')->where('top_post_flag', 1)->orderBy('updated_at', 'DESC')->take(2)->get()->toArray();
+        return Lifter::with('affiliation')->where('top_post_flag', 1)->orderBy('updated_at', 'DESC')->get()->toArray();
     }
 }
