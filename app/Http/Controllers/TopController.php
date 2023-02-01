@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Lifter;
+use App\Services\LifterService;
 use Illuminate\Http\Request;
 
 /**
@@ -12,13 +14,22 @@ use Illuminate\Http\Request;
 class TopController extends Controller
 {
     public $news;
+    public $lifter;
+    public $lifterService;
 
     /**
-     * News $news
+     * @param  \App\Models\News  $news
+     * @param  \App\Models\Lifter  $lifter
+     * @param  \App\Models\LifterService  $lifterService
      */
-    public function __construct(News $news)
-    {
+    public function __construct(
+        News $news,
+        Lifter $lifter,
+        LifterService $lifterService
+    ) {
         $this->news = $news;
+        $this->lifter = $lifter;
+        $this->lifterService = $lifterService;
     }
 
     /**
@@ -26,9 +37,10 @@ class TopController extends Controller
      */
     public function index()
     {
-        $newsList = $this->news->getNewsList();
+        $newsList = $this->news->getTopNewsList();
+        $lifterList = $this->lifterService->getTopLifterList();
 
-        return view('top.index')->with(['newsList' => $newsList]);
+        return view('top.index')->with(['newsList' => $newsList, 'lifterList' => $lifterList]);
     }
 
     public function edit()

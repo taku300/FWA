@@ -211,6 +211,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         /**
+         * 文字変換
+         */
+        'Convert' => App\Libs\Convert::class,
+        /**
          * お知らせカテゴリ定義
          */
         'CategoryConst' => App\Consts\CategoryConst::class,

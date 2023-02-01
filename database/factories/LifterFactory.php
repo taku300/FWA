@@ -22,11 +22,20 @@ class LifterFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'first_name_kana' => $this->faker->firstKanaName(),
             'last_name_kana' => $this->faker->lastKanaName(),
-            'gender' => $this->faker->numberBetween(1,2),
-            'category' => $this->faker->numberBetween(1,5),
-            'affiliation_id' => $this->faker->numberBetween(1,5),
-            'weight_class' => $this->faker->numberBetween(1,20),
+            'gender' => $this->faker->numberBetween(1, 2),
+            'category' => $this->faker->numberBetween(1, 5),
+            'affiliation_id' => $this->faker->numberBetween(1, 5),
+            'weight_class' => $this->faker->numberBetween(1, 20),
             'image_path' => $this->faker->image(storage_path('app/public/fakers'), 640, 480, null, false),
         ];
+    }
+
+    public function topLifter()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'top_post_flag' => 1,
+            ];
+        });
     }
 }

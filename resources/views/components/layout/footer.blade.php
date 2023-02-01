@@ -14,7 +14,7 @@
 @endphp
 
 <footer>
-    <div class="{{ checkFloatFooter($float) }} pc-sp:static">
+    <div class="{{ checkFloatFooter($float) }} pc-sp:static mt-64">
         <div class="w-full h-[400px] pc:h-[350px] pc-sp:h-[300px] sp:h-[270px] bg-[url('/public/images/layout/footer.png')] bg-contain bg-no-repeat bg-right-bottom relative flex justify-center sp:justify-end items-end">
             <div class="absolute top-[100px] left-[11%] pc-sp:text-[10px]">
                 <div class="">
