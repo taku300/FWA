@@ -25,18 +25,11 @@ class LifterService
     public function getTopLifterList(): array
     {
         $lifters = $this->lifter->getTopLifter();
-        foreach ($lifters as $key => $value) {
-            // １人目 カラム追加データ取得
-            if ($key === 0) {
-                $firstLifter = $this->addColumn($value);
-            }
-            // ２人目 カラム追加データ取得
-            if ($key === 1) {
-                $secondLifter = $this->addColumn($value);
-            }
+        $topLifters = [];
+        foreach ($lifters as $value) {
+            $topLifters = array_merge($topLifters, array($value + $this->addColumn($value)));
         }
-        // まとめてreturn
-        return [$firstLifter, $secondLifter];
+        return $topLifters;
     }
 
     /**

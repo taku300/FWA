@@ -37,7 +37,7 @@ class TopController extends Controller
      */
     public function index()
     {
-        $newsList = $this->news->getNewsList();
+        $newsList = $this->news->getTopNewsList();
         $lifterList = $this->lifterService->getTopLifterList();
 
         return view('top.index')->with(['newsList' => $newsList, 'lifterList' => $lifterList]);
