@@ -28,7 +28,7 @@ class Result extends Model
     /**
      * アーカイブ表示用日付データ取得
      */
-    public function getArchiveYear()
+    public function getArchiveFiscalYear()
     {
         return Result::pluck('ended_at');
     }

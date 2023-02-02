@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Libs\GetDate;
 use App\Models\Result;
 use App\Services\ResultService;
 use Illuminate\Http\Request;
@@ -15,7 +14,6 @@ class ResultsController extends Controller
 {
     public $result;
     public $resultService;
-    public $getDate;
 
     /**
      * @param  App\Libs\GetDate  $getDate
@@ -23,28 +21,28 @@ class ResultsController extends Controller
      */
     public function __construct(
         Result $result,
-        GetDate $getDate,
         ResultService $resultService
     ) {
         $this->result = $result;
         $this->resultService = $resultService;
-        $this->getDate = $getDate;
     }
 
     /**
-     * @param  array  $archiveYears
+     * @param  array  $archiveFiscalYearsList
+     * @param  string  $fiscalYear
+     * @param  string  $wareki
      * @param  array  $resultList
      */
-    public function index()
+    public function index(Request $request)
     {
-        $archiveYears = $this->getDate->ArchiveYear();
-        $year = $this->getDate->getYear();
-        $wareki = $this->getDate->wareki($year);
-        $resultList = $this->resultService->getEditedResultList($year);
+        $archiveFiscalYearsList = $this->resultService->getArchiveFiscalYearList();
+        $fiscalYear = $this->resultService->getFiscalYear($request->fiscalYear);
+        $wareki = $this->resultService->wareki($fiscalYear);
+        $resultList = $this->resultService->getEditedResultList($fiscalYear);
 
         return view('results.index')->with([
-            'archiveYears' => $archiveYears,
-            'year' => $year,
+            'archiveYears' => $archiveFiscalYearsList,
+            'fiscalYear' => $fiscalYear,
             'wareki' => $wareki,
             'resultList' => $resultList
         ]);
