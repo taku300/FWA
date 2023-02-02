@@ -16,7 +16,8 @@ class ResultsController extends Controller
     public $getDate;
 
     /**
-     * GetArchiveDate $getArchiveDate
+     * @param  App\Libs\GetDate  $getDate
+     * @param  App\Models\Result  $result
      */
     public function __construct(Result $result, GetDate $getDate)
     {
@@ -24,6 +25,10 @@ class ResultsController extends Controller
         $this->getDate = $getDate;
     }
 
+    /**
+     * @param  array  $archiveYears
+     * @param  array  $resultList
+     */
     public function index()
     {
         $archiveYears = $this->getDate->ArchiveYear();

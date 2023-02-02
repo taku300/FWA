@@ -33,8 +33,8 @@ class Result extends Model
         return Result::pluck('ended_at');
     }
 
-    public function getResultList()
+    public function getResultList(): array
     {
-        return Result::orderBy('started_at', 'DESC')->get();
+        return Result::orderBy('started_at', 'DESC')->get()->toArray();
     }
 }
