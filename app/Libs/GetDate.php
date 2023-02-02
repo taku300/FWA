@@ -31,14 +31,23 @@ class GetDate
         return $years->toArray();
     }
 
+    /**
+     * 
+     */
     public function getYear()
     {
         $year = new Carbon(now());
-        return $year->subMonthsNoOverflow(3)->format('Y');
+        return $year->subMonthsNoOverflow(3)->format('Y-m');
     }
 
+    /**
+     * 和暦変換
+     * 
+     * @param  string  $date
+     */
     public function wareki($date)
     {
+        $date = date('Y', strtotime($date));
         $eras = [
             ['year' => 2019, 'name' => '令和', 'new_Japanese_calendar' => '平成31年度'],
             ['year' => 1989, 'name' => '平成', 'new_Japanese_calendar' => '平成元年度'],
