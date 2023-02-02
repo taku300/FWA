@@ -35,8 +35,6 @@ class GetDate
     {
         $year = new Carbon(now());
         return $year->subMonthsNoOverflow(3)->format('Y');
-        foreach ($this->result->getResultList() as $value) {
-        }
     }
 
     public function wareki($date)
