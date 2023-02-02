@@ -29,14 +29,16 @@
                         </ul>
                     </div>
                     <!-- TODO:該当するデータがない場合は該当するデータがありませんと表示 -->
-                    @foreach ($resultList as $data)
+                    @foreach ($resultList as $value)
                     <div>
                         <ul class="flex border-spacing-1 pc-sp:block pc-sp:border-t pc-sp:border-inherit">
                             <li class="shrink-[5] w-40 h-11 s-pc:hidden"></li>
-                            <li class="p-[10px] shrink-0 w-[150px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催日</span>{{ $data }}</li>
-                            <li class="p-[10px] shrink-1 w-[415px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">大会名</span>全日本ウエイトリフティング選手権大会</li>
-                            <li class="p-[10px] shrink-1 w-[225px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催地</span>福岡県立八幡中央高校</li>
+                            <li class="p-[10px] shrink-0 w-[150px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催日</span>{{ date('m/d', strtotime($value->started_at)) }} ~ {{ date('m/d', strtotime($value->ended_at)) }}</li>
+                            <li class="p-[10px] shrink-1 w-[415px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">大会名</span>{{ $value->name }}</li>
+                            <li class="p-[10px] shrink-1 w-[225px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催地</span>{{ $value->venue }}</li>
+                            <!-- TODO: href="{{ $value->requirement_path }}" -->
                             <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex"><span class="hidden pc-sp:inline font-black mr-3">要　項</span><a href=""><img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5"></a></li>
+                            <!-- TODO: href="{{ $value->result_path }}" -->
                             <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex"><span class="hidden pc-sp:inline font-black mr-3">結　果</span><a href=""><img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5"></a></li>
                         </ul>
                     </div>

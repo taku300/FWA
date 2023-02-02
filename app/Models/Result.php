@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\News;
-use Illuminate\Database\Eloquent\Collection;
 
 class Result extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'started_at',
         'ended_at',
@@ -35,6 +35,6 @@ class Result extends Model
 
     public function getResultList()
     {
-        // return Result::all()->orderBy('started_at', 'DESC')->get();
+        return Result::orderBy('started_at', 'DESC')->get();
     }
 }
