@@ -33,8 +33,15 @@ class ResultsController extends Controller
     {
         $archiveYears = $this->getDate->ArchiveYear();
         $resultList = $this->result->getResultList();
+        $year = $this->getDate->getYear();
+        $wareki = $this->getDate->wareki($year);
 
-        return view('results.index')->with(['archiveYears' => $archiveYears, 'resultList' => $resultList]);
+        return view('results.index')->with([
+            'archiveYears' => $archiveYears,
+            'resultList' => $resultList,
+            'year' => $year,
+            'wareki' => $wareki
+        ]);
     }
 
     public function create()
