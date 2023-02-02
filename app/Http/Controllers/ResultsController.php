@@ -28,6 +28,9 @@ class ResultsController extends Controller
     }
 
     /**
+     * Results画面
+     * 
+     * @param  Illuminate\Http\Request  $request
      * @param  array  $archiveFiscalYearsList
      * @param  string  $fiscalYear
      * @param  string  $wareki
