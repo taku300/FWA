@@ -8,7 +8,7 @@ class GetTitleName
 {
     /**
      * コントローラー名取得
-     * 
+     *
      * @param  string  $key
      * @return string
      */
@@ -16,7 +16,10 @@ class GetTitleName
     {
         $controller = explode("@", Route::currentRouteAction());
         $controllerName = explode('\\', $controller[0]);
+        $titleKey = "";
+        if(isset($controllerName[3])) {
         $titleKey = mb_substr($controllerName[3], 0, -10);
+        }
 
         /**
          * 定義されているときのみreturn
