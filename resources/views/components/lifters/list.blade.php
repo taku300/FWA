@@ -11,7 +11,7 @@
                 <li class="text-1xl mb-5 s-pc:text-base s-pc:mb-2 sp:text-xs">全日本選手権大会　優勝<br>
                     〇〇選手権優勝<br>
                 </li>
-                <!-- <li class="text-base mb-5 s-pc:text-sm s-pc:mb-2">ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力</li> -->
+                <li class="text-base mb-5 s-pc:text-sm s-pc:mb-2">ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力ここにコメントを入力</li>
             </ul>
         </div>
     </div>
