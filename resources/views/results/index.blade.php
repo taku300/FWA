@@ -52,5 +52,5 @@
                 </div>
             </div>
         </div>
-        </session>
+    </section>
 </x-layout.layout>
