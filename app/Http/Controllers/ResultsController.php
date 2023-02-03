@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Result;
 use App\Services\ResultService;
 use Illuminate\Http\Request;
 
@@ -12,18 +11,13 @@ use Illuminate\Http\Request;
  */
 class ResultsController extends Controller
 {
-    public $result;
     public $resultService;
 
     /**
-     * @param  App\Libs\GetDate  $getDate
-     * @param  App\Models\Result  $result
+     * @param  App\Services\ResultService  $resultService
      */
-    public function __construct(
-        Result $result,
-        ResultService $resultService
-    ) {
-        $this->result = $result;
+    public function __construct(ResultService $resultService)
+    {
         $this->resultService = $resultService;
     }
 
