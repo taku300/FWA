@@ -33,7 +33,8 @@ class TopController extends Controller
     }
 
     /**
-     * @param collection $newsList
+     * @param  collection  $newsList
+     * @param  array  $lifterList
      */
     public function index()
     {

@@ -9,6 +9,7 @@ use App\Models\News;
 class Result extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'started_at',
         'ended_at',
@@ -19,9 +20,21 @@ class Result extends Model
         'news_id'
     ];
 
-
     public function news()
     {
         return $this->hasOne(News::class);
+    }
+
+    /**
+     * アーカイブ表示用日付データ取得
+     */
+    public function getArchiveFiscalYear()
+    {
+        return Result::pluck('ended_at');
+    }
+
+    public function getResultList()
+    {
+        return Result::orderBy('started_at', 'DESC');
     }
 }
