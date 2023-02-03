@@ -3,7 +3,12 @@
     <section>
         <x-layout.container>
             <div class="mt-32 mb-16">
-                <x-parts.title>お知らせ・大会情報登録</x-parts.title>
+                <x-parts.title>
+                    {{ count($news['news_links']) == 0 ?
+                        'お知らせ・大会情報登録' :
+                        'お知らせ・大会情報編集'
+                    }}
+                </x-parts.title>
             </div>
             {{ Form::open(['route' => 'admins.news.store']) }}
                 {{ Form::token() }}
