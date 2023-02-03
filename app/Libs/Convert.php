@@ -5,7 +5,6 @@ namespace App\Libs;
 /**
  * かなをヘボン式ローマ字に変換
  */
-
 class Convert
 {
     /**
