@@ -226,6 +226,10 @@ return [
          * タイトルネーム取得
          */
         'GetTitleName' => App\Libs\GetTitleName::class,
+        /**
+         * 階級定義
+         */
+        'WeightClassConst' => App\Consts\WeightClassConst::class,
     ])->toArray(),
 
 ];
