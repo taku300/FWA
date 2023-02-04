@@ -25,7 +25,7 @@ class LifterService
      */
     public function getLiftersList($gender): array
     {
-        return $this->lifter->getLifters()->where('gender', $gender)->orderBy('last_name', 'DESC')->get()->toArray();
+        return $this->lifter->getLifters()->where('gender', $gender)->orderBy('last_name_kana', 'DESC')->get()->toArray();
     }
 
     /**
