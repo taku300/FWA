@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
  * @param  array  $columns
  * @param  Illuminate\Http\Request  $request
  */
-class Create
+class DatabaseRegister
 {
-    public static function create($model, $columns, $request)
+    public static function databaseRegister($model, $columns, $request)
     {
         foreach ($columns as $column) {
             if (str_pos($column, '_path' !== false) && !empty($request->$column)) {
