@@ -16,9 +16,8 @@ class NewsController extends Controller
         return view('news.index');
     }
 
-    public function create()
+    public function create(News $news)
     {
-        $news = new News;
         return view('news.create', [
             'news' => $news,
         ]);
@@ -26,7 +25,6 @@ class NewsController extends Controller
 
     public function store()
     {
-
     }
 
     public function edit($id)
@@ -40,6 +38,5 @@ class NewsController extends Controller
 
     public function update($id)
     {
-
     }
 }
