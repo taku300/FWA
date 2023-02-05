@@ -20,7 +20,7 @@
                     <li class="flex mb-4">
                         {{ Form::label('category', 'カテゴリー', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                        {{ Form::select('category', \CategoryConst::CATEGORY_LIST, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
+                        {{ Form::select('category', \CategoryConst::NEWS_CATEGORY_LIST, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
                     </li>
                     <li class="flex mb-4">
                         {{ Form::label('noticed_at', 'お知らせ日', ['class' => 'shrink-0 w-24']) }}

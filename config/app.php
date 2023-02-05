@@ -210,10 +210,21 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        // Lib
         /**
          * 文字変換
          */
         'Convert' => App\Libs\Convert::class,
+        /**
+         * タイトルネーム取得
+         */
+        'GetTitleName' => App\Libs\GetTitleName::class,
+
+        // Const
+        /**
+        * 共通定義
+        */
+        'CommonConst' => App\Consts\CommonConst::class,
         /**
          * お知らせカテゴリ定義
          */
@@ -223,9 +234,9 @@ return [
          */
         'TitleConst' => App\Consts\TitleConst::class,
         /**
-         * タイトルネーム取得
+         * 階級定義
          */
-        'GetTitleName' => App\Libs\GetTitleName::class,
+        'WeightClassConst' => App\Consts\WeightClassConst::class,
     ])->toArray(),
 
 ];
