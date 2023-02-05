@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\ResultService;
 use Illuminate\Http\Request;
+use App\Models\Result;
 
 /**
  * 要項・結果
@@ -23,7 +24,7 @@ class ResultsController extends Controller
 
     /**
      * Results画面
-     * 
+     *
      * @param  Illuminate\Http\Request  $request
      * @param  array  $archiveFiscalYearsList
      * @param  string  $fiscalYear
@@ -47,6 +48,26 @@ class ResultsController extends Controller
 
     public function create()
     {
-        return view('results.create');
+        $results = new Result;
+        return view('results.create', [
+            'results' => $results,
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $results = Result::find($id)->toArray();
+        return view('results.create', [
+            'id' => $id,
+            'results' => $results,
+        ]);
+    }
+
+    public function store()
+    {
+    }
+
+    public function update($id, Request $request)
+    {
     }
 }
