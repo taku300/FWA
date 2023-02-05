@@ -50,7 +50,7 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $this->newsService->create($request);
-        // return redirect('/news');
+        return redirect('/news');
     }
 
     public function edit($id)

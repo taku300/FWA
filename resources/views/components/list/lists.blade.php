@@ -13,7 +13,7 @@
     <a href="">
         <div class="flex items-center">
             <p class="font-black mr-4">{{ $value->noticed_at }}</p>
-            <x-parts.button bgColor="{{ \CategoryConst::NEWS_CATEGORY_LIST[$value->category]['color'] }}" fontColor="white">{{ \CategoryConst::NEWS_CATEGORY_LIST[$value->category]['category'] }}</x-parts.button>
+            <x-parts.button bgColor="{{ \CategoryConst::CATEGORY_LIST['color'][$value->category] }}" fontColor="white">{{ \CategoryConst::NEWS_CATEGORY_LIST[$value->category]['category'] }}</x-parts.button>
         </div>
         <p class="mt-2 text-lg">{{ $value->detail }}</p>
         <p class="opacity-60">{{ $value->note }}</p>

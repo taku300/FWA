@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Libs\DatabaseRegister;
 use App\Models\News;
+use App\Models\NewsDocument;
+use App\Models\NewsLink;
 
 class NewsService
 {
@@ -17,7 +19,7 @@ class NewsService
     public function create($request)
     {
         $news = new News;
-        $columns = [
+        $newsColumns = [
             'category',
             'noticed_at',
             'title',
@@ -26,16 +28,14 @@ class NewsService
             'preliminary_report_flag',
             'iframe_path'
         ];
-        $this->databaseRegister->databaseRegister($news, $columns, $request);
+        $this->databaseRegister->createBasicRegister($news, $newsColumns, $request);
 
-        $newsDocument = $news['news_documents'][0];
-        $columns = ['title', 'document_path'];
-        $this->databaseRegister->databaseRegister($newsDocument, $columns, $request);
+        $newsDocument = new NewsDocument;
+        $newsDocumentColumns = ['title', 'document_path', 'news_id'];
+        $this->databaseRegister->createNewsDocumentRegister($newsDocument, $newsDocumentColumns, $request, $news->id);
 
-        $newsLink = $news['news_links'][0];
-        $columns = ['title', 'link_path'];
-        $this->databaseRegister->databaseRegister($newsLink, $columns, $request);
-
-        $news->save();
+        $newsLink = new NewsLink;
+        $newsLinkColumns = ['title', 'link_path', 'news_id'];
+        $this->databaseRegister->createNewsLinkRegister($newsLink, $newsLinkColumns, $request, $news->id);
     }
 }

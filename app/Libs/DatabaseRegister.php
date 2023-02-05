@@ -13,16 +13,48 @@ use Illuminate\Http\Request;
  */
 class DatabaseRegister
 {
-    public static function databaseRegister($model, $columns, $request)
+    public static function createBasicRegister($model, $columns, $request)
     {
         foreach ($columns as $column) {
-            if ($model->$column === 'document_path') {
-                $path = $request->file($column)->store('public');
-                $model->document_path = basename($path);
+            $model->$column = $request->$column;
+        }
+        $model->save();
+    }
+
+    public static function createNewsDocumentRegister($model, $columns, $request, $newsId)
+    {
+        $key = 0;
+        foreach ($columns as $column) {
+            if ($column === 'document_path') {
+                foreach ($request['news_documents']['document_path'] as $value) {
+                    $path = $value->store('public');
+                    $model->document_path = basename($path);
+                }
             }
-            if ($model->$column !== 'document_path') {
-                $model->$column = $request->$column;
+            if ($column === 'news_id') {
+                $model->$column = $newsId;
+            }
+            if ($column === 'title') {
+                $model->$column = $request['news_documents'][$column][$key];
             }
         }
+        $model->save();
+    }
+
+    public static function createNewsLinkRegister($model, $columns, $request, $newsId)
+    {
+        $key = 0;
+        foreach ($columns as $column) {
+            if ($column === 'news_id') {
+                $model->$column = $newsId;
+            }
+            if ($column === 'title') {
+                $model->$column = $request['news_links'][$column][$key];
+            }
+            if ($column === 'link_path') {
+                $model->$column = $request['news_links'][$column][$key];
+            }
+        }
+        $model->save();
     }
 }
