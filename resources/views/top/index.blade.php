@@ -13,11 +13,11 @@
             </x-top.title>
         </div>
         <!-- list -->
-        <div class="mx-40 s-pc:mx-16 pc:mx-12 sp:mx-4">
+        <x-layout.container>
             <!-- $newsList = お知らせ情報 -->
             <x-list.lists :$newsList></x-list.lists>
             <x-parts.button-arrow>お知らせ一覧</x-parts.button-arrow>
-        </div>
+        </x-layout.container>
     </section>
 
     <!-- image-center -->
