@@ -16,14 +16,13 @@ class DatabaseRegister
     public static function databaseRegister($model, $columns, $request)
     {
         foreach ($columns as $column) {
-            if (strpos($model->$column, 'path') !== false) {
+            if ($model->$column === 'document_path') {
                 $path = $request->file($column)->store('public');
                 $model->document_path = basename($path);
             }
-            if (strpos($model->$column, 'path') === false) {
+            if ($model->$column !== 'document_path') {
                 $model->$column = $request->$column;
             }
-            $model->save();
         }
     }
 }

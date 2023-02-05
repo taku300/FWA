@@ -27,5 +27,15 @@ class NewsService
             'iframe_path'
         ];
         $this->databaseRegister->databaseRegister($news, $columns, $request);
+
+        $newsDocument = $news['news_documents'][0];
+        $columns = ['title', 'document_path'];
+        $this->databaseRegister->databaseRegister($newsDocument, $columns, $request);
+
+        $newsLink = $news['news_links'][0];
+        $columns = ['title', 'link_path'];
+        $this->databaseRegister->databaseRegister($newsLink, $columns, $request);
+
+        $news->save();
     }
 }
