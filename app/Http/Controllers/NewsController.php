@@ -11,9 +11,25 @@ use App\Models\News;
  */
 class NewsController extends Controller
 {
+    public $news;
+
+    /**
+     * @param  \App\Models\News  $news
+     */
+    public function __construct(
+        News $news,
+    ) {
+        $this->news = $news;
+    }
+
+    /**
+     * @param  collection  $newsList
+     */
     public function index()
     {
-        return view('news.index');
+        $newsList = $this->news->getTopNewsList();
+
+        return view('news.index')->with(['newsList' => $newsList]);
     }
 
     public function create()
