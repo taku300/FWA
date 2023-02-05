@@ -29,16 +29,16 @@ class NewsController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit($news)
     {
-        $news = News::with('news_documents', 'news_links')->find($id);
+        $news_info = News::with('news_documents', 'news_links')->find($news);
         return view('news.create', [
-            'id' => $id,
-            'news' => $news,
+            'id' => $news,
+            'news' => $news_info,
         ]);
     }
 
-    public function update($id)
+    public function update($news)
     {
 
     }
