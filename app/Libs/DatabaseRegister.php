@@ -5,7 +5,7 @@ namespace App\Libs;
 use Illuminate\Http\Request;
 
 /**
- * 新規登録処理
+ * 新規登録・編集処理
  * 
  * @param  App\Models\**  $model
  * @param  array  $columns
@@ -20,10 +20,11 @@ class DatabaseRegister
                 $path = $request->$column->store('public');
                 $model->$column = basename($path);
             }
-            if ($column === 'image_path' && empty($request->$column)) {
-                $model->$column = $model->$column;
+            if (strpos($column, 'path') !== false) {
+                $fileName = $request->title;
+                $model->$column = $request->file($column)->storeAs('public', $fileName);
             }
-            if ($column !== 'image_path') {
+            if (!empty($request->$column)) {
                 $model->$column = $request->$column;
             }
         }
