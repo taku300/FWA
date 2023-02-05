@@ -1,0 +1,32 @@
+{
+  "public/images/layout/header.png": {
+    "file": "assets/header.02ed644e.png",
+    "src": "public/images/layout/header.png"
+  },
+  "public/images/top/center_parts.png": {
+    "file": "assets/center_parts.90231085.png",
+    "src": "public/images/top/center_parts.png"
+  },
+  "public/images/layout/footer.png": {
+    "file": "assets/footer.9765b6de.png",
+    "src": "public/images/layout/footer.png"
+  },
+  "public/images/top/top_center.png": {
+    "file": "assets/top_center.045dc37d.png",
+    "src": "public/images/top/top_center.png"
+  },
+  "public/images/top/top1.png": {
+    "file": "assets/top1.47e701b6.png",
+    "src": "public/images/top/top1.png"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app.23d6acfe.js",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app.4108d800.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  }
+}
