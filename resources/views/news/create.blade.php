@@ -4,7 +4,7 @@
         <x-layout.container>
             <div class="mt-32 mb-16">
                 <x-parts.title>
-                    {{ $news['title'] == null ?
+                    {{ !is_array($news) ?
                         'お知らせ・大会情報登録' :
                         'お知らせ・大会情報編集'
                     }}
@@ -12,8 +12,8 @@
             </div>
             <!-- 遷移先判定のロジック -->
             @php
-                $method = $news['title'] == null ? 'post' : 'put';
-                $path = $news['title'] == null ? 'admins.news.store' : 'admins.news.update';
+                $method = !is_array($news) ? 'post' : 'put';
+                $path = !is_array($news) ? 'admins.news.store' : 'admins.news.update';
             @endphp
             {{ Form::model($news, ['method'=> $method, 'route'=>[$path, 'news' => isset($id) ?? $id], 'files'=>true]) }}
                 <ul>
@@ -86,7 +86,7 @@
 
                 </ul>
                 <div class=" mt-20 flex justify-center">
-                    <x-parts.form-button bgColor='black'>{{ $news['title'] == null ? '登録する' : '編集する' }}</x-parts.form-button>
+                    <x-parts.form-button bgColor='black'>{{ !is_array($news) ? '登録する' : '編集する' }}</x-parts.form-button>
                 </div>
             {{ Form::close() }}
         </x-layout.container>
