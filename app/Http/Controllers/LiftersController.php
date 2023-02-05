@@ -33,7 +33,7 @@ class LiftersController extends Controller
     public function edit($id)
     {
         $lifters = Lifter::with('affiliation')->find($id)->toArray();
-        $affiliation = array_column( Affiliation::all()->toArray(), 'name' );
+        $affiliation = array_column( Affiliation::all()->toArray(), 'name', 'id');
         return view('lifters.create')->with([
             'id' => $id,
             'lifters' => $lifters,
