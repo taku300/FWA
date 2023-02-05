@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace App\Libs;
 
@@ -16,14 +16,14 @@ class DatabaseRegister
     public static function databaseRegister($model, $columns, $request)
     {
         foreach ($columns as $column) {
-            if (str_pos($column, '_path' !== false) && !empty($request->$column)) {
+            if ($column === 'image_path' && !empty($request->$column)) {
                 $path = $request->$column->store('public');
                 $model->$column = basename($path);
             }
-            if (str_pos($column, '_path' !== false) && empty($request->$column)) {
+            if ($column === 'image_path' && empty($request->$column)) {
                 $model->$column = $model->$column;
             }
-            if (str_pos($column, '_path' === false)) {
+            if ($column !== 'image_path') {
                 $model->$column = $request->$column;
             }
         }

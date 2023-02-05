@@ -227,6 +227,10 @@ return [
          */
         'GetTitleName' => App\Libs\GetTitleName::class,
         /**
+         * 登録編集処理
+         */
+        'DatabaseRegister' => App\Libs\DatabaseRegister::class,
+        /**
          * 階級定義
          */
         'WeightClassConst' => App\Consts\WeightClassConst::class,
