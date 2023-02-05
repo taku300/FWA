@@ -40,7 +40,7 @@ class NewsController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
 
     }
@@ -54,8 +54,7 @@ class NewsController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function update($id, Request $request)
     {
-
     }
 }
