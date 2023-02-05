@@ -33,6 +33,7 @@ class NewsController extends Controller
     {
         $news = News::with('news_documents', 'news_links')->find($id);
         return view('news.create', [
+            'id' => $id,
             'news' => $news,
         ]);
     }
