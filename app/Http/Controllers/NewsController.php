@@ -13,18 +13,31 @@ use App\Services\NewsLinkService;
  */
 class NewsController extends Controller
 {
+    public $news;
     public $newsService;
     public $newsLinkService;
 
-    public function __construct(NewsService $newsService, NewsLinkService $newsLinkService)
-    {
+    /**
+     * @param  \App\Models\News  $news
+     */
+    public function __construct(
+        News $news,
+        NewsService $newsService,
+        NewsLinkService $newsLinkService
+    ) {
+        $this->news = $news;
         $this->newsService = $newsService;
         $this->newsLinkService = $newsLinkService;
     }
 
+    /**
+     * @param  collection  $newsList
+     */
     public function index()
     {
-        return view('news.index');
+        $newsList = $this->news->getTopNewsList();
+
+        return view('news.index')->with(['newsList' => $newsList]);
     }
 
     public function create(News $news)
@@ -49,7 +62,7 @@ class NewsController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function update($id, Request $request)
     {
     }
 }
