@@ -15,7 +15,7 @@
                 $method = !is_array($lifters) ? 'post' : 'put';
                 $path = !is_array($lifters) ? 'admins.lifters.store' : 'admins.lifters.update';
             @endphp
-            {{ Form::model($lifters, ['method'=>$method, 'route'=>[$path, 'lifter' => isset($id) ?? $id], 'files'=>true]) }}
+            {{ Form::model($lifters, ['method'=>$method, 'route'=>[$path, 'lifter' => isset($id) ? $id : null], 'files'=>true]) }}
                 {{ Form::token() }}
                 <ul>
                     <li class="flex mb-4">
