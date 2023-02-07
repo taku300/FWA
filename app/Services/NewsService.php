@@ -16,7 +16,12 @@ class NewsService
         $this->databaseRegister = $databaseRegister;
     }
 
-    public function create($request)
+    public function create()
+    {
+        // 
+    }
+
+    public function createtest($request)
     {
         $news = new News;
         $newsColumns = [
