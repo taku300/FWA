@@ -21,12 +21,12 @@
     </section>
 
     <!-- image-center -->
-    <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-[url('/public/images/top/top_center.png')] bg-center bg-cover">
+    <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-center bg-cover" style="background-image: url('images/top/top_center.png');">
     </div>
 
     <!-- lifters -->
     <section>
-        <div class="w-full h-[5000px] sp:h-[3000px] bg-[url('/public/images/top/center_parts.png')] bg-center bg-cover relative">
+        <div class="w-full h-[5000px] sp:h-[3000px] bg-center bg-cover relative" style="background-image: url('images/top/center_parts.png');">
             <!-- lifters-title -->
             <div class="absolute left-[9%] top-[60px] sp:left-[50%] sp:translate-x-[-50%]">
                 <x-top.title>
