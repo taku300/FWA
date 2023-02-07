@@ -4,43 +4,40 @@ namespace App\Services;
 
 use App\Libs\DatabaseRegister;
 use App\Models\News;
-use App\Models\NewsDocument;
-use App\Models\NewsLink;
+use Illuminate\Support\Facades\DB;
 
 class NewsService
 {
     public $databaseRegister;
 
+    /**
+     * @param  \App\Libs\DatabaseRegister  $databaseRegister
+     */
     public function __construct(DatabaseRegister $databaseRegister)
     {
         $this->databaseRegister = $databaseRegister;
     }
 
-    public function create()
+    /**
+     * お知らせ新規登録
+     * 
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function newsCreate($request)
     {
-        // 
-    }
-
-    public function createtest($request)
-    {
-        $news = new News;
-        $newsColumns = [
-            'category',
-            'noticed_at',
-            'title',
-            'note',
-            'detail',
-            'preliminary_report_flag',
-            'iframe_path'
-        ];
-        $this->databaseRegister->createBasicRegister($news, $newsColumns, $request);
-
-        $newsDocument = new NewsDocument;
-        $newsDocumentColumns = ['title', 'document_path', 'news_id'];
-        $this->databaseRegister->createNewsDocumentRegister($newsDocument, $newsDocumentColumns, $request, $news->id);
-
-        $newsLink = new NewsLink;
-        $newsLinkColumns = ['title', 'link_path', 'news_id'];
-        $this->databaseRegister->createNewsLinkRegister($newsLink, $newsLinkColumns, $request, $news->id);
+        DB::beginTransaction();
+        try {
+            $news = new News($request->all());
+            $news->save();
+            $news->news_links()->createMany($request->get('news_links'));
+            $newsDocuments = $request->get('news_documents');
+            $files = $request->file('news_documents');
+            $newsDocuments = $this->databaseRegister->createInFilesPath($files, $newsDocuments, 'document_path', 'news-documents');
+            $news->news_documents()->createMany($newsDocuments);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
     }
 }

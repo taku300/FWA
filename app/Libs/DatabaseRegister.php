@@ -2,59 +2,23 @@
 
 namespace App\Libs;
 
-use Illuminate\Http\Request;
-
-/**
- * 新規登録処理
- * 
- * @param  App\Models\**  $model
- * @param  array  $columns
- * @param  Illuminate\Http\Request  $request
- */
 class DatabaseRegister
 {
-    public static function createBasicRegister($model, $columns, $request)
+    /**
+     * ファイル登録用メソッド
+     * 
+     * @param  array  $files
+     * @param  array  $documents
+     * @param  string  $columnName
+     * @param  string  $path
+     */
+    public static function createInFilesPath($files, $documents, $columnName, $path)
     {
-        foreach ($columns as $column) {
-            $model->$column = $request->$column;
+        foreach ($files as $key => $file) {
+            $documentName = $file[$columnName]->getClientOriginalName();
+            $file[$columnName]->storeAS($path, $documentName, 'public');
+            $documents[$key][$columnName] = $documentName;
         }
-        $model->save();
-    }
-
-    public static function createNewsDocumentRegister($model, $columns, $request, $newsId)
-    {
-        $key = 0;
-        foreach ($columns as $column) {
-            if ($column === 'document_path') {
-                foreach ($request['news_documents']['document_path'] as $value) {
-                    $path = $value->store('public');
-                    $model->document_path = basename($path);
-                }
-            }
-            if ($column === 'news_id') {
-                $model->$column = $newsId;
-            }
-            if ($column === 'title') {
-                $model->$column = $request['news_documents'][$column][$key];
-            }
-        }
-        $model->save();
-    }
-
-    public static function createNewsLinkRegister($model, $columns, $request, $newsId)
-    {
-        $key = 0;
-        foreach ($columns as $column) {
-            if ($column === 'news_id') {
-                $model->$column = $newsId;
-            }
-            if ($column === 'title') {
-                $model->$column = $request['news_links'][$column][$key];
-            }
-            if ($column === 'link_path') {
-                $model->$column = $request['news_links'][$column][$key];
-            }
-        }
-        $model->save();
+        return $documents;
     }
 }

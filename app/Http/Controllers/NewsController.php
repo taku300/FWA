@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Services\NewsService;
 use App\Services\NewsLinkService;
-use Illuminate\Support\Facades\DB;
 
 /**
  * お知らせ
@@ -20,6 +19,8 @@ class NewsController extends Controller
 
     /**
      * @param  \App\Models\News  $news
+     * @param  \App\Services\NewsService  $newsService
+     * @param  \App\Services\NewsLinkService  $newsLinkService
      */
     public function __construct(
         News $news,
@@ -32,6 +33,8 @@ class NewsController extends Controller
     }
 
     /**
+     * お知らせ画面
+     * 
      * @param  collection  $newsList
      */
     public function index()
@@ -41,6 +44,11 @@ class NewsController extends Controller
         return view('news.index')->with(['newsList' => $newsList]);
     }
 
+    /**
+     * お知らせ新規登録、編集画面
+     * 
+     * @param  \App\Models\News  $news
+     */
     public function create(News $news)
     {
         return view('news.create', [
@@ -48,27 +56,14 @@ class NewsController extends Controller
         ]);
     }
 
+    /**
+     * お知らせ新規登録処理
+     * 
+     * @param  Illuminate\Http\Request  $request
+     */
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        try {
-            $news_documents = $request->get('news_documents');
-            $files = $request->file('news_documents');
-            foreach ($files as $key => $file) {
-                $document_name = $file['document_path']->getClientOriginalName();
-                $file['document_path']->storeAS('documents', $document_name);
-                $news_documents[$key]['document_path'] = $document_name;
-            }
-            $news = new News($request->all());
-            $news->save();
-            $news->news_links()->createMany($request->get('news_links'));
-            $news->news_documents()->createMany($news_documents);
-        } catch (Exception $e) {
-            DB::rollback();
-            echo ($e);
-            return back()->withInput();
-        }
-        DB::commit();
+        $this->newsService->newsCreate($request);
         return redirect('/news');
     }
 
@@ -83,5 +78,6 @@ class NewsController extends Controller
 
     public function update($id, Request $request)
     {
+        // 
     }
 }
