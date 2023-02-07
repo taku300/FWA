@@ -21,7 +21,7 @@
     </section>
 
     <!-- image-center -->
-    <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-center bg-cover" style="background-image: url('images/top/top_center.png');">
+    <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-center bg-cover" style="background-image: url({{ asset('images/top/top_center.png') }});">
     </div>
 
     <!-- lifters -->
@@ -39,19 +39,21 @@
                 </x-top.title>
             </div>
             <!-- lifter1 -->
+            @if (array_key_exists(0, $lifterList))
             <div class="absolute top-[230px] right-[4.5%] s-pc:top-[350px] pc:top-[300px] sp:top-[250px]">
-                <x-top.lifters-image src="{{ asset('/' . $lifterList[0]['image_path']) }}" alt="{{ asset('/' . $lifterList[0]['image_path']) }}"></x-top.lifters-image>
+                <x-top.lifters-image source="{{ $lifterList[0]['image_path'] }}" alt="{{ $lifterList[0]['image_path'] }}"></x-top.lifters-image>
                 <div class="absolute right-[60%] pc:right-[25%] sp:right-[20%] top-[70%] text-white">
                     <x-top.lifters-explanation :lifterList="$lifterList[0]"></x-top.lifters-explanation>
                 </div>
-            </div>
+            @endif
             <!-- lifter2 -->
+            @if (array_key_exists(1, $lifterList))
             <div class="absolute top-[1200px] sp:top-[800px] left-[4.5%]">
-                <x-top.lifters-image src="{{ asset('/' . $lifterList[1]['image_path']) }}" alt="{{ asset('/' . $lifterList[1]['image_path']) }}"></x-top.lifters-image>
+                <x-top.lifters-image source="{{ $lifterList[1]['image_path'] }}" alt="{{ $lifterList[1]['image_path'] }}"></x-top.lifters-image>
                 <div class="absolute top-[70%] left-[60%] sp:left-[20%]">
                     <x-top.lifters-explanation :lifterList="$lifterList[1]"></x-top.lifters-explanation>
                 </div>
-            </div>
+            @endif
 
             <!-- olympian -->
             <!-- olympian-title-vertical -->
@@ -64,7 +66,7 @@
             </div>
             <!-- ota -->
             <div class="absolute top-[2700px] left-[4.5%] sp:top-[1850px] sp:left-[10%]">
-                <img class="w-[518px] pc:w-[350px] sp:w-[200px]" src="/images/top/ota.jpg" alt="">
+                <img class="w-[518px] pc:w-[350px] sp:w-[200px]" src="{{ asset('images/top/ota.jpg') }}" alt="">
                 <div class="absolute top-[25%] left-[70%] sp:left-[50%]">
                     <div class="w-[500px] h-[500px]  pc:w-[400px] pc:h-[450px] sp:w-[200px] sp:h-[400px] text-white">
                         <div>
@@ -112,7 +114,7 @@
                         </div>
                         <div class=" flex-1 flex justify-center items-center">
                             <a class="" href="https://fukuokasports.org/">
-                                <img class="w-[90%] aspect-[65/35] m-auto" src="/images/top/f_sports.png" alt="公益財団法人福岡県スポーツ推進基金">
+                                <img class="w-[90%] aspect-[65/35] m-auto" src="{{ asset('images/top/f_sports.png') }}" alt="公益財団法人福岡県スポーツ推進基金">
                             </a>
                         </div>
                     </div>

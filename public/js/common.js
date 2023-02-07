@@ -1,5 +1,6 @@
 $(document).ready(function () {
     //////////////////////
+<<<<<<< HEAD
     //ヘッダーの透明度の調整
     var $headerParts = $(".js-header-parts");
     console.log($(window).scrollTop());
@@ -13,6 +14,21 @@ $(document).ready(function () {
             $headerParts.removeClass("opacity-60");
         } else {
             $headerParts.addClass("opacity-60");
+=======
+    //ロゴ背景の透明度の調整
+    var $headerPartsLoge = $(".js-header-parts-logo");
+    console.log($(window).scrollTop());
+    //初期位置が482より下だった時
+    if ($(window).scrollTop() >= 550) {
+        $headerPartsLoge.addClass("hidden");
+    }
+    //スクロールした時
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 550) {
+            $headerPartsLoge.addClass("hidden");
+        } else {
+            $headerPartsLoge.removeClass("hidden");
+>>>>>>> ef5fe608340b6ac3909a1bf007181bdbaa6d96b4
         }
     });
     //////////////////////
@@ -39,6 +55,21 @@ $(document).ready(function () {
     $sideMenu.children().children().eq(0).click(function (e) {
         $sideMenu.fadeOut();
     })
+
+    //ハンバーガーメニューの透明度の調整
+    var $headerParts = $(".js-header-parts");
+    //初期位置が482より下だった時
+    if ($(window).scrollTop() >= 650) {
+        $headerParts.removeClass("opacity-60");
+    }
+    //スクロールした時
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 650) {
+            $headerParts.removeClass("opacity-60");
+        } else {
+            $headerParts.addClass("opacity-60");
+        }
+    });
     //////////////////////
 
        //////////////////////
