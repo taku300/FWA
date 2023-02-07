@@ -1,20 +1,5 @@
 $(document).ready(function () {
     //////////////////////
-<<<<<<< HEAD
-    //ヘッダーの透明度の調整
-    var $headerParts = $(".js-header-parts");
-    console.log($(window).scrollTop());
-    //初期位置が482より下だった時
-    if ($(window).scrollTop() >= 482) {
-        $headerParts.removeClass("opacity-60");
-    }
-    //スクロールした時
-    $(window).scroll(function () {
-        if ($(this).scrollTop() >= 482) {
-            $headerParts.removeClass("opacity-60");
-        } else {
-            $headerParts.addClass("opacity-60");
-=======
     //ロゴ背景の透明度の調整
     var $headerPartsLoge = $(".js-header-parts-logo");
     console.log($(window).scrollTop());
@@ -28,7 +13,6 @@ $(document).ready(function () {
             $headerPartsLoge.addClass("hidden");
         } else {
             $headerPartsLoge.removeClass("hidden");
->>>>>>> ef5fe608340b6ac3909a1bf007181bdbaa6d96b4
         }
     });
     //////////////////////
