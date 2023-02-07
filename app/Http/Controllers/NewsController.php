@@ -57,4 +57,9 @@ class NewsController extends Controller
     public function update($id, Request $request)
     {
     }
+
+    public function show($id)
+    {
+        return view('news.show');
+    }
 }
