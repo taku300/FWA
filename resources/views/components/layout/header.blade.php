@@ -1,10 +1,6 @@
 <header>
     <div>
-<<<<<<< HEAD
-        <div class="fixed top-0 left-0 -z-40">
-=======
         <div class="js-header-parts-logo fixed top-0 left-0 z-40">
->>>>>>> ef5fe608340b6ac3909a1bf007181bdbaa6d96b4
             <svg width="400" height="190" class="opacity-60 fill-blue-800 pc:hidden">
                 <polygon points="0 0, 0 180, 400 0" class="fill-[#110781]"/>
             </svg>
@@ -21,17 +17,10 @@
             </a>
         </div>
         <div class="fixed top-[25px] right-[25px] z-40 sp:top-[16px] sp:right-[16px] hover:bg-blue-200 active:bg-blue-300  focus:ring-blue-200">
-<<<<<<< HEAD
-            <button id="show-side-menu" class="js-header-parts w-[35px] h-[35px] relative opacity-60">
-                <span class="block w-full h-1 bg-blue-800 bg-opacity-80 absolute top-0"></span>
-                <span class="block w-full h-1 bg-blue-800 bg-opacity-80"></span>
-                <span class="block w-full h-1 bg-blue-800 bg-opacity-80 absolute bottom-0"></span>
-=======
             <button id="show-side-menu" class="js-header-parts w-[30px] h-[30px] relative opacity-60">
                 <span class="block w-full h-[2px] bg-blue-800 bg-opacity-80 absolute top-0"></span>
                 <span class="block w-full h-[2px] bg-blue-800 bg-opacity-80"></span>
                 <span class="block w-full h-[2px] bg-blue-800 bg-opacity-80 absolute bottom-0"></span>
->>>>>>> ef5fe608340b6ac3909a1bf007181bdbaa6d96b4
             </button>
         </div>
     </div>
