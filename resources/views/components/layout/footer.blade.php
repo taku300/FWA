@@ -14,11 +14,11 @@
 @endphp
 
 <footer>
-    <div class="{{ checkFloatFooter($float) }} pc-sp:static mt-64">
-        <div class="w-full h-[400px] pc:h-[350px] pc-sp:h-[300px] sp:h-[270px] bg-[url('/public/images/layout/footer.png')] bg-contain bg-no-repeat bg-right-bottom relative flex justify-center sp:justify-end items-end">
+    <div class="{{ checkFloatFooter($float) }} pc-sp:static pt-64">
+        <div class="w-full h-[400px] pc:h-[350px] pc-sp:h-[300px] sp:h-[270px] bg-contain bg-no-repeat bg-right-bottom relative flex justify-center sp:justify-end items-end" style="background-image: url({{ asset('images/layout/footer.png') }})">
             <div class="absolute top-[100px] left-[11%] pc-sp:text-[10px]">
                 <div class="">
-                    <img class="h-[42px] pc-sp:h-[25px]" src="/images/layout/logo_black.png" alt="福岡県ウエイトリフティング協会">
+                    <img class="h-[42px] pc-sp:h-[25px]" src="{{ asset('images/layout/logo_black.png') }}" alt="福岡県ウエイトリフティング協会">
                 </div>
                 <p class="font-noto-sans">〒806-0015 福岡県北九州市早田西区元城町1-1</p>
                 <table class="mt-[19px] pc:mt-[0px] border-separate border-spacing-y-1">
