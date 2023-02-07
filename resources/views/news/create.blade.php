@@ -15,17 +15,17 @@
             $method = !is_array($news) ? 'post' : 'put';
             $path = !is_array($news) ? 'admins.news.store' : 'admins.news.update';
             @endphp
-            {{ Form::model($news, ['method'=> $method, 'route'=>[$path, 'news' => isset($id) ?? $id], 'files'=>true]) }}
+            {{ Form::model($news, ['method'=> $method, 'route'=>[$path, 'news' => isset($id) ? $id : null], 'files'=>true]) }}
             <ul>
                 <li class="flex mb-4">
                     {{ Form::label('category', 'カテゴリー', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                    {{ Form::select('category', \CategoryConst::CATEGORY_LIST['category'], null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
+                    {{ Form::select('category', \CategoryConst::CATEGORY_LIST['category'], null, ['placeholder'=>'選択してください', 'class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md']) }}
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('noticed_at', 'お知らせ日', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                    {{ Form::date('noticed_at', null, ['class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    {{ Form::date('noticed_at', null, ['class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('title', 'タイトル', ['class' => 'shrink-0 w-24']) }}
@@ -53,8 +53,8 @@
                 <li class="flex mb-4">
                     {{ Form::label("news_documents[" . $key . "][title]", '資料', ['class' => 'shrink-0 w-44']) }}
                     <div class="w-full">
-                        {{ Form::text("news_documents[" . $key . "][title]", null, ['name' => "news_documents[title][" . $key ."]", 'placeholder'=>'資料名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1' ]) }}
-                        {{ Form::file("news_documents[" . $key . "][document_path]", ['name' => "news_documents[document_path][" . $key ."]", 'accept' => '.pdf', 'class' => 'w-full']) }}
+                        {{ Form::text("news_documents[" . $key . "][title]", null, ['placeholder'=>'資料名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1' ]) }}
+                        {{ Form::file("news_documents[" . $key . "][document_path]", ['accept' => '.pdf', 'class' => 'w-full']) }}
                     </div>
                 </li>
                 @endforeach
@@ -62,8 +62,10 @@
                 <li class="flex mb-4">
                     {{ Form::label('news_documents[0][title]', '資料', ['class' => 'shrink-0 w-44']) }}
                     <div class="w-full">
-                        {{ Form::text('news_documents[0][title]', null, ['name' => 'news_documents[title][0]', 'placeholder'=>'資料名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1']) }}
-                        {{ Form::file('news_documents[0][document_path]', ['name' => 'news_documents[document_path][0]', 'accept' => '.pdf', 'class' => 'w-full']) }}
+                        <div class="flex">
+                            {{ Form::text('news_documents[0][title]', null, ['placeholder'=>'資料名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1']) }}
+                        </div>
+                        {{ Form::file('news_documents[0][document_path]', ['accept' => '.pdf', 'class' => 'w-full']) }}
                     </div>
                 </li>
                 @endif
@@ -72,15 +74,15 @@
                 @foreach ($news['news_links'] as $key => $news_links)
                 <li class="flex mb-4">
                     {{ Form::label("news_links[" . $key . "][title]", 'リンク', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::text("news_links[" . $key . "][title]", null, ['name' => "news_links[title][" . $key ."]", 'placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
-                    {{ Form::text('news_links[' . $key . '][link_path]', null, ['name' => "news_links[link_path][" . $key ."]", 'placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    {{ Form::text("news_links[" . $key . "][title]", null, ['placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
+                    {{ Form::text('news_links[' . $key . '][link_path]', null, ['placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 @endforeach
                 @else
                 <li class="flex mb-4">
                     {{ Form::label('news_links[0][title]', 'リンク', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::text('news_links[0][title]', null, ['name' => 'news_links[title][0]', 'placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
-                    {{ Form::text('news_links[0][link_path]', null, ['name' => 'news_links[link_path][0]','placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    {{ Form::text('news_links[0][title]', null, ['placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
+                    {{ Form::text('news_links[0][link_path]', null, ['placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 @endif
 
