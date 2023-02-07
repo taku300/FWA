@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('role');
-            $table->foreignId('affiliation_id');
+            $table->tinyInteger('role')->default(3);;
+            $table->foreignId('affiliation_id')->nullable();
         });
     }
 
