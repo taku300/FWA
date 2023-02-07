@@ -32,6 +32,11 @@ class NewsController extends Controller
         return view('news.index')->with(['newsList' => $newsList]);
     }
 
+    public function show($id)
+    {
+        return view('news.show');
+    }
+
     public function create()
     {
         $news = new News;
@@ -56,10 +61,5 @@ class NewsController extends Controller
 
     public function update($id, Request $request)
     {
-    }
-
-    public function show($id)
-    {
-        return view('news.show');
     }
 }
