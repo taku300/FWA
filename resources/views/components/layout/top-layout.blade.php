@@ -13,15 +13,12 @@
     <x-layout.side-menu>
         <x-layout.nav></x-layout.nav>
     </x-layout.side-menu>
-    <!-- hero以下のflowする部分 -->
-    <div class="h-full w-full absolute top-[730px] z-10">
-        <!-- main -->
-        <main class="min-h-[2000px] bg-white ">
-            {{ $slot }}
-        </main>
-        <!-- footer -->
-        <x-layout.footer></x-layout.footer>
-    </div>
+    <!-- main -->
+    <main class="min-h-[2000px] bg-white mt-[730px]">
+        {{ $slot }}
+    </main>
+    <!-- footer -->
+    <x-layout.footer></x-layout.footer>
 </body>
 
 </html>
