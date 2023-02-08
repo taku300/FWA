@@ -40,4 +40,22 @@ class NewsService
         }
         DB::commit();
     }
+
+    /**
+     * @param  int  $id
+     * @param  object  $request
+     */
+    public function newsUpdate($id, $request)
+    {
+        DB::beginTransaction();
+        try {
+            $news = News::find($id);
+            $news->update($request->all());
+            $news->news_links()->upsert($request->get('news_links'), ['id'], ['title', 'link_path', 'news_id']);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
 }
