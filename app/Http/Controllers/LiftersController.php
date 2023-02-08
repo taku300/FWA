@@ -25,6 +25,8 @@ class LiftersController extends Controller
 
     /**
      * 選手紹介
+     * 1 = 男性
+     * 2 = 女性
      * 
      * @param  array  $manLifters
      * @param  array  $womanLifters
