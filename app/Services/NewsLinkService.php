@@ -7,14 +7,8 @@ use App\Models\NewsLink;
 
 class NewsLinkService
 {
-    public function create($request)
+    public function sample()
     {
-        $newsLink = new NewsLink;
-        $columns = [
-            'title',
-            'link_path',
-            'news_id'
-        ];
-        new DatabaseRegister($newsLink, $columns, $request);
+        // 
     }
 }
