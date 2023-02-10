@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Mail\NewUserIntroduction;
+use Illuminate\Contracts\Mail\Mailer;
+
 
 class RegisteredUserController extends Controller
 {
@@ -31,7 +34,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request, Mailer $mailer)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -39,15 +42,22 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        $newUser = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        event(new Registered($newUser));
 
-        Auth::login($user);
+        Auth::login($newUser);
+
+        $roles = [\CommonConst::ROLE_LIST['SYSTEM_ADMIN'], \CommonConst::ROLE_LIST['SITE_ADMIN']];
+        $users = User::applyRoleUser($roles);
+        foreach ($users as $user) {
+        $mailer->to($user->email)
+            ->send(new NewUserIntroduction($user, $newUser));
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }
