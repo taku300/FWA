@@ -53,7 +53,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['daily', 'error'],
             'ignore_exceptions' => false,
         ],
 
@@ -65,7 +65,7 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => storage_path('logs/application/application.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
@@ -109,6 +109,14 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
+        'error' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/application/error/application.log'),
+            'level' => 'notice',
+            'days' => 7,
+            'permission' => 0664,
+        ],
+
         'null' => [
             'driver' => 'monolog',
             'handler' => NullHandler::class,
@@ -117,6 +125,23 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
-    ],
 
+        'sql' => [
+            'enable' => env('LOG_SQL_ENABLE', false),
+            'driver' => 'daily',
+            'via' => App\Logging\CreateSQLQueryLogger::class,
+            'path' => storage_path('logs/sql/sql.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
+        ],
+
+        'errorsql' => [
+            'enable' => env('LOG_SQL_ENABLE', false),
+            'driver' => 'daily',
+            'path' => storage_path('logs/sql/error/sql.log'),
+            'level' => 'notice',
+            'days' => 7,
+            'permission' => 0664,
+        ],
+    ],
 ];

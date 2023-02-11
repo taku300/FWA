@@ -49,4 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Affiliation::class);
     }
+
+    public static function applyRoleUser(array $roles)
+    {
+        $userUser = User::whereIn('role', $roles)->get();
+        return $userUser;
+    }
 }

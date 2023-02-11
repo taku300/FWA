@@ -195,6 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TopTitleServiceProvider::class,
+        App\Providers\DatabaseQueryServiceProvider::class,
 
     ],
 
