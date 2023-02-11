@@ -45,6 +45,7 @@
                 <div class="absolute right-[60%] pc:right-[25%] sp:right-[20%] top-[70%] text-white">
                     <x-top.lifters-explanation :lifterList="$lifterList[0]"></x-top.lifters-explanation>
                 </div>
+            </div>
             @endif
             <!-- lifter2 -->
             @if (array_key_exists(1, $lifterList))
@@ -53,6 +54,7 @@
                 <div class="absolute top-[70%] left-[60%] sp:left-[20%]">
                     <x-top.lifters-explanation :lifterList="$lifterList[1]"></x-top.lifters-explanation>
                 </div>
+            </div>
             @endif
 
             <!-- olympian -->
