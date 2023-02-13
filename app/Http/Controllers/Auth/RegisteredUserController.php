@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($newUser);
 
-        $roles = [\CommonConst::ROLE_LIST['SYSTEM_ADMIN'], \CommonConst::ROLE_LIST['SITE_ADMIN']];
+        $roles = \CommonConst::USER_REGISTER_MAIL_LIST;
         $users = User::applyRoleUser($roles);
         foreach ($users as $user) {
         $mailer->to($user->email)

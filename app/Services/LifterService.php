@@ -19,7 +19,7 @@ class LifterService
 
     /**
      * top画面用lifters list
-     * 
+     *
      * @return array
      */
     public function getTopLifterList(): array
@@ -27,6 +27,7 @@ class LifterService
         $lifters = $this->lifter->getTopLifter();
         $topLifters = [];
         foreach ($lifters as $value) {
+            $value['image_path'] = \Storage::url(\CommonConst::LIFTERS_FILE_PATH_NAME . $value['image_path']);
             $topLifters[] = $this->addColumn($value);
         }
         return $topLifters;
@@ -34,9 +35,9 @@ class LifterService
 
     /**
      * ヘボン式ローマ字を成形して追加したカラムへ格納
-     * 
+     *
      * @param  array  $value
-     * 
+     *
      * @return array
      */
     public function addColumn($value): array
@@ -52,9 +53,9 @@ class LifterService
 
     /**
      * ヘボン式ローマ字へ変換
-     * 
+     *
      * @param  string  $name
-     * 
+     *
      * @return array
      */
     public function codeConvert($name): array

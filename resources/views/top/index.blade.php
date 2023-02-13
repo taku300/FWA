@@ -16,7 +16,9 @@
         <x-layout.container>
             <!-- $newsList = お知らせ情報 -->
             <x-list.lists :$newsList></x-list.lists>
-            <x-parts.button-arrow>お知らせ一覧</x-parts.button-arrow>
+            <x-parts.button-arrow>
+                <a href="{{ route('news.index') }}">お知らせ一覧</a>
+            </x-parts.button-arrow>
         </x-layout.container>
     </section>
 
