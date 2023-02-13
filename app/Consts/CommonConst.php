@@ -4,6 +4,9 @@ namespace App\Consts;
 
 class CommonConst
 {
+    // filepath
+    const LIFTERS_FILE_PATH_NAME = 'lifters/';
+
     /**
      * お知らせカテゴリ
      *
