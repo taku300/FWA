@@ -83,8 +83,14 @@
                 @else
                 <li class="flex mb-4">
                     {{ Form::label('news_links[0][title]', 'リンク', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::text('news_links[0][title]', null, ['placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
-                    {{ Form::text('news_links[0][link_path]', null, ['placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    <div class="w-full" id="count">
+                        <div class="flex items-center" id="0">
+                            {{ Form::text('news_links[0][title][]', null, ['placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1 mb-1' ]) }}
+                            {{ Form::text('news_links[0][link_path][]', null, ['placeholder'=>'リンクpathを入力', 'class' => 'path w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1 mb-1' ]) }}
+                            <button type="button" class="add border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1" hidden>+</button>
+                            <button type="button" class="del border border-red-500 text-red-500 w-16 h-7 rounded-lg" hidden>-</button>
+                        </div>
+                    </div>
                 </li>
                 @endif
 

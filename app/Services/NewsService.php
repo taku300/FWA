@@ -29,7 +29,13 @@ class NewsService
         try {
             $news = new News($request->all());
             $news->save();
-            $news->news_links()->createMany($request->get('news_links'));
+            $dataList = [];
+            foreach ($request->get('news_links') as $val) {
+                foreach ($val as $val2) {
+                    $dataList[] = ['title' => $val2[0], 'link_path' => $val2[1]];
+                }
+            }
+            $news->news_links()->createMany($dataList);
             $newsDocuments = $request->get('news_documents');
             $files = $request->file('news_documents');
             $newsDocuments = $this->databaseRegister->createInFilesPath($files, $newsDocuments, ['title', 'document_path'], 'news-documents');
