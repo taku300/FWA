@@ -16,7 +16,6 @@ class DatabaseRegister
      */
     public static function createInFilesPath($files, $documents, $columns, $pathName)
     {
-        $documentName = [];
         $dataList = [];
         foreach ($files[0] as $key => $file) {
             foreach ($file as $key2 => $val) {
