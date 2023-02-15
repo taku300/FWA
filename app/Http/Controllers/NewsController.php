@@ -67,6 +67,11 @@ class NewsController extends Controller
         return redirect('/news');
     }
 
+    public function show($id)
+    {
+        return view('news.show');
+    }
+
     public function edit($id)
     {
         $news = News::with('news_documents', 'news_links')->find($id)->toArray();
