@@ -13,15 +13,17 @@ class DatabaseRegister
      * @param  array  $documents
      * @param  array  $columns
      * @param  string  $pathName
+     * 
+     * @return array
      */
-    public static function createInFilesPath($files, $documents, $columns, $pathName)
+    public static function createInFilesPath($files, $documents, $columns, $pathName): array
     {
         $dataList = [];
-        foreach ($files[0] as $key => $file) {
+        foreach ($files[0] as $file) {
             foreach ($file as $key2 => $val) {
                 $path = $val->store('public/' . $pathName);
                 $documentName = basename($path);
-                $documents[1][$key] = $documentName;
+                $documents[1][$columns[1]] = $documentName;
                 $dataList[] = [$columns[0] => $documents[0][$columns[0]][$key2], $columns[1] => $documents[1][$columns[1]]];
             }
         }
