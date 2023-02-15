@@ -30,9 +30,9 @@ class NewsService
             $news = new News($request->all());
             $news->save();
             $dataList = [];
-            foreach ($request->get('news_links') as $val) {
-                foreach ($val as $val2) {
-                    $dataList[] = ['title' => $val2[0], 'link_path' => $val2[1]];
+            foreach ($request->get('news_links') as $datas) {
+                foreach ($datas as $data) {
+                    $dataList[] = ['title' => $data[0], 'link_path' => $data[1]];
                 }
             }
             $news->news_links()->createMany($dataList);

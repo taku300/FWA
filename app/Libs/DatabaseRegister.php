@@ -20,11 +20,11 @@ class DatabaseRegister
     {
         $dataList = [];
         foreach ($files[0] as $file) {
-            foreach ($file as $key2 => $val) {
+            foreach ($file as $key => $val) {
                 $path = $val->store('public/' . $pathName);
                 $documentName = basename($path);
                 $documents[1][$columns[1]] = $documentName;
-                $dataList[] = [$columns[0] => $documents[0][$columns[0]][$key2], $columns[1] => $documents[1][$columns[1]]];
+                $dataList[] = [$columns[0] => $documents[0][$columns[0]][$key], $columns[1] => $documents[1][$columns[1]]];
             }
         }
         return $dataList;
