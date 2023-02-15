@@ -12,13 +12,13 @@ class DatabaseRegister
      * @param  array  $files
      * @param  array  $documents
      * @param  string  $columnName
-     * @param  string  $path
+     * @param  string  $pathName
      */
-    public static function createInFilesPath($files, $documents, $columnName, $path)
+    public static function createInFilesPath($files, $documents, $columnName, $pathName)
     {
         foreach ($files as $key => $file) {
-            $documentName = $file[$columnName]->getClientOriginalName();
-            $file[$columnName]->storeAS($path, Carbon::now()->format('Y-m-d') . '_' . $documentName, 'public');
+            $path = $file[$columnName]->store('public/' . $pathName);
+            $documentName = basename($path);
             $documents[$key][$columnName] = $documentName;
         }
         return $documents;
