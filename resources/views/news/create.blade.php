@@ -61,12 +61,12 @@
                 @else
                 <li class="flex mb-4">
                     {{ Form::label('news_documents[0][title]', '資料', ['class' => 'shrink-0 w-44']) }}
-                    <div class="w-full">
-                        <div class="flex items-center">
+                    <div class="w-full" id="count">
+                        <div class="flex items-center" id="0">
                             {{ Form::text('news_documents[0][title]', null, ['placeholder'=>'資料名を入力', 'class' => 'w-full mr-1 placeholder:text-slate-400 border-slate-300 rounded-md mb-1']) }}
-                            {{ Form::file('news_documents[0][document_path]', ['accept' => '.pdf', 'class' => 'w-full']) }}
-                            <button type="button" class="add border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
-                            <button type="button" class="del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
+                            {{ Form::file('news_documents[0][document_path]', ['accept' => '.pdf', 'class' => 'file w-full']) }}
+                            <button type="button" class="add border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1" hidden>+</button>
+                            <button type="button" class="del border border-red-500 text-red-500 w-16 h-7 rounded-lg" hidden>-</button>
                         </div>
                     </div>
                 </li>
