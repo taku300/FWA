@@ -32,8 +32,7 @@ class NewsService
             $news->news_links()->createMany($request->get('news_links'));
             $newsDocuments = $request->get('news_documents');
             $files = $request->file('news_documents');
-            dd($request->file('news_documents'));
-            $newsDocuments = $this->databaseRegister->createInFilesPath($files, $newsDocuments, 'document_path', 'news-documents');
+            $newsDocuments = $this->databaseRegister->createInFilesPath($files, $newsDocuments, ['title', 'document_path'], 'news-documents');
             $news->news_documents()->createMany($newsDocuments);
         } catch (Exception $e) {
             DB::rollback();
