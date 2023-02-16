@@ -82,6 +82,7 @@ class LifterService
     {
         DB::beginTransaction();
         try {
+            // TODO:画像処理
             $lifters = new Lifter($request->all());
             $lifters->save();
         } catch (Exception $e) {
@@ -99,6 +100,7 @@ class LifterService
     {
         DB::beginTransaction();
         try {
+            // TODO:画像処理
             $lifter = Lifter::find($id);
             $lifter->update($request->all());
         } catch (Exception $e) {
