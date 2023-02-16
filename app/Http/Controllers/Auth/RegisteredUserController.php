@@ -53,10 +53,10 @@ class RegisteredUserController extends Controller
         Auth::login($newUser);
 
         $roles = \CommonConst::USER_REGISTER_MAIL_LIST;
-        $users = User::applyRoleUser($roles);
-        foreach ($users as $user) {
-        $mailer->to($user->email)
-            ->send(new NewUserIntroduction($user, $newUser));
+        $toUsers = User::applyRoleUser($roles);
+        foreach ($toUsers as $toUser) {
+        $mailer->to($toUser->email)
+            ->send(new NewUserIntroduction($toUser, $newUser));
         }
 
         return redirect(RouteServiceProvider::HOME);
