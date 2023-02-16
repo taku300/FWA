@@ -74,4 +74,37 @@ class LifterService
         $convertName = new Convert(mb_convert_kana($name, "Hc"));
         return $convertName->getHebon();
     }
+
+    /**
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function createLifter($request)
+    {
+        DB::beginTransaction();
+        try {
+            $lifters = new Lifter($request->all());
+            $lifters->save();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /**
+     * @param  int  $id
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function updateLifter($id, $request)
+    {
+        DB::beginTransaction();
+        try {
+            $lifter = Lifter::find($id);
+            $lifter->update($request->all());
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
 }
