@@ -43,6 +43,11 @@ class News extends Model
      */
     public function getTopNewsList()
     {
-        return News::orderBy('noticed_at', 'DESC')->take('10')->get();
+        return News::orderBy('noticed_at', 'DESC')->paginate('15');
+    }
+
+    public function getBrakingNews()
+    {
+        return News::where('preliminary_report_flag', 1)->get()->toArray();
     }
 }

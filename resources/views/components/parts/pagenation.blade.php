@@ -10,4 +10,5 @@
     <span class="sr-only">Next</span>
     <span aria-hidden="true">»</span>
   </a>
+  {{ $newsList->links() }}
 </nav>
