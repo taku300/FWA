@@ -2,7 +2,8 @@
     <!-- main -->
     <section>
         <x-layout.container>
-            <div class="mt-32 mb-16 flex justify-between">
+            <div id="news-id" class="mt-32 mb-16 flex justify-between" data-news-id="{{ $news['id'] }}">
+
                 <x-parts.title>
                     {{ !is_array($news) ?
                         'お知らせ・大会情報登録' :
