@@ -32,7 +32,30 @@
                     @foreach ($resultList as $value)
                     <div>
                         <ul class="flex border-spacing-1 pc-sp:block pc-sp:border-t pc-sp:border-inherit">
-                            <li class="shrink-[5] w-40 h-11 s-pc:hidden"></li>
+                            <li class="shrink-[5] w-40 h-11 s-pc:hidden">
+                                @auth
+                                <div>
+                                    <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
+                                        <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
+                                    </a>
+                                    <a href="{{ route('admins.results.destroy', ['result' => $value['id']]) }}">
+                                        <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
+                                    </a>
+                                </div>
+                                @endauth
+                            </li>
+                            <li class="hidden s-pc:block">
+                                @auth
+                                <div>
+                                    <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
+                                        <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
+                                    </a>
+                                    <a href="{{ route('admins.results.destroy', ['result' => $value['id']]) }}">
+                                        <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
+                                    </a>
+                                </div>
+                                @endauth
+                            </li>
                             <li class="p-[10px] shrink-0 w-[150px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催日</span>{{ date('m/d', strtotime($value['started_at'])) }} ~ {{ date('m/d', strtotime($value['ended_at'])) }}</li>
                             <li class="p-[10px] shrink-1 w-[415px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">大会名</span>{{ $value['name'] }}</li>
                             <li class="p-[10px] shrink-1 w-[225px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催地</span>{{ $value['venue'] }}</li>
