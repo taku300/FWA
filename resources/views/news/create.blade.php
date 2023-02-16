@@ -2,17 +2,19 @@
     <!-- main -->
     <section>
         <x-layout.container>
-<<<<<<< Updated upstream
-            <div id="news-id" class="mt-32 mb-16" data-news-id="{{ $news['id'] }}">
-=======
             <div id="news-id" class="mt-32 mb-16 flex justify-between" data-news-id="{{ $news['id'] }}">
->>>>>>> Stashed changes
+
                 <x-parts.title>
                     {{ !is_array($news) ?
                         'お知らせ・大会情報登録' :
                         'お知らせ・大会情報編集'
                     }}
                 </x-parts.title>
+                @if (is_array($news))
+                <a href="{{ route('admins.news.destroy', ['news' => $news['id']]) }}">
+                    <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
+                </a>
+                @endif
             </div>
             <!-- 遷移先判定のロジック -->
             @php

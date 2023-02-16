@@ -2,13 +2,18 @@
     <!-- main -->
     <section>
         <x-layout.container>
-            <div class="mt-32 mb-16">
+            <div class="mt-32 mb-16 flex justify-between">
                 <x-parts.title>
                     {{ !is_array($results) ?
                         '要項・結果登録' :
                         '要項・結果編集'
                     }}
                 </x-parts.title>
+                @if (is_array($results))
+                <a href="{{ route('admins.results.destroy', ['result' => $results['id']]) }}">
+                    <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
+                </a>
+                @endif
             </div>
             <!-- 遷移先判定のロジック -->
             @php
