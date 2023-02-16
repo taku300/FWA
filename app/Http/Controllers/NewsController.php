@@ -34,7 +34,7 @@ class NewsController extends Controller
 
     /**
      * お知らせ画面
-     * 
+     *
      * @param  collection  $newsList
      */
     public function index()
@@ -46,7 +46,7 @@ class NewsController extends Controller
 
     /**
      * お知らせ新規登録、編集画面
-     * 
+     *
      * @param  \App\Models\News  $news
      */
     public function create(News $news)
@@ -58,7 +58,7 @@ class NewsController extends Controller
 
     /**
      * お知らせ新規登録処理
-     * 
+     *
      * @param  Illuminate\Http\Request  $request
      */
     public function store(Request $request)
@@ -81,8 +81,9 @@ class NewsController extends Controller
         ]);
     }
 
+
     public function update($id, Request $request)
     {
-        // 
+        $this->newsService->newsUpdate($id, $request);
     }
 }
