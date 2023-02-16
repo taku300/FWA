@@ -27,7 +27,7 @@
             @endauth
         </div>
         <p class="mt-2 text-lg">{{ $value['title'] }}</p>
-        <p class="opacity-60">{{ $value['note'] }}</p>
+        <p class="opacity-60">{{ $value->note }}</p>
     </div>
 </a>
 @endforeach

@@ -41,4 +41,12 @@ class Lifter extends Model
     {
         return Lifter::with('affiliation')->where('top_post_flag', 1)->orderBy('updated_at', 'DESC')->get()->toArray();
     }
+
+    /**
+     * Lifters用 選手情報
+     */
+    public function getLifters()
+    {
+        return Lifter::with('affiliation');
+    }
 }

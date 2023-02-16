@@ -18,6 +18,17 @@ class LifterService
     }
 
     /**
+     * Lifters画面用lifters list
+     * 
+     * @param  int  $gender
+     * @return array
+     */
+    public function getLiftersList($gender): array
+    {
+        return $this->lifter->getLifters()->where('gender', $gender)->orderBy('last_name_kana', 'DESC')->get()->toArray();
+    }
+
+    /**
      * top画面用lifters list
      *
      * @return array
