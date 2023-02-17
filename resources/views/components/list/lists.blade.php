@@ -1,33 +1,19 @@
-<?php
-
-/**
- * $value->category = お知らせフラグ
- * 1 = お知らせ
- * 2 = 大会情報
- */
-?>
+@foreach($breakingNews as $key => $value)
+<div class="flex relative px-[5%] mb-32 sp:block sp:mb-16">
+    <div class="w-3/5 sp:w-full">
+        <img class="absolute -top-[30%] -left-[0%] w-1/3 sp:-top-[22%] sp:-left-[0%]" src="{{ asset('images/parts/breaking_news.png') }}" alt="速報">
+        <div class="w-full aspect-[626/301] bg-[#D9D9D9] p-[5%] pt-[10%]">
+            <x-list.list :$value></x-list.list>
+        </div>
+    </div>
+    <div class="w-2/5 flex justify-center items-center sp:block sp:absolute sp:-top-[25%] sp:-right-[0%] sp:w-1/4"><img class="w-3/4 sp:w-full" src="{{asset('images/parts/hashibiroko.png')}}" alt="ハシビロ公"></div>
+</div>
+@endforeach
 
 @foreach($newsList as $key => $value)
 <a href="{{ route('news.show', ['news' => $value['id']]) }}">
-    <div class="py-5 border-t-[1px] border-black {{ (count($newsList) - 1 == $key) ? 'border-b-[1px]' : '' }}">
-        <div class="flex items-center justify-between">
-            <div>
-                <p class="font-black mr-4">{{ $value['noticed_at'] }}</p>
-                <x-parts.button bgColor="{{ \CategoryConst::NEWS_CATEGORY_LIST[$value->category]['color'] }}" fontColor="white">{{ \CategoryConst::NEWS_CATEGORY_LIST[$value['category']]['category'] }}</x-parts.button>
-            </div>
-            @auth
-            <div>
-                <a href="{{ route('admins.news.edit', ['news' => $value['id']]) }}">
-                    <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
-                </a>
-                <a href="{{ route('admins.news.destroy', ['news' => $value['id']]) }}">
-                    <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
-                </a>
-            </div>
-            @endauth
-        </div>
-        <p class="mt-2 text-lg">{{ $value['title'] }}</p>
-        <p class="opacity-60">{{ $value->note }}</p>
+    <div class="py-3 border-t-[1px] border-[#D9D9D9] {{ (count($newsList) - 1 == $key) ? 'border-b-[1px]' : '' }}">
+        <x-list.list :$value></x-list.list>
     </div>
 </a>
 @endforeach
