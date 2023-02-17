@@ -26,7 +26,7 @@ class NewsService
      *
      * @param  Illuminate\Http\Request  $request
      */
-    public function newsCreate(Request $request)
+    public function newsCreate($request)
     {
         DB::beginTransaction();
         try {

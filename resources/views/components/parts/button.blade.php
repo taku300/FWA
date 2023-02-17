@@ -22,5 +22,4 @@
         }
     }
 @endphp
-
-<button class=" h-[25px] text-white px-2 {{ getBgColorButton($bgColor) }} {{ getFontColorButton($fontColor) }}">{{ $slot }}</button>
+<button class=" text-white text-xs px-3 py-1   {{ getBgColorButton($bgColor) }} {{ getFontColorButton($fontColor) }}">{{ $slot }}</button>
