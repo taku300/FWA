@@ -1,5 +1,5 @@
 <nav class="flex justify-start items-center space-x-2">
-  <a class="text-gray-500 hover:text-black p-4 inline-flex items-center gap-2 rounded-md" href="#">
+  <!-- <a class="text-gray-500 hover:text-black p-4 inline-flex items-center gap-2 rounded-md" href="#">
     <span aria-hidden="true">«</span>
     <span class="sr-only">Previous</span>
   </a>
@@ -9,6 +9,6 @@
   <a class="text-gray-500 hover:text-black p-4 inline-flex items-center gap-2 rounded-md" href="#">
     <span class="sr-only">Next</span>
     <span aria-hidden="true">»</span>
-  </a>
+  </a> -->
   {{ $newsList->links() }}
 </nav>
