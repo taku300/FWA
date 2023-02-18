@@ -83,8 +83,7 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            $datas = $request->all();
-            $datas['image_path'] = $this->saveFile($request->file('image_path'));
+            $datas = $this->getDatas($request);
             $lifter = new Lifter($datas);
             $lifter->save();
         } catch (Exception $e) {
@@ -102,9 +101,8 @@ class LifterService
     {
         DB::beginTransaction();
         try {
+            $datas = $this->getDatas($request);
             $lifter = Lifter::find($id);
-            $datas = $request->all();
-            $datas['image_path'] = $this->saveFile($request->file('image_path'));
             $lifter->update($datas);
         } catch (Exception $e) {
             DB::rollback();
@@ -114,13 +112,15 @@ class LifterService
     }
 
     /**
-     * @param  object  $file
+     * @param  mixed  $file
      * 
-     * @return  string
+     * @return  mixed
      */
-    public function saveFile($file): string
+    public function getDatas($request): mixed
     {
-        $path = $file->store('public/lifter-images');
-        return basename($path);
+        $datas = $request->all();
+        $path = $request->file('image_path')->store('public/lifter-images');
+        $datas['image_path'] = basename($path);
+        return $datas;
     }
 }
