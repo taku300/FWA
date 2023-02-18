@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
 use App\Libs\DatabaseRegister;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
