@@ -5,7 +5,7 @@ namespace App\Consts;
 class CommonConst
 {
     // ファイルパス
-    const LIFTERS_FILE_PATH_NAME = 'lifters/';
+    const LIFTERS_FILE_PATH_NAME = 'public/lifter-images/';
     // 性別
     const MEN = 1;
     const MEN_NAME = '男性';

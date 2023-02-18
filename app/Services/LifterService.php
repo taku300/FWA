@@ -20,13 +20,19 @@ class LifterService
 
     /**
      * Lifters画面用lifters list
-     * 
+     *
      * @param  int  $gender
      * @return array
      */
     public function getLiftersList($gender): array
     {
-        return $this->lifter->getLifters()->where('gender', $gender)->orderBy('last_name_kana', 'DESC')->get()->toArray();
+        $targetLifters = $this->lifter->getLifters()->where('gender', $gender)->orderBy('last_name_kana', 'DESC')->get()->toArray();
+        $lifters = [];
+        foreach ($targetLifters as $value) {
+            $value['image_path'] = \Storage::url(\CommonConst::LIFTERS_FILE_PATH_NAME . $value['image_path']);
+            $lifters[] = $this->addColumn($value);
+        }
+        return $lifters;
     }
 
     /**
@@ -113,7 +119,7 @@ class LifterService
 
     /**
      * @param  mixed  $file
-     * 
+     *
      * @return  mixed
      */
     public function getDatas($request): mixed

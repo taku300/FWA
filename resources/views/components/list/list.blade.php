@@ -14,5 +14,5 @@
     </div>
     @endauth
 </div>
-<p class="mt-2 text-2xl pc:text-xl sp:text-lg">{{ $value['title'] }}</p>
-<p class="opacity-60 mt-1">{{ '※ ' . $value['note'] }}</p>
+<p class="mt-2 text-xl pc:text-xl sp:text-lg">{{ $value['title'] }}</p>
+<p class="opacity-60 mt-1">{{ $value['note'] ? '※ ' . $value['note'] : '' }}</p>
