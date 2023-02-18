@@ -83,7 +83,7 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            $lifter = new Lifter($request->all() ? $request->all() : []);
+            $lifter = new Lifter($request->all());
             if (is_array($request->all())) {
                 $this->saveFile($request->file('image_path'));
             }
@@ -104,7 +104,7 @@ class LifterService
         DB::beginTransaction();
         try {
             $lifter = Lifter::find($id);
-            $datas = $request->all() ? $request->all() : [];
+            $datas = $request->all();
             $datas['image_path'] = $this->saveFile($request->file('image_path'));
             $lifter->update($datas);
         } catch (Exception $e) {
