@@ -2,8 +2,7 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
-use App\Libs\DatabaseRegister;
+use App\Libs\DeleteFile;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
@@ -11,16 +10,6 @@ use App\Models\NewsLink;
 
 class NewsService
 {
-    public $databaseRegister;
-
-    /**
-     * @param  \App\Libs\DatabaseRegister  $databaseRegister
-     */
-    public function __construct(DatabaseRegister $databaseRegister)
-    {
-        $this->databaseRegister = $databaseRegister;
-    }
-
     /**
      * お知らせ新規登録
      *
@@ -37,7 +26,7 @@ class NewsService
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('news-document', '');
+                    $path = $value['document_file']->store('public/news-documents');
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
@@ -53,7 +42,7 @@ class NewsService
      * @param  int  $id
      * @param  object  $request
      */
-    public function newsUpdate($id, Request $request)
+    public function newsUpdate($id, $request)
     {
 
         DB::beginTransaction();
@@ -61,28 +50,39 @@ class NewsService
             $news = News::find($id);
             $news->update($request->all());
             // ドキュメント保存
-            $request_documents = array_column($request->get('news_documents') ? $request->get('news_documents') : [], 'id');
-            $old_documents = array_column(NewsDocument::where('news_id', '=', $id)->get()->toArray(), 'id');
-            $delete_documents = array_diff($old_documents, $request_documents);
-            NewsDocument::whereIn('id', $delete_documents)->delete();
+            $deletePath = $this->diffDelete($request, $id, 'news_documents', NewsDocument::query());
+            DeleteFile::deleteFilePath('/news-documents/', $deletePath);
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('news-document', '');
+                    $path = $value['document_file']->store('public/news-documents');
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
             $news->news_documents()->upsert($newsDocuments, ['id'], ['title', 'document_path', 'news_id']);
             // リンクの保存
-            $request_links = array_column($request->get('news_links') ? $request->get('news_links') : [], 'id');
-            $old_links = array_column(NewsLink::where('news_id', '=', $id)->get()->toArray(), 'id');
-            $delete_links = array_diff($old_links, $request_links);
-            NewsLink::whereIn('id', $delete_links)->delete();
+            $this->diffDelete($request, $id, 'news_links', NewsLink::query());
             $news->news_links()->upsert($request->get('news_links') ? $request->get('news_links') : [], ['id'], ['title', 'link_path', 'news_id']);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
         }
         DB::commit();
+    }
+
+    /**
+     * @param  int  $id
+     * @param  object  $request
+     * @param  mixed  $tableName
+     * @param  mixed  App\Models\**  $model
+     */
+    public function diffDelete($request, $id, $tableName, $model)
+    {
+        $newDatas = array_column($request->get($tableName) ? $request->get($tableName) : [], 'id');
+        $oldDatas = array_column($model->where('news_id', $id)->get()->toArray(), 'id');
+        $delete_links = array_diff($oldDatas, $newDatas);
+        $path = $model->where('news_id', $id)->get();
+        $model->whereIn('id', $delete_links)->delete();
+        return $path;
     }
 }

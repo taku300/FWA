@@ -9,15 +9,15 @@
             <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
         </a>
         @endauth
-        <img src="images/top/lifter1.png" alt="" class="object-cover object-top w-full aspect-[350/400]">
+        <img src="{{ $value['image_path'] }}" alt="" class="object-cover object-top w-full aspect-[350/400]">
         <div class="absolute top-[70%] left-[5%] w-full aspect-[350/400] bg-black opacity-80 overflow-scroll">
             <ul class="text-white p-4 s-pc:p-3">
-                <li class="font-black text-3xl s-pc:text-2xl mb-10 s-pc:mb-5 sp:text-lg"><span>{{ $value['last_name'] }}</span>　<span>{{ $value['first_name'] }}</span></li>
-                <li class="text-2xl mb-5 s-pc:text-base s-pc:mb-2 sp:text-xs">{{ $value['birthday'] }}</li>
-                <li class="text-1xl mb-5 s-pc:text-base s-pc:mb-2 sp:text-xs">{{ $value['affiliation']['name'] }}</li>
-                <li class="text-1xl mb-5 s-pc:text-base s-pc:mb-2 sp:text-xs">{{ \WeightClassConst::CLASS_LIST[$value['weight_class']] }}</li>
-                <li class="text-1xl mb-5 s-pc:text-base s-pc:mb-2 sp:text-xs">{{ $value['performance'] }}</li>
-                <li class="text-base mb-5 s-pc:text-sm s-pc:mb-2">{{ $value['comment'] }}</li>
+                <li class="font-black text-3xl s-pc:text-2xl mb-10 s-pc:mb-5 sp:mb-2 sp:text-lg"><span>{{ $value['last_name'] }}</span>　<span>{{ $value['first_name'] }}</span></li>
+                <li class=" text-lg mb-5 s-pc:text-base s-pc:mb-2 sp:mb-0 sp:text-3sm">{{ date('Y年n月生', strtotime($value['birthday'])) }}</li>
+                <li class="text-xl mb-5 s-pc:text-base s-pc:mb-2 sp:mb-0 sp:text-2sm">{{ $value['affiliation']['name'] }}</li>
+                <li class="text-xl mb-5 s-pc:text-base s-pc:mb-2 sp:mb-1 sp:text-2sm">{{ \WeightClassConst::CLASS_LIST[$value['weight_class']] }}</li>
+                <li class="text-lg mb-5 s-pc:text-base s-pc:mb-2 sp:mb-1 sp:text-2sm"><p class="leading-6 sp:leading-4">{!! nl2br(e($value['performance'])) !!}</p></li>
+                <li class="text-base mb-5 s-pc:text-xs s-pc:mb-2 sp:mb-0 sp:text-3sm"><p class="leading-6 sp:leading-4">{!! nl2br(e($value['comment'])) !!}</p></li>
             </ul>
         </div>
     </div>

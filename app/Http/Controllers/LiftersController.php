@@ -48,10 +48,18 @@ class LiftersController extends Controller
         ]);;
     }
 
-    public function store()
+    /**
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function store(Request $request)
     {
+        $this->lifterService->createLifter($request);
+        return redirect('/lifters');
     }
 
+    /**
+     * @param  int  $id
+     */
     public function edit($id)
     {
         $lifters = Lifter::with('affiliation')->find($id)->toArray();
@@ -64,7 +72,13 @@ class LiftersController extends Controller
         ]);;
     }
 
+    /**
+     * @param  int  $id
+     * @param  Illuminate\Http\Request  $request
+     */
     public function update($id, Request $request)
     {
+        $this->lifterService->updateLifter($id, $request);
+        return redirect('/lifters');
     }
 }
