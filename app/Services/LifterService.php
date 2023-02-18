@@ -51,6 +51,26 @@ class LifterService
         return $topLifters;
     }
 
+    public function getTopLifterNameList()
+    {
+        $lifters = $this->lifter->getLifters()->where('top_post_flag', 1)->get();
+        $list = [];
+        foreach ($lifters as $val) {
+            $list[] = ['id' => $val['id']];
+        }
+        return $list;
+    }
+
+    public function getAllLifterNameList()
+    {
+        $lifters = $this->lifter->getLifters()->get();
+        $list = [];
+        foreach ($lifters as $val) {
+            $list[] = ['id' => $val['id'], 'name' => $val['last_name'] . $val['first_name']];
+        }
+        return array_column($list, 'name', 'id');
+    }
+
     /**
      * ヘボン式ローマ字を成形して追加したカラムへ格納
      *

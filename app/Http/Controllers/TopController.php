@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libs\TopUpdate;
 use App\Models\News;
 use App\Models\Lifter;
 use App\Services\LifterService;
@@ -16,6 +17,7 @@ class TopController extends Controller
     public $news;
     public $lifter;
     public $lifterService;
+    public $topUpdate;
 
     /**
      * @param  \App\Models\News  $news
@@ -25,11 +27,13 @@ class TopController extends Controller
     public function __construct(
         News $news,
         Lifter $lifter,
-        LifterService $lifterService
+        LifterService $lifterService,
+        TopUpdate $topUpdate
     ) {
         $this->news = $news;
         $this->lifter = $lifter;
         $this->lifterService = $lifterService;
+        $this->topUpdate = $topUpdate;
     }
 
     /**
@@ -48,8 +52,16 @@ class TopController extends Controller
 
     public function edit()
     {
-        $newsList = $this->news->getNewsList();
+        $topLifterList = $this->lifterService->getTopLifterNameList();
+        $allLifterList = $this->lifterService->getAllLifterNameList();
 
-        return view('top.edit')->with(['newsList' => $newsList]);
+        return view('top.edit')->with(['topLifterList' => $topLifterList, 'allLifterList' => $allLifterList]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->topUpdate->topUpdate($request);
+
+        return redirect('/');
     }
 }

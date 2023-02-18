@@ -54,7 +54,7 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
 
     //トップ画面編集
     Route::get('/top/edit', [TopController::class, 'edit'])->name('top.edit');
-    Route::get('/top/update', [TopController::class, 'update'])->name('top.update');
+    Route::put('/top/update', [TopController::class, 'update'])->name('top.update');
     // Route::resource('/top', TopController::class, ['only' => ['edit', 'update']]);
     //試合・要項結果登録画面CRUD
     Route::resource('/results', ResultsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
@@ -78,4 +78,4 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
