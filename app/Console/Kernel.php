@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('reminder:beginningYear')->everyMinute();
+        $schedule->command('reminder:beginningYear')->yearlyOn(4, 1, '08:00');;
     }
 
     /**
