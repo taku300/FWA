@@ -10,16 +10,6 @@ use App\Models\NewsLink;
 
 class NewsService
 {
-    public $deleteFile;
-
-    /**
-     * @param  \App\Libs\DeleteFile  $databaseRegister
-     */
-    public function __construct(DeleteFile $deleteFile)
-    {
-        $this->deleteFile = $deleteFile;
-    }
-
     /**
      * お知らせ新規登録
      *
@@ -61,7 +51,7 @@ class NewsService
             $news->update($request->all());
             // ドキュメント保存
             $deletePath = $this->diffDelete($request, $id, 'news_documents', NewsDocument::query());
-            $this->deleteFile->deleteFilePath('/news-documents/', $deletePath);
+            DeleteFile::deleteFilePath('/news-documents/', $deletePath);
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
