@@ -38,7 +38,7 @@ class Result extends Model
         return Result::orderBy('started_at', 'DESC');
     }
 
-    public function getResultRecordList()
+    public static function getResultRecordList()
     {
         return News::with('results')->get();
     }
