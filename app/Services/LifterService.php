@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Libs\Convert;
 use App\Models\Lifter;
+use Illuminate\Support\Facades\DB;
 
 class LifterService
 {
@@ -82,9 +83,11 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            // TODO:画像処理
-            $lifters = new Lifter($request->all());
-            $lifters->save();
+            $lifter = new Lifter($request->all() ? $request->all() : []);
+            if (is_array($request->all())) {
+                $this->saveFile($request->file('image_path'));
+            }
+            $lifter->save();
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
@@ -100,13 +103,25 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            // TODO:画像処理
             $lifter = Lifter::find($id);
-            $lifter->update($request->all());
+            $datas = $request->all() ? $request->all() : [];
+            $datas['image_path'] = $this->saveFile($request->file('image_path'));
+            $lifter->update($datas);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
         }
         DB::commit();
+    }
+
+    /**
+     * @param  object  $file
+     * 
+     * @return  string
+     */
+    public function saveFile($file): string
+    {
+        $path = $file->store('public/lifter-images');
+        return basename($path);
     }
 }
