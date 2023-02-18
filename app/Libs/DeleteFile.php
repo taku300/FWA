@@ -4,14 +4,16 @@ namespace App\Libs;
 
 use Illuminate\Support\Facades\Storage;
 
-class DeleteFilePath
+class DeleteFile
 {
     /**
      * @param  string  $path
-     * @param  string  $fileName
+     * @param  mixed  $fileNames
      */
-    public function deleteFilePath($path, $fileName)
+    public function deleteFilePath($path, $fileNames)
     {
-        Storage::delete($path + $fileName);
+        foreach ($fileNames as $fileName) {
+            Storage::disk('public')->delete($path . $fileName['document_path']);
+        }
     }
 }
