@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Libs\Convert;
+use App\Libs\DeleteFile;
 use App\Models\Lifter;
 use Illuminate\Support\Facades\DB;
 
@@ -109,6 +110,7 @@ class LifterService
         try {
             $datas = $this->getDatas($request);
             $lifter = Lifter::find($id);
+            DeleteFile::deleteFilePath('/lifter-images/', $lifter);
             $lifter->update($datas);
         } catch (Exception $e) {
             DB::rollback();
