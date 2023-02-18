@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Result;
 
 /**
  * 大会記録
@@ -10,8 +11,17 @@ use Illuminate\Http\Request;
  */
 class RecordsController extends Controller
 {
+    public $result;
+
+    public function __construct(Result $result)
+    {
+        $this->result = $result;
+    }
+
     public function index()
     {
-        return view('records.index');
+        $resultList = $this->result->getResultRecordList();
+
+        return view('records.index')->with(['resultList' => $resultList]);
     }
 }
