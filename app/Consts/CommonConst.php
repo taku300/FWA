@@ -7,9 +7,9 @@ class CommonConst
     // ファイルパス
     const LIFTERS_FILE_PATH_NAME = 'lifters/';
     // 性別
-    const MEN = 0;
+    const MEN = 1;
     const MEN_NAME = '男性';
-    const WOMEN = 1;
+    const WOMEN = 2;
     const WOMEN_NAME = '女性';
     // 権限
     const SYSTEM_ADMIN = 0;

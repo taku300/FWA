@@ -24,6 +24,10 @@ module.exports = {
                 'pc-sp': { max: '764px' },
                 'sp': { max: '520px' },
             },
+            fontSize: {
+                '3sm': '10px',
+                '2sm': '12px',
+            }
         },
     },
 

@@ -24,16 +24,16 @@
                 {{ Form::token() }}
                 <ul>
                     <li class="flex mb-4">
-                        {{ Form::label('first_name', '氏名', ['class' => 'shrink-0 w-24']) }}
+                        {{ Form::label('last_name', '氏名', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                        {{ Form::text('first_name', null, ['placeholder'=>'性', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
-                        {{ Form::text('last_name', null, ['placeholder'=>'名', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                        {{ Form::text('last_name', null, ['placeholder'=>'性', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                        {{ Form::text('first_name', null, ['placeholder'=>'名', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     </li>
                     <li class="flex mb-4">
-                        {{ Form::label('first_name_kana', '氏名（カナ）', ['class' => 'shrink-0 w-24']) }}
+                        {{ Form::label('last_name_kana', '氏名（カナ）', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                        {{ Form::text('first_name_kana', null, ['placeholder'=>'セイ', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
-                        {{ Form::text('last_name_kana', null, ['placeholder'=>'メイ', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                        {{ Form::text('last_name_kana', null, ['placeholder'=>'セイ', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                        {{ Form::text('first_name_kana', null, ['placeholder'=>'メイ', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     </li>
                     <li class="flex mb-4">
                         {{ Form::label('birthday', '生年月日', ['class' => 'shrink-0 w-24']) }}
