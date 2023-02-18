@@ -83,10 +83,9 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            $lifter = new Lifter($request->all());
-            if (is_array($request->all())) {
-                $this->saveFile($request->file('image_path'));
-            }
+            $datas = $request->all();
+            $datas['image_path'] = $this->saveFile($request->file('image_path'));
+            $lifter = new Lifter($datas);
             $lifter->save();
         } catch (Exception $e) {
             DB::rollback();
