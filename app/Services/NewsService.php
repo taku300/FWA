@@ -26,7 +26,7 @@ class NewsService
      *
      * @param  Illuminate\Http\Request  $request
      */
-    public function newsCreate(Request $request)
+    public function newsCreate($request)
     {
         DB::beginTransaction();
         try {
@@ -37,7 +37,7 @@ class NewsService
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('news-document', '');
+                    $path = $value['document_file']->store('public/news-documents');
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
@@ -53,7 +53,7 @@ class NewsService
      * @param  int  $id
      * @param  object  $request
      */
-    public function newsUpdate($id, Request $request)
+    public function newsUpdate($id, $request)
     {
 
         DB::beginTransaction();
@@ -68,7 +68,7 @@ class NewsService
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('news-document', '');
+                    $path = $value['document_file']->store('public/news-documents');
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
