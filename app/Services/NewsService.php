@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Libs\DatabaseRegister;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
@@ -10,16 +9,6 @@ use App\Models\NewsLink;
 
 class NewsService
 {
-    public $databaseRegister;
-
-    /**
-     * @param  \App\Libs\DatabaseRegister  $databaseRegister
-     */
-    public function __construct(DatabaseRegister $databaseRegister)
-    {
-        $this->databaseRegister = $databaseRegister;
-    }
-
     /**
      * お知らせ新規登録
      *
