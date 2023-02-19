@@ -1,4 +1,4 @@
-<x-layout.top-layout>
+<x-layout.top-layout :$topImagePath>
     <!-- TOPICS -->
     <section>
         <!-- title -->
@@ -15,7 +15,7 @@
         <!-- list -->
         <x-layout.container>
             <!-- $newsList = お知らせ情報 -->
-            <x-list.lists :$newsList :$breakingNews ></x-list.lists>
+            <x-list.lists :$newsList :$breakingNews></x-list.lists>
             <x-parts.button-arrow>
                 <a href="{{ route('news.index') }}">お知らせ一覧</a>
             </x-parts.button-arrow>
