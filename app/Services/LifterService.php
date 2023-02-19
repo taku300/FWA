@@ -138,6 +138,20 @@ class LifterService
         DB::commit();
     }
 
+    public function deleteLifter($id)
+    {
+        DB::beginTransaction();
+        try {
+            $lifter = Lifter::find($id);
+            \DeleteFile::deleteFilePath('image_path', $lifter);
+            $lifter->delete();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
     /**
      * @param  mixed  $file
      *
