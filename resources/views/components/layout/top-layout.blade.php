@@ -8,7 +8,7 @@
     <!-- header -->
     <x-layout.header></x-layout.header>
     <!-- hero -->
-    <x-layout.top-hero></x-layout.top-hero>
+    <x-layout.top-hero :$topImagePath></x-layout.top-hero>
     <!-- sidemenu -->
     <x-layout.side-menu>
         <x-layout.nav></x-layout.nav>
