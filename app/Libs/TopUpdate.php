@@ -36,13 +36,16 @@ class TopUpdate
             $lifter->save();
         }
         if ($request->top_image_path_1) {
-            $request->file('top_image_path_1')->storeAs('public/top-images/', 'top_image_path_1.png');
+            $request->file(\CommonConst::TOP_FILE_PATH_1)
+                ->storeAs(\CommonConst::TOP_FILE_PATH_NAME, \CommonConst::TOP_FILE_PATH_1 . '.png');
         }
         if ($request->top_image_path_2) {
-            $request->file('top_image_path_2')->storeAs('public/top-images/', 'top_image_path_2.png');
+            $request->file(\CommonConst::TOP_FILE_PATH_2)
+                ->storeAs(\CommonConst::TOP_FILE_PATH_NAME, \CommonConst::TOP_FILE_PATH_2 . '.png');
         }
         if ($request->top_image_path_3) {
-            $request->file('top_image_path_3')->storeAs('public/top-images/', 'top_image_path_3.png');
+            $request->file(\CommonConst::TOP_FILE_PATH_3)
+                ->storeAs(\CommonConst::TOP_FILE_PATH_NAME, \CommonConst::TOP_FILE_PATH_3 . '.png');
         }
     }
 }
