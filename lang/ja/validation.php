@@ -25,7 +25,7 @@ return [
     'alpha_dash'           => ':attribute は「英字」「数字」「-(ダッシュ)」「_(下線)」のみ有効です',
     'alpha_num'            => ':attribute は「英字」「数字」のみ有効です',
     'array'                => ':attribute は配列タイプのみ有効です',
-    'before'               => ':attribute は :date より前の日付にしてください',
+    'before'               => ':attribute は正しい日付を入力してください',
     'before_or_equal'      => ':attribute は :date 以前の日付にしてください',
     'between'              => [
         'numeric' => ':attribute は :min ～ :max までの数値まで有効です',
@@ -137,6 +137,12 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'last_name_kana' => [
+            'regex' => ':attribute はカタカナで入力してください',
+        ],
+        'first_name_kana' => [
+            'regex' => ':attribute はカタカナで入力してください',
+        ]
     ],
 
     /*
@@ -154,6 +160,16 @@ return [
       |
     */
 
-    'attributes' => [],
-
+    'attributes' => [
+        'last_name' => '氏名：姓',
+        'first_name' => '氏名：名',
+        'last_name_kana' => '氏名：セイ',
+        'first_name_kana' => '氏名：メイ',
+        'birthday' => '生年月日',
+        'gender' => '性別',
+        'category' => 'カテゴリー',
+        'affiliation_id' => '所属',
+        'weight_class' => '階級',
+        'image_path' => '画像',
+    ],
 ];
