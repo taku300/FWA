@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Libs\TopUpdate;
 use App\Models\News;
 use App\Models\Lifter;
 use App\Services\LifterService;
+use App\Services\TopService;
 use Illuminate\Http\Request;
 
 /**
@@ -28,12 +28,12 @@ class TopController extends Controller
         News $news,
         Lifter $lifter,
         LifterService $lifterService,
-        TopUpdate $topUpdate
+        TopService $topService
     ) {
         $this->news = $news;
         $this->lifter = $lifter;
         $this->lifterService = $lifterService;
-        $this->topUpdate = $topUpdate;
+        $this->topService = $topService;
     }
 
     /**
@@ -60,7 +60,7 @@ class TopController extends Controller
 
     public function update(Request $request)
     {
-        $this->topUpdate->topUpdate($request);
+        $this->topService->topUpdate($request);
 
         return redirect('/');
     }
