@@ -17,7 +17,7 @@ class TopController extends Controller
     public $news;
     public $lifter;
     public $lifterService;
-    public $topUpdate;
+    public $topService;
 
     /**
      * @param  \App\Models\News  $news
@@ -42,6 +42,7 @@ class TopController extends Controller
      */
     public function index()
     {
+        $topImagePath = $this->topService->getTopImages();
         $breakingNews = $this->news->getBrakingNews();
         $newsList = $this->news->getTopNewsList();
         $lifterList = $this->lifterService->getTopLifterList();
