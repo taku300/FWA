@@ -1,4 +1,4 @@
-<x-layout.top-layout>
+<x-layout.top-layout :$topImagePath>
     <!-- TOPICS -->
     <section>
         <!-- title -->
