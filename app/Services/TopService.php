@@ -17,9 +17,9 @@ class TopService
     public function getTopImages()
     {
         $topImages = [
-            1 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_1],
-            2 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_2],
-            3 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_3],
+            1 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[1],
+            2 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[2],
+            3 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[3],
         ];
         return $topImages;
     }
