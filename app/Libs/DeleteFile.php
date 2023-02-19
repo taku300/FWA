@@ -10,12 +10,12 @@ class DeleteFile
      */
     public static function deleteFilePath($path, $fileNames)
     {
-        if ($path == '/lifter-images/') {
-            \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileNames['image_path']);
+        if ($path == 'image_path') {
+            \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileNames[$path]);
         }
-        if ($path == '/news-documents/') {
+        if ($path == 'document_path') {
             foreach ($fileNames as $fileName) {
-                \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileName['document_path']);
+                \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileName[$path]);
             }
         }
     }

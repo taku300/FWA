@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Libs\DeleteFile;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
@@ -51,7 +50,7 @@ class NewsService
             $news->update($request->all());
             // ドキュメント保存
             $deletePath = $this->diffDelete($request, $id, 'news_documents', NewsDocument::query());
-            DeleteFile::deleteFilePath('/news-documents/', $deletePath);
+            \DeleteFile::deleteFilePath('document_path', $deletePath);
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
