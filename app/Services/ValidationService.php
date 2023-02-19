@@ -34,7 +34,7 @@ class ValidationService
             'first_name' => 'bail|required|string',
             'last_name_kana' => 'bail|required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
             'first_name_kana' => 'bail|required|string|regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u',
-            'birthday' => 'bail|required|before:today',
+            'birthday' => 'bail|required|date|before:today',
             'gender' => 'required',
             'category' => 'required',
             'affiliation_id' => 'required',
