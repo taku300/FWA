@@ -65,12 +65,14 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $this->newsService->newsCreate($request);
+
         return redirect('/news');
     }
 
     public function show($id)
     {
         $newsDetail = $this->news->getNewsDetail($id);
+
         return view('news.show')->with(['newsDetail' => $newsDetail]);
     }
 
@@ -87,5 +89,7 @@ class NewsController extends Controller
     public function update($id, Request $request)
     {
         $this->newsService->newsUpdate($id, $request);
+
+        return redirect('/news');
     }
 }
