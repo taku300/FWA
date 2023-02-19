@@ -26,7 +26,7 @@ class NewsService
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('public/news-documents');
+                    $path = $value['document_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
@@ -55,7 +55,7 @@ class NewsService
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('public/news-documents');
+                    $path = $value['document_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
