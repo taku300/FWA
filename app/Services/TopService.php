@@ -17,9 +17,9 @@ class TopService
     public function getTopImages()
     {
         $topImages = [
-            1 => \Storage::get($this->topImage1()),
-            2 => \Storage::get($this->topImage2()),
-            3 => \Storage::get($this->topImage3()),
+            1 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_1],
+            2 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_2],
+            3 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_3],
         ];
         return $topImages;
     }
@@ -45,34 +45,16 @@ class TopService
             $lifter->save();
         }
         if ($request->top_image_path_1) {
-            $request->file(\CommonConst::TOP_FILE_PATH_1)
-                ->storeAs($this->topImage1());
+            $request->file(\CommonConst::TOP_FILE_PATH)
+                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_1]);
         }
         if ($request->top_image_path_2) {
             $request->file(\CommonConst::TOP_FILE_PATH_2)
-                ->storeAs($this->topImage2());
+                ->storeAs($this->topImage2(), \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_2]);
         }
         if ($request->top_image_path_3) {
             $request->file(\CommonConst::TOP_FILE_PATH_3)
-                ->storeAs($this->topImage3());
+                ->storeAs($this->topImage3(), \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_3]);
         }
-    }
-
-    public function topImage1()
-    {
-        $image = \CommonConst::TOP_FILE_PATH_NAME . \CommonConst::TOP_FILE_PATH_1 . '.png';
-        return $image;
-    }
-
-    public function topImage2()
-    {
-        $image = \CommonConst::TOP_FILE_PATH_NAME . \CommonConst::TOP_FILE_PATH_2 . '.png';
-        return $image;
-    }
-
-    public function topImage3()
-    {
-        $image = \CommonConst::TOP_FILE_PATH_NAME . \CommonConst::TOP_FILE_PATH_3 . '.png';
-        return $image;
     }
 }
