@@ -70,7 +70,8 @@ class NewsController extends Controller
 
     public function show($id)
     {
-        return view('news.show');
+        $newsDetail = $this->news->getNewsDetail($id);
+        return view('news.show')->with(['newsDetail' => $newsDetail]);
     }
 
     public function edit($id)

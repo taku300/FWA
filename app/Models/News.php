@@ -50,4 +50,9 @@ class News extends Model
     {
         return News::where('preliminary_report_flag', 1)->get()->toArray();
     }
+
+    public function getNewsDetail($id)
+    {
+        return News::with(['result', 'news_links', 'news_documents'])->find($id);
+    }
 }
