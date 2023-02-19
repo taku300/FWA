@@ -196,7 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TopTitleServiceProvider::class,
         App\Providers\DatabaseQueryServiceProvider::class,
-
+        App\Providers\FormMacroServiceProvider::class,
     ],
 
     /*
@@ -211,41 +211,25 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // Lib
         /**
-         * 文字変換
+         * Libs
          */
-        'Convert' => App\Libs\Convert::class,
-        /**
-         * タイトルネーム取得
-         */
-        'GetTitleName' => App\Libs\GetTitleName::class,
+        'Convert' => App\Libs\Convert::class, // 文字変換
+        'GetTitleName' => App\Libs\GetTitleName::class, // タイトルネーム取得
 
-        // Const
         /**
-         * 共通定義
+         * Services
          */
-        'CommonConst' => App\Consts\CommonConst::class,
+        'ValidationService' => App\Services\ValidationService::class, // バリデーション
+
         /**
-         * お知らせカテゴリ定義
+         * Const
          */
-        'CategoryConst' => App\Consts\CategoryConst::class,
-        /**
-         * タイトルネーム定義
-         */
-        'TitleConst' => App\Consts\TitleConst::class,
-        /**
-         * 階級定義
-         */
-        'GetTitleName' => App\Libs\GetTitleName::class,
-        /**
-         * 登録編集処理
-         */
-        'DatabaseRegister' => App\Libs\DatabaseRegister::class,
-        /**
-         * 階級定義
-         */
-        'WeightClassConst' => App\Consts\WeightClassConst::class,
+        'CommonConst' => App\Consts\CommonConst::class, // 共通定義
+        'CategoryConst' => App\Consts\CategoryConst::class, // お知らせカテゴリ定義
+        'TitleConst' => App\Consts\TitleConst::class, // タイトルネーム定義
+        'GetTitleName' => App\Libs\GetTitleName::class, // タイトル名
+        'WeightClassConst' => App\Consts\WeightClassConst::class, // 階級定義
     ])->toArray(),
 
 ];
