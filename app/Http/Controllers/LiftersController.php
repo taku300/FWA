@@ -81,6 +81,7 @@ class LiftersController extends Controller
      */
     public function update($id, Request $request)
     {
+        $this->validation->validation($request);
         $this->lifterService->updateLifter($id, $request);
         return redirect('/lifters');
     }
