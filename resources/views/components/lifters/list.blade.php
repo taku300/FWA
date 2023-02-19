@@ -2,7 +2,7 @@
     @foreach($lifters as $value)
     <div class="relative">
         @auth
-        <a href="{{ route('admins.lifters.edit', ['lifter' => 1]) }}">
+        <a href="{{ route('admins.lifters.edit', ['lifter' => $value['id']]) }}">
             <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
         </a>
         <form action="{{ route('admins.lifters.destroy', ['lifter' => $value['id']]) }}" method="post">
