@@ -42,8 +42,8 @@ Route::resource('/lifters', LiftersController::class, ['only' => ['index']]);
 //お知らせ一覧画面、詳細画面
 Route::resource('/news', NewsController::class, ['only' => ['index', 'show']]);
 //お問い合わせ画面
-Route::resource('/contact', ContactController::class, ['only' => ['index', 'store']]);
-
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 //ログインづみ
 Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () {

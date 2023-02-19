@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -16,14 +17,14 @@ class Contact extends Mailable
     use Queueable, SerializesModels;
 
     public User $toUser;
-    public Request $request;
+    public array $request;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $toUser, Request $request)
+    public function __construct(User $toUser, array $request)
     {
         $this->toUser = $toUser;
         $this->request = $request;
@@ -37,6 +38,7 @@ class Contact extends Mailable
     public function envelope()
     {
         return new Envelope(
+            from: new Address($this->request['email'], $this->request['last_name'] . ' ' . $this->request['first_name']),
             subject: 'お問い合わせがありました。',
         );
     }

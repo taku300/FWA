@@ -18,16 +18,15 @@ class ContactController extends Controller
         return view('contact.index');
     }
 
-    public function store(Request $request, Mailer $mailer)
+    public function send(Request $request, Mailer $mailer)
     {
-        $request[] = $request->all();
-        $roles = [\CommonConst::ROLE_LIST['SYSTEM_ADMIN'], \CommonConst::ROLE_LIST['SITE_ADMIN']];
+        $request = $request->all();
+        $roles = \CommonConst::USER_REGISTER_MAIL_LIST;
         $toUsers = User::applyRoleUser($roles);
-        foreach ($toUsers as $touUser) {
+        foreach ($toUsers as $toUser) {
         $mailer
-            ->to($touUser->email)
-            ->from($request['email'], $request['first-name'] . $request['last-name'] . '様')
-            ->send(new Contact($touUser, $request));
+            ->to($toUser->email)
+            ->send(new Contact($toUser, $request));
         }
     }
 }
