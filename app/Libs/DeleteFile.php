@@ -2,8 +2,6 @@
 
 namespace App\Libs;
 
-use Illuminate\Support\Facades\Storage;
-
 class DeleteFile
 {
     /**
@@ -13,11 +11,11 @@ class DeleteFile
     public static function deleteFilePath($path, $fileNames)
     {
         if ($path == '/lifter-images/') {
-            Storage::disk('public')->delete($path . $fileNames['image_path']);
+            \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileNames['image_path']);
         }
         if ($path == '/news-documents/') {
             foreach ($fileNames as $fileName) {
-                Storage::disk('public')->delete($path . $fileName['document_path']);
+                \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileName['document_path']);
             }
         }
     }
