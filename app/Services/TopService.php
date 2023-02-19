@@ -44,17 +44,17 @@ class TopService
             $lifter->top_post_flag = 1;
             $lifter->save();
         }
-        if ($request->top_image_path_1) {
-            $request->file(\CommonConst::TOP_FILE_PATH)
+        if (isset($request->top_image_path_1)) {
+            $request->file(\CommonConst::TOP_FILE_PATH_1)
                 ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_1]);
         }
-        if ($request->top_image_path_2) {
+        if (isset($request->top_image_path_2)) {
             $request->file(\CommonConst::TOP_FILE_PATH_2)
-                ->storeAs($this->topImage2(), \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_2]);
+                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_2]);
         }
-        if ($request->top_image_path_3) {
+        if (isset($request->top_image_path_3)) {
             $request->file(\CommonConst::TOP_FILE_PATH_3)
-                ->storeAs($this->topImage3(), \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_3]);
+                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_3]);
         }
     }
 }

@@ -16,11 +16,11 @@ class CommonConst
     /**
      * top画面用ファイル名
      */
-    const TOP_FILE_PATH_1 = 1;
+    const TOP_FILE_PATH_1 = 'top_image_path_1';
     const TOP_FILE_PATH_NAME_1 = 'top_image_path_1.png'; // top画像1
-    const TOP_FILE_PATH_2 = 2;
+    const TOP_FILE_PATH_2 = 'top_image_path_2';
     const TOP_FILE_PATH_NAME_2 = 'top_image_path_2.png'; // top画像2
-    const TOP_FILE_PATH_3 = 3;
+    const TOP_FILE_PATH_3 = 'top_image_path_3';
     const TOP_FILE_PATH_NAME_3 = 'top_image_path_3.png'; // top画像3
 
     /**
@@ -68,8 +68,8 @@ class CommonConst
      * @param  array
      */
     const TOP_IMAGE_LIST = [
-        self::TOP_FILE_PATH_1 =>  self::TOP_FILE_PATH_NAME_1,
-        self::TOP_FILE_PATH_2 =>  self::TOP_FILE_PATH_NAME_2,
-        self::TOP_FILE_PATH_3 =>  self::TOP_FILE_PATH_NAME_3,
+        1 =>  self::TOP_FILE_PATH_NAME_1,
+        2 =>  self::TOP_FILE_PATH_NAME_2,
+        3 =>  self::TOP_FILE_PATH_NAME_3,
     ];
 }
