@@ -11,6 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <!-- js見込み -->
     <script src="{{ asset('js/common.js') }}" defer></script>
+    <script src="{{ asset('js/news.js') }}" defer></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

@@ -15,8 +15,10 @@
         <!-- list -->
         <x-layout.container>
             <!-- $newsList = お知らせ情報 -->
-            <x-list.lists :$newsList></x-list.lists>
-            <x-parts.button-arrow>お知らせ一覧</x-parts.button-arrow>
+            <x-list.lists :$newsList :$breakingNews ></x-list.lists>
+            <x-parts.button-arrow>
+                <a href="{{ route('news.index') }}">お知らせ一覧</a>
+            </x-parts.button-arrow>
         </x-layout.container>
     </section>
 
@@ -45,6 +47,7 @@
                 <div class="absolute right-[60%] pc:right-[25%] sp:right-[20%] top-[70%] text-white">
                     <x-top.lifters-explanation :lifterList="$lifterList[0]"></x-top.lifters-explanation>
                 </div>
+            </div>
             @endif
             <!-- lifter2 -->
             @if (array_key_exists(1, $lifterList))
@@ -53,6 +56,7 @@
                 <div class="absolute top-[70%] left-[60%] sp:left-[20%]">
                     <x-top.lifters-explanation :lifterList="$lifterList[1]"></x-top.lifters-explanation>
                 </div>
+            </div>
             @endif
 
             <!-- olympian -->

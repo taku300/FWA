@@ -4,19 +4,33 @@ namespace App\Consts;
 
 class CommonConst
 {
+    // ファイルパス
+    const LIFTERS_FILE_PATH_NAME = 'public/lifter-images/';
+    // 性別
+    const MEN = 1;
+    const MEN_NAME = '男性';
+    const WOMEN = 2;
+    const WOMEN_NAME = '女性';
+    // 権限
+    const SYSTEM_ADMIN = 0;
+    const SYSTEM_ADMIN_NAME = 'システム管理者';
+    const SITE_ADMIN = 1;
+    const SITE_ADMIN_NAME = 'サイト管理者';
+    const GENERAL_USER = 2;
+    const GENERAL_USER_NAME = '一般ユーザー';
     /**
      * お知らせカテゴリ
      *
      * @param array
      */
     const GENDER_LIST = [
-        1 => '男性',
-        2 => '女性'
+        self::MEN => self::MEN_NAME,
+        self::WOMEN => self::WOMEN_NAME,
     ];
 
-    const ROLE_LIST = [
-        'SYSTEM_ADMIN' => 0,
-        'SITE_ADMIN' => 1,
-        'GENERAL_USER' => 2,
+    const USER_REGISTER_MAIL_LIST = [
+        self::SYSTEM_ADMIN => self::SYSTEM_ADMIN_NAME,
+        self::SITE_ADMIN => self::SITE_ADMIN_NAME,
+        self::GENERAL_USER => self::GENERAL_USER_NAME,
     ];
 }

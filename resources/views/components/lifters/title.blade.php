@@ -14,7 +14,10 @@
                   "border" => "border-[#FF0404]",
                   "text" => "text-[#FF0404]",
                   ],
-                "black" => "text-black",
+                "gold" => [
+                  "border" => "border-[#857208]",
+                  "text" => "text-[#857208]",
+                  ],
             };
         }
     }

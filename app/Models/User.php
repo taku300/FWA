@@ -50,9 +50,15 @@ class User extends Authenticatable
         return $this->hasOne(Affiliation::class);
     }
 
+    /**
+     * 指定された権限を持っているユーザーのみを取り出す。
+     *
+     * @param array $role
+     * @return array $users
+     */
     public static function applyRoleUser(array $roles)
     {
-        $userUser = User::whereIn('role', $roles)->get();
-        return $userUser;
+        $users = User::whereIn('role', array_flip($roles))->get();
+        return $users;
     }
 }

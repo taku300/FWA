@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Libs\Convert;
 use App\Models\Lifter;
+use Illuminate\Support\Facades\DB;
 
 class LifterService
 {
@@ -18,8 +19,25 @@ class LifterService
     }
 
     /**
+     * Lifters画面用lifters list
+     *
+     * @param  int  $gender
+     * @return array
+     */
+    public function getLiftersList($gender): array
+    {
+        $targetLifters = $this->lifter->getLifters()->where('gender', $gender)->orderBy('last_name_kana', 'DESC')->get()->toArray();
+        $lifters = [];
+        foreach ($targetLifters as $value) {
+            $value['image_path'] = \Storage::url(\CommonConst::LIFTERS_FILE_PATH_NAME . $value['image_path']);
+            $lifters[] = $this->addColumn($value);
+        }
+        return $lifters;
+    }
+
+    /**
      * top画面用lifters list
-     * 
+     *
      * @return array
      */
     public function getTopLifterList(): array
@@ -27,6 +45,7 @@ class LifterService
         $lifters = $this->lifter->getTopLifter();
         $topLifters = [];
         foreach ($lifters as $value) {
+            $value['image_path'] = \Storage::url(\CommonConst::LIFTERS_FILE_PATH_NAME . $value['image_path']);
             $topLifters[] = $this->addColumn($value);
         }
         return $topLifters;
@@ -34,9 +53,9 @@ class LifterService
 
     /**
      * ヘボン式ローマ字を成形して追加したカラムへ格納
-     * 
+     *
      * @param  array  $value
-     * 
+     *
      * @return array
      */
     public function addColumn($value): array
@@ -52,14 +71,62 @@ class LifterService
 
     /**
      * ヘボン式ローマ字へ変換
-     * 
+     *
      * @param  string  $name
-     * 
+     *
      * @return array
      */
     public function codeConvert($name): array
     {
         $convertName = new Convert(mb_convert_kana($name, "Hc"));
         return $convertName->getHebon();
+    }
+
+    /**
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function createLifter($request)
+    {
+        DB::beginTransaction();
+        try {
+            $datas = $this->getDatas($request);
+            $lifter = new Lifter($datas);
+            $lifter->save();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /**
+     * @param  int  $id
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function updateLifter($id, $request)
+    {
+        DB::beginTransaction();
+        try {
+            $datas = $this->getDatas($request);
+            $lifter = Lifter::find($id);
+            $lifter->update($datas);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /**
+     * @param  mixed  $file
+     *
+     * @return  mixed
+     */
+    public function getDatas($request): mixed
+    {
+        $datas = $request->all();
+        $path = $request->file('image_path')->store('public/lifter-images');
+        $datas['image_path'] = basename($path);
+        return $datas;
     }
 }

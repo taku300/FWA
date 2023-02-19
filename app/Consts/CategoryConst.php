@@ -9,10 +9,19 @@ class CategoryConst
      *
      * @param array
      */
-
     const NEWS_CATEGORY_LIST = [
         1 => ['category' => 'お知らせ', 'color' => 'orange'],
         2 => ['category' => '大会情報', 'color' => 'red'],
+    ];
+    const CATEGORY_LIST = [
+        'category' => [
+            1 => 'お知らせ',
+            2 => '大会情報'
+        ],
+        'color' => [
+            1 => 'orange',
+            2 => 'red'
+        ]
     ];
 
     const GENERATION_CATEGORY_LIST = [

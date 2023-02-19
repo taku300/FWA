@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -223,8 +223,8 @@ return [
 
         // Const
         /**
-        * 共通定義
-        */
+         * 共通定義
+         */
         'CommonConst' => App\Consts\CommonConst::class,
         /**
          * お知らせカテゴリ定義
@@ -234,6 +234,14 @@ return [
          * タイトルネーム定義
          */
         'TitleConst' => App\Consts\TitleConst::class,
+        /**
+         * 階級定義
+         */
+        'GetTitleName' => App\Libs\GetTitleName::class,
+        /**
+         * 登録編集処理
+         */
+        'DatabaseRegister' => App\Libs\DatabaseRegister::class,
         /**
          * 階級定義
          */
