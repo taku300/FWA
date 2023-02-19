@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Lifter;
 use App\Models\Affiliation;
 use App\Services\LifterService;
+use App\Services\ValidationService;
 
 /**
  * 選手紹介
@@ -14,13 +15,15 @@ use App\Services\LifterService;
 class LiftersController extends Controller
 {
     public $lifterService;
+    private $validation;
 
     /**
      * @param  App\Services\LifterService  $lifterService
      */
-    public function __construct(LifterService $lifterService)
+    public function __construct(LifterService $lifterService, ValidationService $validation)
     {
         $this->lifterService = $lifterService;
+        $this->validation = $validation;
     }
 
     /**
@@ -53,6 +56,7 @@ class LiftersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation->validation($request);
         $this->lifterService->createLifter($request);
         return redirect('/lifters');
     }
@@ -68,7 +72,6 @@ class LiftersController extends Controller
             'id' => $id,
             'lifters' => $lifters,
             'affiliation' => $affiliation,
-
         ]);;
     }
 
