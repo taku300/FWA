@@ -32,7 +32,7 @@ class CommonConst
     const DOCUMENT_PATH_2 = 'document_path_2';
     const DOCUMENT_PATH_NAME_2 = 'document_path_2.pdf'; // ガバナンスコード
     const DOCUMENT_PATH_3 = 'document_path_3';
-    const DOCUMENT_PATH_NAME_3 = 'document_path_3.pdf'; // 年関計画
+    const DOCUMENT_PATH_NAME_3 = 'document_path_3.pdf'; // 年間計画
 
     /**
      * 性別

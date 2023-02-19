@@ -15,7 +15,7 @@
                         {{ Form::file('document_path_2', ['accept' => '.pdf', 'class' => '' ]) }}
                     </li>
                     <li class="flex mb-4">
-                        {{ Form::label('document_path_3', '年関計画', ['class' => 'shrink-0 w-44']) }}
+                        {{ Form::label('document_path_3', '年間計画', ['class' => 'shrink-0 w-44']) }}
                         {{ Form::file('document_path_3', ['accept' => '.pdf', 'class' => '' ]) }}
                     </li>
                 </ul>
