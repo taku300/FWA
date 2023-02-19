@@ -50,7 +50,7 @@
                     {{ Form::textarea('content', null, ['placeholder'=>'内容を入力', 'class'=>'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 <li class="flex mt-10 mb-4">
-                    <a class="text-[#0D56E3] hover:border-b hover:border-[#0D56E3] duration-300" href="">個人情報保護方針</a>
+                    <a class="text-[#0D56E3] hover:border-b hover:border-[#0D56E3] duration-300" href="https://erratic-monday-e75.notion.site/5fc6d01c287e48febd9a41cae04a91f3">個人情報保護方針</a>
                 </li>
                 <li class="flex items-center mb-4">
                     {{ Form::checkbox('check', 1, old('check', false ), ['class'=>'align-top border-slate-300 rounded-md' ]) }}
