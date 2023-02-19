@@ -46,15 +46,15 @@ class TopService
         }
         if (isset($request->top_image_path_1)) {
             $request->file(\CommonConst::TOP_FILE_PATH_1)
-                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_1]);
+                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[1]);
         }
         if (isset($request->top_image_path_2)) {
             $request->file(\CommonConst::TOP_FILE_PATH_2)
-                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_2]);
+                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[2]);
         }
         if (isset($request->top_image_path_3)) {
             $request->file(\CommonConst::TOP_FILE_PATH_3)
-                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[\CommonConst::TOP_FILE_PATH_3]);
+                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[3]);
         }
     }
 }
