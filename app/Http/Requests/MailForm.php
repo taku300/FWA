@@ -26,8 +26,8 @@ class MailForm extends FormRequest
         return [
             'last_name' => ['bail', 'required', 'string', 'max:255'],
             'first_name' => ['bail', 'required', 'string', 'max:255'],
-            'email' => ['bail', 'required', 'email:strict,dns,spoof', 'max:255'],
-            // 'email_confirm' => ['bail', 'required', 'email:strict,dns,spoof', 'max:255', 'same:email'],
+            'email' => ['bail', 'required', 'email:strict,spoof', 'max:255'],
+            // 'email_confirm' => ['bail', 'required', 'email:strict,spoof', 'max:255', 'same:email'],
             'title' => ['bail', 'required', 'string', 'max:255'],
             'content' => ['bail', 'required', 'string', 'max:255'],
             'check' => 'required',

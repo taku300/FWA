@@ -47,7 +47,6 @@ class TopController extends Controller
         $newsList = $this->news->getTopNewsList();
         $lifterList = $this->lifterService->getTopLifterList();
 
-
         return view('top.index')->with(compact('breakingNews', 'newsList', 'lifterList', 'topImagePath'));
     }
 
