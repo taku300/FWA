@@ -177,13 +177,10 @@ return [
         /**
          * lifter
          */
-        'last_name' => '氏名：姓',
-        'first_name' => '氏名：名',
         'last_name_kana' => '氏名：セイ',
         'first_name_kana' => '氏名：メイ',
         'birthday' => '生年月日',
         'gender' => '性別',
-        'category' => 'カテゴリー',
         'affiliation_id' => '所属',
         'weight_class' => '階級',
         'image_path' => '画像',
@@ -198,13 +195,34 @@ return [
         /**
          * contact
          */
-        'last_name' => '氏名：姓',
-        'first_name' => '氏名：名',
         'email' => 'メールアドレス',
         // 'email_confirm' => 'メールアドレス(確認用)',
-        'title' => 'タイトル',
         'content' => '内容',
         'check' => '',
 
+        /**
+         * news
+         */
+        'noticed_at' => 'お知らせ日',
+        'note' => '注意書き',
+        'detail' => 'お知らせ詳細',
+        'iframe_path' => 'iframeURL',
+        'preliminary_report_flag' => '速報',
+
+        /**
+         * lifter and contact
+         */
+        'last_name' => '氏名：姓',
+        'first_name' => '氏名：名',
+
+        /**
+         * lifter and news
+         */
+        'category' => 'カテゴリー',
+
+        /**
+         * contact and news
+         */
+        'title' => 'タイトル',
     ],
 ];

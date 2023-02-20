@@ -36,11 +36,4 @@ class LifterForm extends FormRequest
             'image_path' => ['bail', 'required', 'image'],
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'birthday.before'  => ':attribute は正しい日付を入力してください',
-        ];
-    }
 }

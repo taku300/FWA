@@ -23,32 +23,53 @@
             @endphp
             {{ Form::model($news, ['method'=> $method, 'route'=>[$path, 'news' => isset($id) ? $id : null], 'files'=>true]) }}
             <ul>
+                <li class="mb-4">
+                    {{ Form::error('category') }}
+                </li>
                 <li class="flex mb-4">
                     {{ Form::label('category', 'カテゴリー', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::select('category', \CategoryConst::CATEGORY_LIST['category'], null, ['placeholder'=>'選択してください', 'class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md']) }}
+                </li>
+                <li class="mb-4">
+                    {{ Form::error('noticed_at') }}
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('noticed_at', 'お知らせ日', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::date('noticed_at', null, ['class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
+                <li class="mb-4">
+                    {{ Form::error('title') }}
+                </li>
                 <li class="flex mb-4">
                     {{ Form::label('title', 'タイトル', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::text('title', null, ['placeholder'=>'タイトルを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
+                <li class="mb-4">
+                    {{ Form::error('note') }}
+                </li>
                 <li class="flex mb-4">
                     {{ Form::label('note', '注意書き', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::textarea('note', null, ['placeholder'=>'注意書きを入力', 'class'=>'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                </li>
+                <li class="mb-4">
+                    {{ Form::error('detail') }}
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('detail', 'お知らせ詳細', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::textarea('detail', null, ['placeholder'=>'お知らせ詳細を入力', 'class' => 'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
+                <li class="mb-4">
+                    {{ Form::error('iframe_path') }}
+                </li>
                 <li class="flex mb-4">
                     {{ Form::label('iframe_path', 'iframeURL', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::textarea('iframe_path', null, ['placeholder'=>'iframeURLを入力', 'class' => 'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                </li>
+                <li class="mb-4">
+                    {{ Form::error('preliminary_report_flag') }}
                 </li>
                 <li class="flex items-center mb-4">
                     {{ Form::label('preliminary_report_flag', '速報', ['class' => 'shrink-0 w-44']) }}
@@ -105,7 +126,7 @@
                     {{ Form::text('', null, ['placeholder'=>'リンクpathを入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::hidden('')}}
                     <button type="button" class="{{!empty($news['news_links']) ? 'hidden' : ''}} js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
-                    <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg" >-</button>
+                    <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @foreach ($news['news_links'] as $key => $news_links)
                 <li class="w-full flex items-center mb-4">
@@ -115,7 +136,7 @@
                     {{ Form::text("news_links[$key][link_path]", null, ['placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::hidden("news_links[$key][news_id]", $news['id'] )}}
                     <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
-                    <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg" >-</button>
+                    <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endforeach
                 @else
@@ -126,7 +147,7 @@
                     {{ Form::text('', null, ['placeholder'=>'リンクpathを入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::hidden('')}}
                     <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
-                    <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg" >-</button>
+                    <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endif
 
