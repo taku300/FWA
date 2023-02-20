@@ -68,7 +68,7 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     Route::resource('/plans', PlansController::class, ['only' => ['update']]);
     //ドキュメント編集
     Route::get('/documents/edit', [DocumentsController::class, 'edit'])->name('documents.edit');
-    Route::get('/documents/update', [DocumentsController::class, 'update'])->name('documents.update');
+    Route::put('/documents/update', [DocumentsController::class, 'update'])->name('documents.update');
 });
 
 
