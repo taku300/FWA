@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->foreignId('affiliation_id')->nullable();
+            $table->tinyInteger('role')->default(3);;
             $table->timestamps();
         });
     }
