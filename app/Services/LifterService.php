@@ -127,9 +127,11 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            $datas = $this->getDatas($request);
             $lifter = Lifter::find($id);
-            \DeleteFile::deleteFilePath('image_path', $lifter);
+            $datas = $this->getDatas($request);
+            if ($request->file('image_path')) {
+                \DeleteFile::deleteFilePath('image_path', $lifter);
+            }
             $lifter->update($datas);
         } catch (Exception $e) {
             DB::rollback();
@@ -160,8 +162,10 @@ class LifterService
     public function getDatas($request): mixed
     {
         $datas = $request->all();
-        $path = $request->file('image_path')->store('public/lifter-images');
-        $datas['image_path'] = basename($path);
+        if ($request->file('image_path')) {
+            $path = $request->file('image_path')->store('public/lifter-images');
+            $datas['image_path'] = basename($path);
+        }
         return $datas;
     }
 }
