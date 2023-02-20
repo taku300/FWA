@@ -161,6 +161,9 @@ return [
     */
 
     'attributes' => [
+        /**
+         * lifter
+         */
         'last_name' => '氏名：姓',
         'first_name' => '氏名：名',
         'last_name_kana' => '氏名：セイ',
@@ -171,5 +174,12 @@ return [
         'affiliation_id' => '所属',
         'weight_class' => '階級',
         'image_path' => '画像',
+
+        /**
+         * documents
+         */
+        'document_path_1' => '協会定款',
+        'document_path_2' => 'ガバナンスコード',
+        'document_path_3' => '年間計画',
     ],
 ];
