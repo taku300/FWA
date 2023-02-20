@@ -42,8 +42,8 @@ Route::resource('/lifters', LiftersController::class, ['only' => ['index']]);
 //お知らせ一覧画面、詳細画面
 Route::resource('/news', NewsController::class, ['only' => ['index', 'show']]);
 //お問い合わせ画面
-Route::resource('/contact', ContactController::class, ['only' => ['index']]);
-
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 //ログインづみ
 Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () {
@@ -62,8 +62,6 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     Route::resource('/lifters', LiftersController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     //お知らせ登録画面CRUD
     Route::resource('/news', NewsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
-    //メール送信処理
-    Route::resource('/contact', ContactController::class, ['only' => ['store']]);
     //年間計画編集
     Route::resource('/plans', PlansController::class, ['only' => ['update']]);
     //ドキュメント編集
