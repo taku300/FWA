@@ -2,12 +2,14 @@
     @foreach($lifters as $value)
     <div class="relative">
         @auth
-        <a href="{{ route('admins.lifters.edit', ['lifter' => 1]) }}">
+        <a href="{{ route('admins.lifters.edit', ['lifter' => $value['id']]) }}">
             <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
         </a>
-        <a href="{{ route('admins.lifters.destroy', ['lifter' => 1]) }}">
+        <form action="{{ route('admins.lifters.destroy', ['lifter' => $value['id']]) }}" method="post">
+            @method('DELETE')
+            @csrf
             <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
-        </a>
+        </form>
         @endauth
         <img src="{{ $value['image_path'] }}" alt="" class="object-cover object-top w-full aspect-[350/400]">
         <div class="absolute top-[70%] left-[5%] w-full aspect-[350/400] bg-black opacity-80 overflow-scroll">
@@ -16,8 +18,12 @@
                 <li class=" text-lg mb-5 s-pc:text-base s-pc:mb-2 sp:mb-0 sp:text-3sm">{{ date('Y年n月生', strtotime($value['birthday'])) }}</li>
                 <li class="text-xl mb-5 s-pc:text-base s-pc:mb-2 sp:mb-0 sp:text-2sm">{{ $value['affiliation']['name'] }}</li>
                 <li class="text-xl mb-5 s-pc:text-base s-pc:mb-2 sp:mb-1 sp:text-2sm">{{ \WeightClassConst::CLASS_LIST[$value['weight_class']] }}</li>
-                <li class="text-lg mb-5 s-pc:text-base s-pc:mb-2 sp:mb-1 sp:text-2sm"><p class="leading-6 sp:leading-4">{!! nl2br(e($value['performance'])) !!}</p></li>
-                <li class="text-base mb-5 s-pc:text-xs s-pc:mb-2 sp:mb-0 sp:text-3sm"><p class="leading-6 sp:leading-4">{!! nl2br(e($value['comment'])) !!}</p></li>
+                <li class="text-lg mb-5 s-pc:text-base s-pc:mb-2 sp:mb-1 sp:text-2sm">
+                    <p class="leading-6 sp:leading-4">{!! nl2br(e($value['performance'])) !!}</p>
+                </li>
+                <li class="text-base mb-5 s-pc:text-xs s-pc:mb-2 sp:mb-0 sp:text-3sm">
+                    <p class="leading-6 sp:leading-4">{!! nl2br(e($value['comment'])) !!}</p>
+                </li>
             </ul>
         </div>
     </div>

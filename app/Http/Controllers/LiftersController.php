@@ -81,4 +81,13 @@ class LiftersController extends Controller
         $this->lifterService->updateLifter($id, $request);
         return redirect('/lifters');
     }
+
+    /**
+     * @param  int  $id
+     */
+    public function destroy($id)
+    {
+        $this->lifterService->deleteLifter($id);
+        return redirect('/lifters');
+    }
 }
