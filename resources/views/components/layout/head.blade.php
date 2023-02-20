@@ -2,7 +2,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>福岡県ウエイトリフティング協会</title>
+    <meta name=”description“ content="福岡県ウエイトリフティング協会の公式ホームページです。福岡県協会の概要、試合結果、選手情報、試合速報等の発信を行っております。" />
+    <title>{{ $heroSubTitle ? $heroSubTitle . ' | ' : '' }}{{ config('app.name') }}</title>
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- css読み込み -->
