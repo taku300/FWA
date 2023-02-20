@@ -134,6 +134,9 @@ return [
     */
 
     'custom' => [
+        /**
+         * lifter
+         */
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
@@ -142,6 +145,16 @@ return [
         ],
         'first_name_kana' => [
             'regex' => ':attribute はカタカナで入力してください',
+        ],
+        'birthday' => [
+            'before'  => ':attribute は正しい日付を入力してください'
+        ],
+
+        /**
+         * contact
+         */
+        'check' => [
+            'required' => '当協会の「個人情報保護方針」に同意していただけない場合、送信できません'
         ]
     ],
 
@@ -181,5 +194,17 @@ return [
         'document_path_1' => '協会定款',
         'document_path_2' => 'ガバナンスコード',
         'document_path_3' => '年間計画',
+
+        /**
+         * contact
+         */
+        'last_name' => '氏名：姓',
+        'first_name' => '氏名：名',
+        'email' => 'メールアドレス',
+        // 'email_confirm' => 'メールアドレス(確認用)',
+        'title' => 'タイトル',
+        'content' => '内容',
+        'check' => '',
+
     ],
 ];
