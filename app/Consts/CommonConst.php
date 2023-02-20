@@ -12,6 +12,7 @@ class CommonConst
     const REQUIREMENTS_FILE_PATH_NAME = 'public/result-requirements/'; // 大会要項
     const RESULTS_FILE_PATH_NAME = 'public/result-results/';           // 大会結果
     const TOP_FILE_PATH = 'public/top-images/';                        // トップ画像
+    const ASSOCIATION_DOCUMENT_PATH = 'public/association-documens/';  // 協会資料
 
     /**
      * top画面用ファイル名
@@ -22,6 +23,16 @@ class CommonConst
     const TOP_FILE_PATH_NAME_2 = 'top_image_path_2.png'; // top画像2
     const TOP_FILE_PATH_3 = 'top_image_path_3';
     const TOP_FILE_PATH_NAME_3 = 'top_image_path_3.png'; // top画像3
+
+    /**
+     * ドキュメント
+     */
+    const DOCUMENT_PATH_1 = 'document_path_1';
+    const DOCUMENT_PATH_NAME_1 = 'document_path_1.pdf'; // 協会定款
+    const DOCUMENT_PATH_2 = 'document_path_2';
+    const DOCUMENT_PATH_NAME_2 = 'document_path_2.pdf'; // ガバナンスコード
+    const DOCUMENT_PATH_3 = 'document_path_3';
+    const DOCUMENT_PATH_NAME_3 = 'document_path_3.pdf'; // 年間計画
 
     /**
      * 性別
@@ -38,7 +49,7 @@ class CommonConst
     const SYSTEM_ADMIN_NAME = 'システム管理者';
     const SITE_ADMIN = 1;
     const SITE_ADMIN_NAME = 'サイト管理者';
-    const GENERAL_USER = 2;
+    const GENERAL_USER = 3;
     const GENERAL_USER_NAME = '一般ユーザー';
 
     /**
@@ -59,7 +70,6 @@ class CommonConst
     const USER_REGISTER_MAIL_LIST = [
         self::SYSTEM_ADMIN => self::SYSTEM_ADMIN_NAME,
         self::SITE_ADMIN => self::SITE_ADMIN_NAME,
-        self::GENERAL_USER => self::GENERAL_USER_NAME,
     ];
 
     /**
@@ -71,5 +81,16 @@ class CommonConst
         1 =>  self::TOP_FILE_PATH_NAME_1,
         2 =>  self::TOP_FILE_PATH_NAME_2,
         3 =>  self::TOP_FILE_PATH_NAME_3,
+    ];
+
+    /**
+     * ドキュメントリスト
+     * 
+     * @param  array
+     */
+    const DOCUMENT_LIST = [
+        1 =>  self::DOCUMENT_PATH_NAME_1,
+        2 =>  self::DOCUMENT_PATH_NAME_2,
+        3 =>  self::DOCUMENT_PATH_NAME_3,
     ];
 }

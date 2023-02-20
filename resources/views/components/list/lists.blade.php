@@ -1,4 +1,5 @@
 @foreach($breakingNews as $key => $value)
+<a href="{{ route('news.show', ['news' => $value['id']]) }}">
 <div class="flex relative px-[5%] mb-32 sp:block sp:mb-16">
     <div class="w-3/5 sp:w-full">
         <img class="absolute -top-[30%] -left-[0%] w-1/3 sp:-top-[22%] sp:-left-[0%]" src="{{ asset('images/parts/breaking_news.png') }}" alt="速報">
@@ -8,12 +9,11 @@
     </div>
     <div class="w-2/5 flex justify-center items-center sp:block sp:absolute sp:-top-[25%] sp:-right-[0%] sp:w-1/4"><img class="w-3/4 sp:w-full" src="{{asset('images/parts/hashibiroko.png')}}" alt="ハシビロ公"></div>
 </div>
+</a>
 @endforeach
 
 @foreach($newsList as $key => $value)
-<a href="{{ route('news.show', ['news' => $value['id']]) }}">
-    <div class="py-3 border-t-[1px] border-[#D9D9D9] {{ (count($newsList) - 1 == $key) ? 'border-b-[1px]' : '' }}">
-        <x-list.list :$value></x-list.list>
-    </div>
-</a>
+<div class="py-3 border-t-[1px] border-[#D9D9D9] {{ (count($newsList) - 1 == $key) ? 'border-b-[1px]' : '' }}">
+    <x-list.list :$value></x-list.list>
+</div>
 @endforeach

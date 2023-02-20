@@ -216,6 +216,7 @@ return [
          */
         'Convert' => App\Libs\Convert::class, // 文字変換
         'GetTitleName' => App\Libs\GetTitleName::class, // タイトルネーム取得
+        'DeleteFile' => App\Libs\DeleteFile::class, // ファイル削除
 
         /**
          * Const
@@ -223,8 +224,6 @@ return [
         'CommonConst' => App\Consts\CommonConst::class, // 共通定義
         'CategoryConst' => App\Consts\CategoryConst::class, // お知らせカテゴリ定義
         'TitleConst' => App\Consts\TitleConst::class, // タイトルネーム定義
-        'GetTitleName' => App\Libs\GetTitleName::class, // タイトル名
         'WeightClassConst' => App\Consts\WeightClassConst::class, // 階級定義
     ])->toArray(),
-
 ];
