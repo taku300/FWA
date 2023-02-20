@@ -8,7 +8,7 @@
                     <p class=" text-sm">{{ $wareki }}</p>
                 </div>
                 <!-- 検索ボタン -->
-                <div id="show-search-menu" class="text-right hidden pc:block">
+                <div id="show-search-menu" class="mr-1 text-right hidden pc:block">
                     <x-parts.button class="" bgColor="black" fontColor="white">Search</x-parts.button>
                 </div>
                 <!-- 検索サイドメニュー -->
@@ -34,7 +34,7 @@
                         <ul class="flex border-spacing-1 pc-sp:block pc-sp:border-t pc-sp:border-inherit">
                             <li class="shrink-[5] w-40 h-11 s-pc:hidden">
                                 @auth
-                                <div>
+                                <div class="ml-1">
                                     <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
                                         <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
                                     </a>
@@ -46,7 +46,7 @@
                             </li>
                             <li class="hidden s-pc:block">
                                 @auth
-                                <div>
+                                <div class="ml-1">
                                     <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
                                         <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
                                     </a>
