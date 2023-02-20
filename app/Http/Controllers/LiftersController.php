@@ -53,7 +53,6 @@ class LiftersController extends Controller
      */
     public function store(LifterForm $request)
     {
-        $this->validation->validation($request);
         $this->lifterService->createLifter($request);
         return redirect('/lifters');
     }
