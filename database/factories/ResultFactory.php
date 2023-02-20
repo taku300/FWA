@@ -19,7 +19,7 @@ class ResultFactory extends Factory
 
     public function definition()
     {
-        $date = $this->faker->dateTimeBetween('-1 week', '+1 week');
+        $date = $this->faker->dateTimeBetween('-5 year', '+5 year');
         return [
             'started_at' => $date->format('Y-m-d'),
             'ended_at' => $date->modify('+1day')->format('Y-m-d'),
