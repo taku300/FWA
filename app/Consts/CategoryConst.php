@@ -11,7 +11,7 @@ class CategoryConst
      */
     const NEWS_CATEGORY_LIST = [
         1 => ['category' => 'お知らせ', 'color' => 'orange'],
-        2 => ['category' => '大会情報', 'color' => 'red'],
+        2 => ['category' => '大会情報', 'color' => 'blue'],
     ];
     const CATEGORY_LIST = [
         'category' => [
@@ -20,7 +20,7 @@ class CategoryConst
         ],
         'color' => [
             1 => 'orange',
-            2 => 'red'
+            2 => 'blue'
         ]
     ];
 

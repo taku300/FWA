@@ -220,6 +220,14 @@ return [
          * タイトルネーム取得
          */
         'GetTitleName' => App\Libs\GetTitleName::class,
+        /**
+         * ファイル削除
+         */
+        'DeleteFile' => App\Libs\DeleteFile::class,
+        /**
+         * タイトル取得
+         */
+        'GetTitleName' => App\Libs\GetTitleName::class,
 
         // Const
         /**
@@ -234,14 +242,6 @@ return [
          * タイトルネーム定義
          */
         'TitleConst' => App\Consts\TitleConst::class,
-        /**
-         * 階級定義
-         */
-        'GetTitleName' => App\Libs\GetTitleName::class,
-        /**
-         * 登録編集処理
-         */
-        'DatabaseRegister' => App\Libs\DatabaseRegister::class,
         /**
          * 階級定義
          */
