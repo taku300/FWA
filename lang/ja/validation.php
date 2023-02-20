@@ -25,7 +25,7 @@ return [
     'alpha_dash'           => ':attribute は「英字」「数字」「-(ダッシュ)」「_(下線)」のみ有効です',
     'alpha_num'            => ':attribute は「英字」「数字」のみ有効です',
     'array'                => ':attribute は配列タイプのみ有効です',
-    'before'               => ':attribute は正しい日付を入力してください',
+    'before'               => ':attribute は :date より前の日付にしてください',
     'before_or_equal'      => ':attribute は :date 以前の日付にしてください',
     'between'              => [
         'numeric' => ':attribute は :min ～ :max までの数値まで有効です',

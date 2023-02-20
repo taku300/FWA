@@ -218,11 +218,6 @@ return [
         'GetTitleName' => App\Libs\GetTitleName::class, // タイトルネーム取得
 
         /**
-         * Services
-         */
-        'ValidationService' => App\Services\ValidationService::class, // バリデーション
-
-        /**
          * Const
          */
         'CommonConst' => App\Consts\CommonConst::class, // 共通定義

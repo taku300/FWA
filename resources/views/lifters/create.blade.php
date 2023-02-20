@@ -23,7 +23,7 @@
             {{ Form::model($lifters, ['method'=>$method, 'route'=>[$path, 'lifter' => isset($id) ? $id : null], 'files'=>true]) }}
             {{ Form::token() }}
             <ul>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('last_name') }}
                     {{ Form::error('first_name') }}
                 </li>
@@ -33,7 +33,7 @@
                     {{ Form::text('last_name', null, ['placeholder'=>'姓', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::text('first_name', null, ['placeholder'=>'名', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('last_name_kana') }}
                     {{ Form::error('first_name_kana') }}
                 </li>
@@ -43,7 +43,7 @@
                     {{ Form::text('last_name_kana', null, ['placeholder'=>'セイ', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::text('first_name_kana', null, ['placeholder'=>'メイ', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('birthday') }}
                 </li>
                 <li class="flex mb-4">
@@ -51,7 +51,7 @@
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::date('birthday',null, ['class' => 'border-slate-300 rounded-md']) }}
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('gender') }}
                 </li>
                 <li class="flex mb-4 items-center">
@@ -62,7 +62,7 @@
                     {{ Form::label('gender' . $key, $gender, ['class' => 'ml-1 mr-4']) }}
                     @endforeach
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('category') }}
                 </li>
                 <li class="flex mb-4">
@@ -70,7 +70,7 @@
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::select('category', \CategoryConst::GENERATION_CATEGORY_LIST, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('affiliation_id') }}
                 </li>
                 <li class="flex mb-4">
@@ -78,7 +78,7 @@
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::select('affiliation_id', $affiliation, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('weight_class') }}
                 </li>
                 <li class="flex mb-4">
@@ -86,7 +86,7 @@
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::select('weight_class', \WeightClassConst::CLASS_LIST, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
                 </li>
-                <li class="flex mb-4">
+                <li class="mb-4">
                     {{ Form::error('image_path') }}
                 </li>
                 <li class="flex mb-4">

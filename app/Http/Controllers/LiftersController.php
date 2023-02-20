@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LifterForm;
 use App\Models\Lifter;
 use App\Models\Affiliation;
 use App\Services\LifterService;
-use App\Services\ValidationService;
 
 /**
  * 選手紹介
@@ -15,15 +14,13 @@ use App\Services\ValidationService;
 class LiftersController extends Controller
 {
     public $lifterService;
-    private $validation;
 
     /**
      * @param  App\Services\LifterService  $lifterService
      */
-    public function __construct(LifterService $lifterService, ValidationService $validation)
+    public function __construct(LifterService $lifterService)
     {
         $this->lifterService = $lifterService;
-        $this->validation = $validation;
     }
 
     /**
@@ -54,7 +51,7 @@ class LiftersController extends Controller
     /**
      * @param  Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(LifterForm $request)
     {
         $this->validation->validation($request);
         $this->lifterService->createLifter($request);
@@ -79,9 +76,8 @@ class LiftersController extends Controller
      * @param  int  $id
      * @param  Illuminate\Http\Request  $request
      */
-    public function update($id, Request $request)
+    public function update($id, LifterForm $request)
     {
-        $this->validation->validation($request);
         $this->lifterService->updateLifter($id, $request);
         return redirect('/lifters');
     }
