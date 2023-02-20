@@ -40,6 +40,6 @@ class Result extends Model
 
     public static function getResultRecordList()
     {
-        return News::with('results')->get();
+        return News::with('result')->get();
     }
 }
