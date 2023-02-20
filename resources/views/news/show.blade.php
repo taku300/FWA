@@ -30,7 +30,7 @@
                 <div class="mb-7">
                     <h2 class="mb-2 text-lg font-black">資料</h2>
                     @foreach ($newsDetail['news_documents'] as $document)
-                    <a class="mb-5 text-sm block underline" href="{{ \Storage::url('news-documents/' . $document['document_path']) }}" download="file.pdf">{{ $document['title'] }}</a>
+                    <a class="mb-5 text-sm block underline" href="{{ \Storage::url('news-documents/' . $document['document_path']) }}" download="{{ $document['title'] }}.pdf">{{ $document['title'] }}</a>
                     @endforeach
                     @endif
                 </div>
