@@ -71,7 +71,7 @@ class NewsController extends Controller
 
     public function show($id)
     {
-        $newsDetail = $this->news->getNewsDetail($id);
+        $newsDetail = $this->news->getNewsDetail($id)->toArray();
 
         return view('news.show')->with(['newsDetail' => $newsDetail]);
     }

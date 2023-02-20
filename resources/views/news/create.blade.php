@@ -48,7 +48,7 @@
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('iframe_path', 'iframeURL', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::textarea('iframe_path', null, ['placeholder'=>'iframeURLを入力', 'class' => 'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    {{ Form::text('iframe_path', null, ['placeholder'=>'iframeURLを入力', 'class' => 'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 <li class="flex items-center mb-4">
                     {{ Form::label('preliminary_report_flag', '速報', ['class' => 'shrink-0 w-44']) }}
