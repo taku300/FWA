@@ -24,10 +24,10 @@ class LifterForm extends FormRequest
     public function rules()
     {
         return [
-            'last_name' => ['bail', 'required', 'string'],
-            'first_name' => ['bail', 'required', 'string'],
-            'last_name_kana' => ['bail', 'required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'first_name_kana' => ['bail', 'required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'last_name' => ['bail', 'required', 'string', 'max:255'],
+            'first_name' => ['bail', 'required', 'string', 'max:255'],
+            'last_name_kana' => ['bail', 'required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u', 'max:255'],
+            'first_name_kana' => ['bail', 'required', 'string', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u', 'max:255'],
             'birthday' => ['bail', 'required', 'date', 'before:today'],
             'gender' => 'required',
             'category' => 'required',
