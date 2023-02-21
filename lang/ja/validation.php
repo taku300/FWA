@@ -208,6 +208,10 @@ return [
         'detail' => 'お知らせ詳細',
         'iframe_path' => 'iframeURL',
         'preliminary_report_flag' => '速報',
+        /**
+         * affiliation
+         */
+        'name' => '所属',
 
         /**
          * lifter and contact
