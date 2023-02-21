@@ -74,7 +74,15 @@ class NewsService
      */
     public function newsDelete($id)
     {
-        // 
+        DB::beginTransaction();
+        try {
+            $news = News::find($id);
+            $news->delete();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
     }
 
     /**

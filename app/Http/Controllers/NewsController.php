@@ -95,6 +95,7 @@ class NewsController extends Controller
 
     public function destroy($id)
     {
-        // 
+        $this->newsService->newsDelete($id);
+        return redirect('/news');
     }
 }
