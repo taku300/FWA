@@ -77,6 +77,7 @@ class NewsService
         DB::beginTransaction();
         try {
             $news = News::find($id);
+            \DeleteFile::deleteFilePath('document_path', $news->news_documents);
             $news->delete();
         } catch (Exception $e) {
             DB::rollback();
