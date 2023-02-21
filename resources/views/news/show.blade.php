@@ -11,6 +11,9 @@
                     <p class="text-xl pc:text-lg sp:text-sm">{{ $newsDetail['title'] }}</p>
                     <p class="opacity-60 mt-1 pc:text-sm sp:text-xs">{{ $newsDetail['noticed_at'] ? '※ ' . $newsDetail['noticed_at'] : '' }}</p>
                 </div>
+                <div class="absolute right-0 top-0 z-10">
+                <x-list.auth :value='$newsDetail'></x-list.auth>
+                </div>
                 <img class="absolute top-0 -right-[5%] sp:-right-[2%] w-[164px] sp:w-[86px] h-[185px] sp:h-[97px] object-contain" src="{{ asset('images/parts/hashibiroko.png') }}" alt="">
             </div>
             @if ($newsDetail['iframe_path'])
