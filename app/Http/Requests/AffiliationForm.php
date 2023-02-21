@@ -24,7 +24,7 @@ class AffiliationForm extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['bail', 'required', 'string'],
         ];
     }
 }
