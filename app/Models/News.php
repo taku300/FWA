@@ -37,6 +37,19 @@ class News extends Model
     }
 
     /**
+     * news table deleting action
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($news) {
+            $news->news_links()->delete();
+            $news->news_documents()->delete();
+        });
+    }
+
+    /**
      * トップページ用 お知らせ日順 10件
      * 
      * @return collection
