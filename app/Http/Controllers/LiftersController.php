@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lifter;
 use App\Models\Affiliation;
+use App\Services\AffiliationService;
 use App\Services\LifterService;
 
 /**
@@ -14,13 +15,17 @@ use App\Services\LifterService;
 class LiftersController extends Controller
 {
     public $lifterService;
+    public $affiliationService;
 
     /**
      * @param  App\Services\LifterService  $lifterService
      */
-    public function __construct(LifterService $lifterService)
-    {
+    public function __construct(
+        LifterService $lifterService,
+        AffiliationService $affiliationService
+    ) {
         $this->lifterService = $lifterService;
+        $this->affiliationService = $affiliationService;
     }
 
     /**
@@ -53,8 +58,13 @@ class LiftersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->lifterService->createLifter($request);
-        return redirect('/lifters');
+        if ($request->has('affiliation')) {
+            $this->affiliationService->createAffiliation($request);
+            return redirect('/admins/lifters/create');
+        } else {
+            $this->lifterService->createLifter($request);
+            return redirect('/lifters');
+        }
     }
 
     /**
