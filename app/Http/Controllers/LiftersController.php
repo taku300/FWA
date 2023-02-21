@@ -60,7 +60,7 @@ class LiftersController extends Controller
     {
         if ($request->has('affiliation')) {
             $this->affiliationService->createAffiliation($request);
-            return redirect('/admins/lifters/create');
+            return redirect('/lifters');
         } else {
             $this->lifterService->createLifter($request);
             return redirect('/lifters');
