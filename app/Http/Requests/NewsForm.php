@@ -31,8 +31,9 @@ class NewsForm extends FormRequest
             'detail' => 'max:255',
             'iframe_path' => 'max:255',
             'preliminary_report_flag' => 'required',
-            // 'news_documents.*.title' => 'string',
-            // 'news_documents.*.document_file' => 'file',
+            'news_documents' => 'array',
+            'news_documents.*.title' => ['bail', 'required_with:news_documents.*.document_file', 'string'],
+            'news_documents.*.document_file' => ['bail', 'required_with:news_documents.*.document_title', 'file'],
         ];
     }
 }
