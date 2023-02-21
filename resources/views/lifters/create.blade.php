@@ -58,7 +58,7 @@
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                         <div class="sp:flex-col items-start">
                             {{ Form::select('affiliation_id', $affiliation, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md mr-2']) }}
-                            <button type="button" class="js-show-modal py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-black text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-80 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800 sp:mt-1" data-hs-overlay="#hs-slide-up-animation-modal">
+                            <button type="button" class="js-show-modal py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-black text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-80 focus:ring-offset-2 transition-all text-sm  sp:mt-1" data-hs-overlay="#hs-slide-up-animation-modal">
                             所属を追加
                             </button>
                         </div>
