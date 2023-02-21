@@ -71,6 +71,14 @@ class NewsService
 
     /**
      * @param  int  $id
+     */
+    public function newsDelete($id)
+    {
+        // 
+    }
+
+    /**
+     * @param  int  $id
      * @param  object  $request
      * @param  mixed  $tableName
      * @param  mixed  App\Models\**  $model

@@ -92,4 +92,9 @@ class NewsController extends Controller
 
         return redirect('/news');
     }
+
+    public function destroy($id)
+    {
+        // 
+    }
 }
