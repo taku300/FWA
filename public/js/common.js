@@ -97,12 +97,28 @@ $(document).ready(function () {
 
     /**
      * function
-     * 
+     *
      * function top-hero
      */
     function showNextImage() {
         imageIndex++;
         images.eq(imageIndex % images.length).fadeIn(800).delay(5000).fadeOut(300,showNextImage);
     }
-});
 
+
+    /**
+     * function
+     *
+     * function showModal $fadeoutModal
+     */
+    var $showModal = $('.js-show-modal');
+    var $fadeoutModal = $('.js-fadeout-modal');
+    var $slideUpAnimationModal = $('#hs-slide-up-animation-modal');
+    $showModal.click(function () {
+        $slideUpAnimationModal.removeClass('hidden');
+    })
+    $fadeoutModal.click(function () {
+        $slideUpAnimationModal.addClass('hidden');
+    })
+
+});
