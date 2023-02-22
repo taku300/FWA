@@ -9,7 +9,7 @@
                 <!-- 協会概要・役員名簿 -->
                 <div class="w-[50%] sp:w-full">
                     <div class="mb-24">
-                        <h2 class="text-4xl font-black">協会概要</h2>
+                        <h2 class="text-4xl font-black -translate-x-5 sp:-translate-x-0">協会概要</h2>
                         <dl class="pt-10">
                             <dt class="text-sm float-left font-black pb-8">名称</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">福岡県ウエイトリフティング協会</dd>
@@ -29,7 +29,7 @@
                         </dl>
                     </div>
                     <div>
-                        <h2 class="text-4xl font-black">役員名簿</h2>
+                        <h2 class="text-4xl font-black -translate-x-5 sp:-translate-x-0">役員名簿</h2>
                         <dl class="pt-10">
                             <dt class="text-sm float-left font-black pb-8">会長</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
@@ -47,7 +47,7 @@
                 <!-- キャラクター紹介 -->
                 <div class="w-[50%] sp:w-full sp:mt-24">
                     <div>
-                        <h2 class="text-4xl font-black">キャラクター紹介</h2>
+                        <h2 class="text-4xl font-black -translate-x-5 sp:-translate-x-0">キャラクター紹介</h2>
                         <div class="text-center pt-16">
                             <h2 class="text-4xl font-black">ハシビロ公</h2>
                         </div>
