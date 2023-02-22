@@ -19,11 +19,9 @@ class AffiliationsController extends Controller
         $this->affiliationService = $affiliationService;
     }
 
-    function store(Request $request) {
-        $affiliation = $request->all();
-        $affiliationId = $this->affiliationService->createAffiliation($request);
-        $affiliation += ['affiliationId' =>  $affiliationId ];
-        \Log::debug($affiliation);
+    function store(Request $request)
+    {
+        $affiliation = $this->affiliationService->createAffiliation($request->all());
         return $affiliation;
     }
 }
