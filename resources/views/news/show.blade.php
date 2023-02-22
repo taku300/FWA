@@ -5,16 +5,20 @@
         <x-layout.container>
             <div class="relative">
                 <!-- 速報有りのとき速報画像を表示 -->
+                @if($newsDetail['preliminary_report_flag'] === 1)
                 <img class="absolute -left-[5%] sp:-left-[4%] sp:top-3 z-50 h-[250px] sp:h-[146px]" src="{{ asset('images/parts/breaking_news.png') }}" alt="">
+                @endif
                 <div class="pt-[115px] sp:pt-[76px] pb-5 border-b border-black">
                     <p class="font-bold mb-2 pc:text-sm sp:text-xs">{{ $newsDetail['noticed_at'] }}</p>
                     <p class="text-xl pc:text-lg sp:text-sm">{{ $newsDetail['title'] }}</p>
                     <p class="opacity-60 mt-1 pc:text-sm sp:text-xs">{{ $newsDetail['noticed_at'] ? '※ ' . $newsDetail['noticed_at'] : '' }}</p>
                 </div>
                 <div class="absolute right-0 top-0 z-10">
-                <x-list.auth :value='$newsDetail'></x-list.auth>
+                    <x-list.auth :value='$newsDetail'></x-list.auth>
                 </div>
+                @if($newsDetail['preliminary_report_flag'] === 1)
                 <img class="absolute top-0 -right-[5%] sp:-right-[2%] w-[164px] sp:w-[86px] h-[185px] sp:h-[97px] object-contain" src="{{ asset('images/parts/hashibiroko.png') }}" alt="">
+                @endif
             </div>
             @if ($newsDetail['iframe_path'])
             <div class="my-9 sp:my-5 text-center">
