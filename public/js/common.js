@@ -4,7 +4,7 @@ $(document).ready(function () {
      * ロゴ背景の透明度の調整
      */
     var $headerPartsLoge = $(".js-header-parts-logo");
-    console.log($(window).scrollTop());
+    console.log('ScrollTop is ' + $(window).scrollTop());
 
     /**
      * 初期位置が482より下だった時
@@ -119,6 +119,46 @@ $(document).ready(function () {
     })
     $fadeoutModal.click(function () {
         $slideUpAnimationModal.addClass('hidden');
+    })
+
+    var $affiliationSubmit = $('.js-affiliation-submit');
+    var $affiliationInput = $('.js-affiliation-input');
+    var $affiliationSelection = $('select[name="affiliation_id"]');
+    console.log($affiliationSelection);
+    $affiliationSubmit.click(function () {
+        if ($affiliationInput.val() === '') {
+            alert("テキストを入力してください");
+            return false;
+        } else {
+            //   alert("送信しました");
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+                $.ajax({
+                    //POST通信
+                    type: "post",
+                    //ここでデータの送信先URLを指定します。
+                    url: "/admins/affiliations",
+                    dataType: "json",
+                    data: {
+                        name: $affiliationInput.val(),
+                    },
+                })
+                //通信が成功したとき
+                .then((res) => {
+                    console.log(res);
+                    $slideUpAnimationModal.addClass('hidden');
+                    $affiliationSelection.append(`<option value="${res.affiliationId}">${res.name}</option>`)
+                })
+                //通信が失敗したとき
+                .fail((error) => {
+                    alert("エラーが発生しました。");
+                    console.log(error.statusText);
+                    $slideUpAnimationModal.addClass('hidden');
+                });
+        }
     })
 
 });

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lifter;
 use App\Models\Affiliation;
-use App\Services\AffiliationService;
 use App\Services\LifterService;
 
 /**
@@ -15,24 +14,21 @@ use App\Services\LifterService;
 class LiftersController extends Controller
 {
     public $lifterService;
-    public $affiliationService;
 
     /**
      * @param  App\Services\LifterService  $lifterService
      */
     public function __construct(
         LifterService $lifterService,
-        AffiliationService $affiliationService
     ) {
         $this->lifterService = $lifterService;
-        $this->affiliationService = $affiliationService;
     }
 
     /**
      * 選手紹介
      * 1 = 男性
      * 2 = 女性
-     * 
+     *
      * @param  array  $manLifters
      * @param  array  $womanLifters
      */
@@ -46,7 +42,7 @@ class LiftersController extends Controller
     public function create()
     {
         $lifters = new Lifter;
-        $affiliation = array_column(Affiliation::all()->toArray(), 'name');
+        $affiliation = array_column(Affiliation::all()->toArray(), 'name', 'id');
         return view('lifters.create')->with([
             'lifters' => $lifters,
             'affiliation' => $affiliation,
@@ -58,13 +54,8 @@ class LiftersController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->has('affiliation')) {
-            $this->affiliationService->createAffiliation($request);
-            return redirect('/lifters');
-        } else {
-            $this->lifterService->createLifter($request);
-            return redirect('/lifters');
-        }
+        $this->lifterService->createLifter($request);
+        return redirect('/lifters');
     }
 
     /**

@@ -91,4 +91,4 @@
     </section>
 </x-layout.layout>
 
-<x-parts.affiliation-modal :$lifters></x-parts.affiliation-modal>
+<x-parts.affiliation-modal></x-parts.affiliation-modal>

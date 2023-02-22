@@ -1,7 +1,7 @@
 <div id="hs-slide-up-animation-modal" class="hs-overlay hidden w-full h-full fixed top-0 left-0 z-40 overflow-x-hidden overflow-y-auto bg-black bg-opacity-80">
     <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-14  ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto">
         <div class="flex flex-col bg-white border shadow-sm rounded-xl ">
-            {{ Form::model($lifters, ['method'=>'post', 'route'=>'admins.lifters.store']) }}
+            {{ Form::open(['method'=>'post', 'route'=>'admins.affiliations.store']) }}
             {{ Form::token() }}
             <div class="flex justify-between items-center py-3 px-4 border-b">
                 <h3 class="font-bold text-gray-800 ">
@@ -19,12 +19,12 @@
                     <li class="flex mb-4">
                         {{ Form::label('name', '所属', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                        {{ Form::text('name', null, ['placeholder'=>'所属', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                        {{ Form::text('name', null, ['placeholder'=>'所属', 'class' => 'js-affiliation-input w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     </li>
                 </ul>
             </div>
             <div class="flex justify-center items-center gap-x-2 py-3 px-4 border-t">
-                {{ Form::submit('登録する', ['name' => 'affiliation', 'class'=>'py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-black text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-spacity-80 focus:ring-offset-2 transition-all text-sm ']) }}
+                {{ Form::button('登録する', ['name' => 'affiliation', 'class'=>'js-affiliation-submit py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-black text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-spacity-80 focus:ring-offset-2 transition-all text-sm ']) }}
             </div>
             {{ Form::close() }}
         </div>
