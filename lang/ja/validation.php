@@ -184,6 +184,8 @@ return [
         'affiliation_id' => '所属',
         'weight_class' => '階級',
         'image_path' => '画像',
+        'performance' => '実績',
+        'comment' => 'コメント',
 
         /**
          * documents

@@ -94,9 +94,15 @@
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::file('image_path', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
                 </li>
+                <li class="mb-4">
+                    {{ Form::error('performance') }}
+                </li>
                 <li class="flex mb-4">
                     {{ Form::label('performance', '実績', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::textarea('performance', null, ['placeholder'=>'実績を入力', 'class'=>'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                </li>
+                <li class="mb-4">
+                    {{ Form::error('comment') }}
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('comment', 'ひとこと', ['class' => 'shrink-0 w-44']) }}
