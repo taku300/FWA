@@ -208,6 +208,10 @@ return [
         'detail' => 'お知らせ詳細',
         'iframe_path' => 'iframeURL',
         'preliminary_report_flag' => '速報',
+        'news_documents.*.title' => '資料タイトル',
+        'news_documents.*.document_path' => '資料ファイル',
+        'news_links.*.title' => 'リンクタイトル',
+        'news_links.*.link_path' => 'リンクファイル',
         /**
          * affiliation
          */

@@ -65,7 +65,7 @@ class NewsController extends Controller
     public function store(NewsForm $request)
     {
         $this->newsService->newsCreate($request);
-        return redirect('/news');
+        return redirect(route('news'));
     }
 
     public function show($id)
@@ -86,5 +86,6 @@ class NewsController extends Controller
     public function update($id, NewsForm $request)
     {
         $this->newsService->newsUpdate($id, $request);
+        return redirect(route('admins.news.edit', ['news' => $id]));
     }
 }
