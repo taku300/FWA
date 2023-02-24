@@ -18,8 +18,9 @@ class LiftersController extends Controller
     /**
      * @param  App\Services\LifterService  $lifterService
      */
-    public function __construct(LifterService $lifterService)
-    {
+    public function __construct(
+        LifterService $lifterService,
+    ) {
         $this->lifterService = $lifterService;
     }
 
@@ -27,7 +28,7 @@ class LiftersController extends Controller
      * 選手紹介
      * 1 = 男性
      * 2 = 女性
-     * 
+     *
      * @param  array  $manLifters
      * @param  array  $womanLifters
      */
@@ -41,7 +42,7 @@ class LiftersController extends Controller
     public function create()
     {
         $lifters = new Lifter;
-        $affiliation = array_column(Affiliation::all()->toArray(), 'name');
+        $affiliation = array_column(Affiliation::all()->toArray(), 'name', 'id');
         return view('lifters.create')->with([
             'lifters' => $lifters,
             'affiliation' => $affiliation,
