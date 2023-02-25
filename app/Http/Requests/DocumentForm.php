@@ -29,4 +29,13 @@ class DocumentForm extends FormRequest
             'document_path_3' => 'file',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'document_path_1' => '協会定款',
+            'document_path_2' => 'ガバナンスコード',
+            'document_path_3' => '年間計画',
+        ];
+    }
 }
