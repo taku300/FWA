@@ -174,35 +174,6 @@ return [
     */
 
     'attributes' => [
-
-        /**
-         * affiliation
-         */
-        'name' => '所属',
-
-        /**
-         * lifter and contact
-         */
-        'last_name' => '氏名：姓',
-        'first_name' => '氏名：名',
-
-        /**
-         * lifter and news
-         */
-        'category' => 'カテゴリー',
-
-        /**
-         * contact and news
-         */
-        'title' => 'タイトル',
-
-        /**
-         * top
-         */
-        'top_lifter_1' => 'トップ選手写真１',
-        'top_lifter_2' => 'トップ選手写真２',
-        'top_image_path_1' => 'トップ写真１',
-        'top_image_path_2' => 'トップ写真２',
-        'top_image_path_3' => 'トップ写真３',
+        // 
     ],
 ];
