@@ -63,11 +63,15 @@ class ResultsController extends Controller
         ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $this->resultService->createResult($request);
+        return redirect('/results');
     }
 
     public function update($id, Request $request)
     {
+        $this->resultService->updateResult($id, $request);
+        return redirect('/results');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Result;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ResultService
 {
@@ -12,6 +13,75 @@ class ResultService
     public function __construct(Result $result)
     {
         $this->result = $result;
+    }
+
+    /**
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function createResult($request)
+    {
+        DB::beginTransaction();
+        try {
+            $result = new Result($request->all());
+            $this->saveRequirementPath($request, $result);
+            $this->saveResultPath($request, $result);
+            $result->save();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /**
+     * @param  int  $id
+     * @param  Illuminate\Http\Request  $request
+     */
+    public function updateResult($id, $request)
+    {
+        DB::beginTransaction();
+        try {
+            $result = Result::find($id);
+            $this->saveRequirementPath($request, $result);
+            if ($request->file('requirement_path')) {
+                \DeleteFile::deleteFilePath('requirement_path', $result);
+            }
+            $this->saveResultPath($request, $result);
+            if ($request->file('result_path')) {
+                \DeleteFile::deleteFilePath('result_path', $result);
+            }
+            $result->update($request->except(['requirement_path', 'result_path']));
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /** @param  mixed  $file
+     *
+     * @return  mixed
+     */
+    public function saveRequirementPath($request, $model): mixed
+    {
+        if ($request->file('requirement_path')) {
+            $path = $request->file('requirement_path')->store(\CommonConst::REQUIREMENTS_FILE_PATH_NAME);
+            $model->requirement_path = basename($path);
+        }
+        return $model;
+    }
+
+    /** @param  mixed  $file
+     *
+     * @return  mixed
+     */
+    public function saveResultPath($request, $model): mixed
+    {
+        if ($request->file('result_path')) {
+            $path = $request->file('result_path')->store(\CommonConst::RESULTS_FILE_PATH_NAME);
+            $model->result_path = basename($path);
+        }
+        return $model;
     }
 
     /**
