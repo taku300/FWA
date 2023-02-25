@@ -35,10 +35,26 @@ class NewsForm extends FormRequest
             'preliminary_report_flag' => 'required',
             'news_documents' => 'array',
             'news_documents.*.title' => ['required_with:news_documents.*.document_path', 'string'],
-            'news_documents.*.document_path' => ['required_with:news_documents.*.title','string'],
+            'news_documents.*.document_path' => ['required_with:news_documents.*.title', 'string'],
             'news_links' => 'array',
             'news_links.*.title' => ['required_with:news_links.*.link_path', 'string'],
             'news_links.*.link_path' => ['required_with:news_links.*.title', 'string'],
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'タイトル',
+            'noticed_at' => 'お知らせ日',
+            'note' => '注意書き',
+            'detail' => 'お知らせ詳細',
+            'iframe_path' => 'iframeURL',
+            'preliminary_report_flag' => '速報',
+            'news_documents.*.title' => '資料タイトル',
+            'news_documents.*.document_path' => '資料ファイル',
+            'news_links.*.title' => 'リンクタイトル',
+            'news_links.*.link_path' => 'リンクファイル',
         ];
     }
 }
