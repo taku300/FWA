@@ -234,5 +234,14 @@ return [
          * contact and news
          */
         'title' => 'タイトル',
+
+        /**
+         * top
+         */
+        'top_lifter_1' => 'トップ選手写真１',
+        'top_lifter_2' => 'トップ選手写真２',
+        'top_image_path_1' => 'トップ写真１',
+        'top_image_path_2' => 'トップ写真２',
+        'top_image_path_3' => 'トップ写真３',
     ],
 ];
