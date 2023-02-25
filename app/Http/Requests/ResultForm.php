@@ -36,8 +36,8 @@ class ResultForm extends FormRequest
     public function attributes()
     {
         return [
-            'started_at' => '開始日',
-            'ended_at' => '終了日',
+            'started_at' => '開催日：開始日',
+            'ended_at' => '開催日：終了日',
             'name' => '大会名',
             'venue' => '開催日',
             'requirement_path' => '大会要項URL',
