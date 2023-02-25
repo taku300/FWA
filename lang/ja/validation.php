@@ -174,13 +174,6 @@ return [
     */
 
     'attributes' => [
-        /**
-         * documents
-         */
-        'document_path_1' => '協会定款',
-        'document_path_2' => 'ガバナンスコード',
-        'document_path_3' => '年間計画',
-
 
         /**
          * affiliation
