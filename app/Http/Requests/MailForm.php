@@ -33,4 +33,16 @@ class MailForm extends FormRequest
             'check' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'email' => 'メールアドレス',
+            // 'email_confirm' => 'メールアドレス(確認用)',
+            'content' => '内容',
+            'check' => '',
+            'last_name' => '氏名：姓',
+            'first_name' => '氏名：名',
+        ];
+    }
 }
