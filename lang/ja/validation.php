@@ -175,19 +175,6 @@ return [
 
     'attributes' => [
         /**
-         * lifter
-         */
-        'last_name_kana' => '氏名：セイ',
-        'first_name_kana' => '氏名：メイ',
-        'birthday' => '生年月日',
-        'gender' => '性別',
-        'affiliation_id' => '所属',
-        'weight_class' => '階級',
-        'image_path' => '画像',
-        'performance' => '実績',
-        'comment' => 'コメント',
-
-        /**
          * documents
          */
         'document_path_1' => '協会定款',
@@ -202,18 +189,6 @@ return [
         'content' => '内容',
         'check' => '',
 
-        /**
-         * news
-         */
-        'noticed_at' => 'お知らせ日',
-        'note' => '注意書き',
-        'detail' => 'お知らせ詳細',
-        'iframe_path' => 'iframeURL',
-        'preliminary_report_flag' => '速報',
-        'news_documents.*.title' => '資料タイトル',
-        'news_documents.*.document_path' => '資料ファイル',
-        'news_links.*.title' => 'リンクタイトル',
-        'news_links.*.link_path' => 'リンクファイル',
         /**
          * affiliation
          */
