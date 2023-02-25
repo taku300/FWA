@@ -27,6 +27,6 @@ class DocumentsController extends Controller
     {
         $this->documentsService->updateDocument($request);
 
-        return redirect('/');
+        return redirect(route('admins.documents.edit'));
     }
 }
