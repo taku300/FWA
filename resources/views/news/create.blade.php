@@ -29,7 +29,7 @@
                 <li class="flex mb-4">
                     {{ Form::label('category', 'カテゴリー', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                    {{ Form::select('category', \CategoryConst::CATEGORY_LIST['category'], null, ['placeholder'=>'選択してください', 'class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md']) }}
+                    {{ Form::select('category', \CategoryConst::CATEGORY_LIST['category'], $news['category'] ? $news['category'] : \CategoryConst::NEWS, ['placeholder'=>'選択してください', 'class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md']) }}
                 </li>
                 <li class="mb-4">
                     {{ Form::error('noticed_at') }}
@@ -37,7 +37,7 @@
                 <li class="flex mb-4">
                     {{ Form::label('noticed_at', 'お知らせ日', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                    {{ Form::date('noticed_at', null, ['class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    {{ Form::date('noticed_at', $news['noticed_at'] ? $news['noticed_at'] : now(), ['class' => 'shrink-0 w-1/5 placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 <li class="mb-4">
                     {{ Form::error('title') }}
@@ -66,7 +66,7 @@
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('iframe_path', 'iframeURL', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::textarea('iframe_path', null, ['placeholder'=>'iframeURLを入力', 'class' => 'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    {{ Form::text('iframe_path', null, ['placeholder'=>'iframeURLを入力', 'class' => 'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                 </li>
                 <li class="mb-4">
                     {{ Form::error('preliminary_report_flag') }}
@@ -81,6 +81,10 @@
                 </li>
             </ul>
             <ul>
+                <li class="mb-4">
+                    {{ Form::error('news_documents.*.title') }}
+                    {{ Form::error('news_documents.*.document_path') }}
+                </li>
                 @if (is_array($news))
                 <li class="flex items-center mb-4">
                     {{ Form::label("", '資料', ['class' => !empty($news['news_documents']) ? 'hidden shrink-0 w-44' : 'shrink-0 w-44']) }}
@@ -118,6 +122,10 @@
                 @endif
             </ul>
             <ul>
+                <li class="mb-4">
+                    {{ Form::error('news_links.*.title') }}
+                    {{ Form::error('news_links.*.link_path') }}
+                </li>
                 @if (is_array($news))
                 <li class="w-full flex items-center mb-4">
                     {{ Form::hidden('' )}}

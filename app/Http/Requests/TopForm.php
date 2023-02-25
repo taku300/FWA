@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DocumentForm extends FormRequest
+class TopForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,11 @@ class DocumentForm extends FormRequest
     public function rules()
     {
         return [
-            'document_path_1' => 'file',
-            'document_path_2' => 'file',
-            'document_path_3' => 'file',
+            'top_lifter_1' => ['nullable', 'integer', 'different:top_lifter_2'],
+            'top_lifter_2' => ['nullable', 'integer', 'different:top_lifter_1'],
+            'top_image_path_1' => ['file'],
+            'top_image_path_2' => ['file'],
+            'top_image_path_3' => ['file'],
         ];
     }
 }

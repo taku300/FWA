@@ -15,7 +15,7 @@ class DeleteFile
         }
         if ($path == 'document_path') {
             foreach ($fileNames as $fileName) {
-                \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileName[$path]);
+                \Storage::delete(\CommonConst::NEWS_FILE_PATH_NAME . $fileName[$path]);
             }
         }
     }

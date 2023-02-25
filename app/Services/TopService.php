@@ -28,18 +28,22 @@ class TopService
     {
         if ($request->top_lifter_1) {
             $keyList = $this->lifterService->getTopLifterNameList();
-            $oldLifter = Lifter::find($keyList[0]['id']);
-            $oldLifter->top_post_flag = 0;
-            $oldLifter->save();
+            if (array_key_exists(0, $keyList)) {
+                $oldLifter = Lifter::find($keyList[0]['id']);
+                $oldLifter->top_post_flag = 0;
+                $oldLifter->save();
+            }
             $lifter = Lifter::find($request->top_lifter_1);
             $lifter->top_post_flag = 1;
             $lifter->save();
         }
         if ($request->top_lifter_2) {
             $keyList = $this->lifterService->getTopLifterNameList();
-            $oldLifter = Lifter::find($keyList[1]['id']);
-            $oldLifter->top_post_flag = 0;
-            $oldLifter->save();
+            if (array_key_exists(1, $keyList)) {
+                $oldLifter = Lifter::find($keyList[1]['id']);
+                $oldLifter->top_post_flag = 0;
+                $oldLifter->save();
+            }
             $lifter = Lifter::find($request->top_lifter_2);
             $lifter->top_post_flag = 1;
             $lifter->save();

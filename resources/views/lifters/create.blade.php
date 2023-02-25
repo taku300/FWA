@@ -73,10 +73,15 @@
                 <li class="mb-4">
                     {{ Form::error('affiliation_id') }}
                 </li>
-                <li class="flex mb-4">
+                <li class="flex mb-4 items-start">
                     {{ Form::label('affiliation_id', '所属', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
-                    {{ Form::select('affiliation_id', $affiliation, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md']) }}
+                    <div class="sp:flex-col items-start">
+                        {{ Form::select('affiliation_id', $affiliation, null, ['placeholder'=>'選択してください', 'class' => 'placeholder:text-slate-400 border-slate-300 rounded-md mr-2']) }}
+                        <button type="button" name="affiliation" class="js-show-modal py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-black text-white hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-opacity-80 focus:ring-offset-2 transition-all text-sm  sp:mt-1" data-hs-overlay="#hs-slide-up-animation-modal">
+                            所属を追加
+                        </button>
+                    </div>
                 </li>
                 <li class="mb-4">
                     {{ Form::error('weight_class') }}
@@ -88,15 +93,22 @@
                 </li>
                 <li class="mb-4">
                     {{ Form::error('image_path') }}
+
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('image_path', '画像', ['class' => 'shrink-0 w-24']) }}
                     <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                     {{ Form::file('image_path', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
                 </li>
+                <li class="mb-4">
+                    {{ Form::error('performance') }}
+                </li>
                 <li class="flex mb-4">
                     {{ Form::label('performance', '実績', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::textarea('performance', null, ['placeholder'=>'実績を入力', 'class'=>'align-top w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                </li>
+                <li class="mb-4">
+                    {{ Form::error('comment') }}
                 </li>
                 <li class="flex mb-4">
                     {{ Form::label('comment', 'ひとこと', ['class' => 'shrink-0 w-44']) }}
@@ -110,3 +122,5 @@
         </x-layout.container>
     </section>
 </x-layout.layout>
+
+<x-parts.affiliation-modal></x-parts.affiliation-modal>

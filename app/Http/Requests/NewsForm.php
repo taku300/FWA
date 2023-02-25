@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class NewsForm extends FormRequest
 {
@@ -23,6 +24,7 @@ class NewsForm extends FormRequest
      */
     public function rules()
     {
+        // dd(Request::all());s
         return [
             'category' => 'required',
             'noticed_at' => ['bail', 'required', 'date'],
@@ -32,8 +34,11 @@ class NewsForm extends FormRequest
             'iframe_path' => 'max:255',
             'preliminary_report_flag' => 'required',
             'news_documents' => 'array',
-            'news_documents.*.title' => ['bail', 'required_with:news_documents.*.document_file', 'string'],
-            'news_documents.*.document_file' => ['bail', 'required_with:news_documents.*.document_title', 'file'],
+            'news_documents.*.title' => ['required_with:news_documents.*.document_path', 'string'],
+            'news_documents.*.document_path' => ['required_with:news_documents.*.title','string'],
+            'news_links' => 'array',
+            'news_links.*.title' => ['required_with:news_links.*.link_path', 'string'],
+            'news_links.*.link_path' => ['required_with:news_links.*.title', 'string'],
         ];
     }
 }

@@ -6,7 +6,7 @@ use App\Models\News;
 use App\Models\Lifter;
 use App\Services\LifterService;
 use App\Services\TopService;
-use Illuminate\Http\Request;
+use App\Http\Requests\TopForm;
 
 /**
  * トップ画面
@@ -58,7 +58,7 @@ class TopController extends Controller
         return view('top.edit')->with(['topLifterList' => $topLifterList, 'allLifterList' => $allLifterList]);
     }
 
-    public function update(Request $request)
+    public function update(TopForm $request)
     {
         $this->topService->topUpdate($request);
 

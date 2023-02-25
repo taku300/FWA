@@ -34,6 +34,8 @@ class LifterForm extends FormRequest
             'affiliation_id' => 'required',
             'weight_class' => 'required',
             'image_path' => ['bail', 'required', 'image'],
+            'performance' => ['bail', 'nullable', 'string', 'max:255'],
+            'comment' => ['bail', 'nullable', 'string', 'max:255'],
         ];
     }
 }

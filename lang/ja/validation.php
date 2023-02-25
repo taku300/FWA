@@ -184,6 +184,8 @@ return [
         'affiliation_id' => '所属',
         'weight_class' => '階級',
         'image_path' => '画像',
+        'performance' => '実績',
+        'comment' => 'コメント',
 
         /**
          * documents
@@ -208,6 +210,10 @@ return [
         'detail' => 'お知らせ詳細',
         'iframe_path' => 'iframeURL',
         'preliminary_report_flag' => '速報',
+        'news_documents.*.title' => '資料タイトル',
+        'news_documents.*.document_path' => '資料ファイル',
+        'news_links.*.title' => 'リンクタイトル',
+        'news_links.*.link_path' => 'リンクファイル',
         /**
          * affiliation
          */
@@ -228,5 +234,14 @@ return [
          * contact and news
          */
         'title' => 'タイトル',
+
+        /**
+         * top
+         */
+        'top_lifter_1' => 'トップ選手写真１',
+        'top_lifter_2' => 'トップ選手写真２',
+        'top_image_path_1' => 'トップ写真１',
+        'top_image_path_2' => 'トップ写真２',
+        'top_image_path_3' => 'トップ写真３',
     ],
 ];

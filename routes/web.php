@@ -11,6 +11,7 @@ use App\Http\Controllers\LiftersController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DocumentsController;
+use App\Http\Controllers\AffiliationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,6 +68,8 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     //ドキュメント編集
     Route::get('/documents/edit', [DocumentsController::class, 'edit'])->name('documents.edit');
     Route::put('/documents/update', [DocumentsController::class, 'update'])->name('documents.update');
+    Route::resource('/affiliations', AffiliationsController::class, ['only' => ['store']]);
+
 });
 
 
