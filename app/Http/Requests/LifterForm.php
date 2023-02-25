@@ -38,4 +38,21 @@ class LifterForm extends FormRequest
             'comment' => ['bail', 'nullable', 'string', 'max:255'],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'last_name' => '氏名：姓',
+            'first_name' => '氏名：名',
+            'last_name_kana' => '氏名：セイ',
+            'first_name_kana' => '氏名：メイ',
+            'birthday' => '生年月日',
+            'gender' => '性別',
+            'affiliation_id' => '所属',
+            'weight_class' => '階級',
+            'image_path' => '画像',
+            'performance' => '実績',
+            'comment' => 'コメント',
+        ];
+    }
 }
