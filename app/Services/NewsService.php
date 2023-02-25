@@ -71,6 +71,23 @@ class NewsService
 
     /**
      * @param  int  $id
+     */
+    public function newsDelete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $news = News::find($id);
+            \DeleteFile::deleteFilePath('document_path', $news->news_documents);
+            $news->delete();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /**
+     * @param  int  $id
      * @param  object  $request
      * @param  mixed  $tableName
      * @param  mixed  App\Models\**  $model
