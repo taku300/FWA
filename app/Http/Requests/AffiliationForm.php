@@ -27,4 +27,11 @@ class AffiliationForm extends FormRequest
             'name' => ['bail', 'required', 'string'],
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => '所属',
+        ];
+    }
 }
