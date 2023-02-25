@@ -181,13 +181,6 @@ return [
         'document_path_2' => 'ガバナンスコード',
         'document_path_3' => '年間計画',
 
-        /**
-         * contact
-         */
-        'email' => 'メールアドレス',
-        // 'email_confirm' => 'メールアドレス(確認用)',
-        'content' => '内容',
-        'check' => '',
 
         /**
          * affiliation
