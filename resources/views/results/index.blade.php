@@ -68,10 +68,19 @@
                             <li class="p-[10px] shrink-0 w-[150px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催日</span>{{ date('m/d', strtotime($value['started_at'])) }} ~ {{ date('m/d', strtotime($value['ended_at'])) }}</li>
                             <li class="p-[10px] shrink-1 w-[415px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">大会名</span>{{ $value['name'] }}</li>
                             <li class="p-[10px] shrink-1 w-[225px] h-11 border-l border-inherit pc-sp:w-full"><span class="hidden pc-sp:inline font-black mr-3">開催地</span>{{ $value['venue'] }}</li>
-                            <!-- TODO: href="{{ $value['requirement_path'] }}" 差し替え -->
-                            <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex"><span class="hidden pc-sp:inline font-black mr-3">要　項</span><a href=""><img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5"></a></li>
+                            <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex">
+                                <span class="hidden pc-sp:inline font-black mr-3">要　項</span>
+                                <a class="mb-5 text-sm block underline" href="{{ \Storage::url('result-requirements/' . $value['requirement_path']) }}" download="{{ date('Y-m-d', strtotime($value['started_at'])) }}_{{ date('Y-m-d', strtotime($value['ended_at'])) }}_{{ $value['name'] }}要項.pdf">
+                                    <img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5">
+                                </a>
+                            </li>
                             <!-- TODO: href="{{ $value['result_path'] }}" 差し替え -->
-                            <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex"><span class="hidden pc-sp:inline font-black mr-3">結　果</span><a href=""><img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5"></a></li>
+                            <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex">
+                                <span class="hidden pc-sp:inline font-black mr-3">結　果</span>
+                                <a class="mb-5 text-sm block underline" href="{{ \Storage::url('result-results/' . $value['result_path']) }}" download="{{ date('Y-m-d', strtotime($value['started_at'])) }}_{{ date('Y-m-d', strtotime($value['ended_at'])) }}_{{ $value['name'] }}結果.pdf">
+                                    <img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5">
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     @endforeach
