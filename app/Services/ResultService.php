@@ -42,14 +42,14 @@ class ResultService
         DB::beginTransaction();
         try {
             $result = Result::find($id);
-            $this->saveRequirementPath($request, $result);
             if ($request->file('requirement_path')) {
                 \DeleteFile::deleteFilePath('requirement_path', $result);
             }
-            $this->saveResultPath($request, $result);
+            $this->saveRequirementPath($request, $result);
             if ($request->file('result_path')) {
                 \DeleteFile::deleteFilePath('result_path', $result);
             }
+            $this->saveResultPath($request, $result);
             $result->update($request->except(['requirement_path', 'result_path']));
         } catch (Exception $e) {
             DB::rollback();
@@ -66,8 +66,8 @@ class ResultService
         DB::beginTransaction();
         try {
             $result = Result::find($id);
-            \DeleteFile::deleteFilePath('requirement_path', $result->requirement_path);
-            \DeleteFile::deleteFilePath('result_path', $result->result_path);
+            \DeleteFile::deleteFilePath('requirement_path', $result);
+            \DeleteFile::deleteFilePath('result_path', $result);
             $result->delete();
         } catch (Exception $e) {
             DB::rollback();
