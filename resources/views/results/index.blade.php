@@ -34,20 +34,22 @@
                         <ul class="flex border-spacing-1 pc-sp:block pc-sp:border-t pc-sp:border-inherit">
                             <li class="shrink-[5] w-40 h-11 s-pc:hidden">
                                 @auth
-                                <div class="ml-1">
-                                    <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
+                                <div class="flex ml-1">
+                                    <a class="mr-1" href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
                                         <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
                                     </a>
-                                    <a href="{{ route('admins.results.destroy', ['result' => $value['id']]) }}">
+                                    <form action="{{ route('admins.results.destroy', ['result' => $value['id']]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
                                         <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
-                                    </a>
+                                    </form>
                                 </div>
                                 @endauth
                             </li>
                             <li class="hidden s-pc:block">
                                 @auth
-                                <div class="ml-1">
-                                    <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
+                                <div class="flex ml-1">
+                                    <a class=" mr-1" href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
                                         <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
                                     </a>
                                     <form action="{{ route('admins.results.destroy', ['result' => $value['id']]) }}" method="post">
