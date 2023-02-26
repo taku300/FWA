@@ -11,7 +11,7 @@
     <div class="absolute right-0 top-0">
     <x-list.auth :$value></x-list.auth>
     </div>
-    <div class="w-2/5 flex justify-center items-center sp:block sp:absolute sp:-top-[25%] sp:-right-[0%] sp:w-1/4"><img class="w-3/4 sp:w-full" src="{{asset('images/parts/hashibiroko.png')}}" alt="ハシビロ公"></div>
+    <div class="w-2/5 flex justify-center items-center sp:block sp:absolute sp:-top-[25%] sp:-right-[0%] sp:w-1/4"><img class="w-3/4 sp:w-full" src="{{asset('images/parts/hashibiroko.png')}}" alt="イメージキャラクター"></div>
 </div>
 
 @endforeach
