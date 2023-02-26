@@ -50,9 +50,11 @@
                                     <a href="{{ route('admins.results.edit', ['result' => $value['id']]) }}">
                                         <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
                                     </a>
-                                    <a href="{{ route('admins.results.destroy', ['result' => $value['id']]) }}">
+                                    <form action="{{ route('admins.results.destroy', ['result' => $value['id']]) }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
                                         <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
-                                    </a>
+                                    </form>
                                 </div>
                                 @endauth
                             </li>
