@@ -96,6 +96,7 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $this->newsService->newsDelete($id);
+
         return redirect('/news')->with('message', '削除が完了しました。');
     }
 }
