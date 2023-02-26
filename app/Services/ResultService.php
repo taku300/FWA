@@ -109,6 +109,7 @@ class ResultService
      */
     public function getArchiveFiscalYearList(): array
     {
+        $array = [];
         $dates = $this->result->getArchiveFiscalYear();
         foreach ($dates as $date) {
             $date = new Carbon($date);
