@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DocumentForm;
 use App\Services\DocumentService;
-use Illuminate\Http\Request;
 
 /**
  * ドキュメント更新
@@ -23,7 +23,7 @@ class DocumentsController extends Controller
         return view('documents.edit');
     }
 
-    public function update(Request $request)
+    public function update(DocumentForm $request)
     {
         $this->documentsService->updateDocument($request);
 
