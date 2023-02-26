@@ -90,7 +90,7 @@ class NewsController extends Controller
     {
         $this->newsService->newsUpdate($id, $request);
 
-        return redirect('/news')->with('message', '登録が完了しました。');
+        return redirect('/news')->with('message', '更新が完了しました。');
     }
 
     public function destroy($id)

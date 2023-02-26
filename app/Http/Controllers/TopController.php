@@ -62,6 +62,6 @@ class TopController extends Controller
     {
         $this->topService->topUpdate($request);
 
-        return redirect('/')->with('message', '登録が完了しました。');
+        return redirect('/')->with('message', '更新が完了しました。');
     }
 }

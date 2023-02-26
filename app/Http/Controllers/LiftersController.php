@@ -79,7 +79,7 @@ class LiftersController extends Controller
     public function update($id, LifterForm $request)
     {
         $this->lifterService->updateLifter($id, $request);
-        return redirect('/lifters')->with('message', '登録が完了しました。');
+        return redirect('/lifters')->with('message', '更新が完了しました。');
     }
 
     /**
