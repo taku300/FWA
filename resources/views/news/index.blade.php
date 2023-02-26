@@ -3,6 +3,13 @@
     <section>
         <div class="mt-32">
             <x-layout.container>
+                @auth
+                <div class="relative">
+                    <a href="{{ route('admins.news.create') }}" class="mr-1 text-right absolute right-0">
+                        <x-parts.button class="" bgColor="black" fontColor="white">新規登録</x-parts.button>
+                    </a>
+                </div>
+                @endauth
                 <div class="mb-16">
                     <span>カテゴリー：</span>
                     @foreach(\CategoryConst::NEWS_CATEGORY_LIST as $category)

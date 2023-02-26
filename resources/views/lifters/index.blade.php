@@ -1,6 +1,15 @@
 <x-layout.layout>
     <!-- main -->
     <section>
+        @auth
+        <x-layout.container>
+            <div class="relative">
+                <a href="{{ route('admins.lifters.create') }}" class="mr-1 text-right absolute right-0">
+                    <x-parts.button class="" bgColor="black" fontColor="white">新規登録</x-parts.button>
+                </a>
+            </div>
+        </x-layout.container>
+        @endauth
         <!-- Men -->
         <div class="mt-32 mb-24 sp:mb-12">
             <x-lifters.title textColor="gold">Man</x-lifters.title>
