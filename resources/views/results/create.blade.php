@@ -23,6 +23,10 @@
             {{ Form::model($results, ['method'=>$method, 'route'=>[$path, 'result' => isset($id) ? $id : null], 'files'=>true]) }}
                 {{ Form::token() }}
                 <ul>
+                    <li class="mb-4">
+                        {{ Form::error('started_at') }}
+                        {{ Form::error('ended_at') }}
+                    </li>
                     <li class="flex mb-4">
                         {{ Form::label('started_at', '開催日', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
@@ -30,19 +34,31 @@
                         <span class="flex items-center mx-2"> 〜 </span>
                         {{ Form::date('ended_at', null, ['class' => 'w-full border-slate-300 rounded-md' ]) }}
                     </li>
+                    <li class="mb-4">
+                        {{ Form::error('name') }}
+                    </li>
                     <li class="flex mb-4">
                         {{ Form::label('name', '大会名', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                         {{ Form::text('name', null, ['placeholder'=>'大会名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                    </li>
+                    <li class="mb-4">
+                        {{ Form::error('venue') }}
                     </li>
                     <li class="flex mb-4">
                         {{ Form::label('venue', '開催地', ['class' => 'shrink-0 w-24']) }}
                         <p class="shrink-0 w-20 text-[#FF0404]">【必須】</p>
                         {{ Form::text('venue', null, ['placeholder'=>'開催地を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     </li>
+                    <li class="mb-4">
+                        {{ Form::error('requirement_path') }}
+                    </li>
                     <li class="flex mb-4">
                         {{ Form::label('requirement_path', '要項', ['class' => 'shrink-0 w-44']) }}
                         {{ Form::file('requirement_path', ['accept' => '.pdf', 'class'=>'' ]) }}
+                    </li>
+                    <li class="mb-4">
+                        {{ Form::error('result_path') }}
                     </li>
                     <li class="flex mb-4">
                         {{ Form::label('result_path', '結果', ['class' => 'shrink-0 w-44']) }}

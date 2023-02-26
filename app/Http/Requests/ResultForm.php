@@ -25,9 +25,9 @@ class ResultForm extends FormRequest
     {
         return [
             'started_at' => ['bail', 'required', 'date', 'after_or_equal:ended_at'],
-            'ended_at' => ['bail', 'required', 'date', 'befor_or_equal:started_at'],
-            'name' => ['bail', 'required', 'string'],
-            'venue' => ['bail', 'required', 'string'],
+            'ended_at' => ['bail', 'required', 'date', 'before_or_equal:started_at'],
+            'name' => ['bail', 'required', 'string', 'max:255'],
+            'venue' => ['bail', 'required', 'string', 'max:255'],
             'requirement_path' => 'file',
             'result_path' => 'file',
         ];
