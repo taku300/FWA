@@ -3,9 +3,14 @@
     <section>
         <div class="min-h-[2500px] flex">
             <div class="w-5/6 pc:w-full">
-                <div class="mt-32 ml-[10.6%] mb-6 s-pc:ml-[5.6%] pc-sp:ml-3">
+                <div class="mt-32 ml-[10.6%] mb-6 s-pc:ml-[5.6%] pc-sp:ml-3 relative">
                     <p class=" text-4xl font-black scale-x-[0.98] translate-x-[-1%]">{{ date('Y', strtotime($fiscalYear)) }}</p>
                     <p class=" text-sm">{{ $wareki }}</p>
+                    @auth
+                    <a href="{{ route('admins.results.create') }}" class="mr-1 text-right absolute right-0">
+                        <x-parts.button class="" bgColor="black" fontColor="white">新規登録</x-parts.button>
+                    </a>
+                    @endauth
                 </div>
                 <!-- 検索ボタン -->
                 <div id="show-search-menu" class="mr-1 text-right hidden pc:block">
