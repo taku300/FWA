@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\ResultService;
 use Illuminate\Http\Request;
 use App\Models\Result;
+use App\Http\Requests\ResultForm;
 
 /**
  * 要項・結果
@@ -63,13 +64,13 @@ class ResultsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(ResultForm $request)
     {
         $this->resultService->createResult($request);
         return redirect('/results');
     }
 
-    public function update($id, Request $request)
+    public function update($id, ResultForm $request)
     {
         $this->resultService->updateResult($id, $request);
         return redirect('/results');
