@@ -1,5 +1,16 @@
 $(document).ready(function () {
     /**
+     * 共通
+     */
+    $("input"). keydown(function(e) {
+        if ((e.which && e.which === 13) || (e.keyCode && e.keyCode === 13)) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+    /**
      * ロゴ背景の透明度の調整
      */
     var $headerPartsLoge = $(".js-header-parts-logo");
