@@ -4,9 +4,9 @@
         <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
     </a>
     <form action="{{ route('admins.news.destroy', ['news' => $value['id']]) }}" method="post">
-    @method('DELETE')
-    @csrf
-    <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
+        @method('DELETE')
+        @csrf
+        <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
     </form>
 </div>
 @endauth
