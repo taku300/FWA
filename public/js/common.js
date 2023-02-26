@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     /**
      * ロゴ背景の透明度の調整
      */
