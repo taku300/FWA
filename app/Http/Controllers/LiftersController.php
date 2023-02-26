@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LifterForm;
 use App\Models\Lifter;
 use App\Models\Affiliation;
 use App\Services\LifterService;
@@ -52,7 +52,7 @@ class LiftersController extends Controller
     /**
      * @param  Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(LifterForm $request)
     {
         $this->lifterService->createLifter($request);
         return redirect('/lifters')->with('message', '登録が完了しました。');
@@ -69,7 +69,6 @@ class LiftersController extends Controller
             'id' => $id,
             'lifters' => $lifters,
             'affiliation' => $affiliation,
-
         ]);;
     }
 
@@ -77,7 +76,7 @@ class LiftersController extends Controller
      * @param  int  $id
      * @param  Illuminate\Http\Request  $request
      */
-    public function update($id, Request $request)
+    public function update($id, LifterForm $request)
     {
         $this->lifterService->updateLifter($id, $request);
         return redirect('/lifters')->with('message', '登録が完了しました。');
