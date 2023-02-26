@@ -27,6 +27,6 @@ class DocumentsController extends Controller
     {
         $this->documentsService->updateDocument($request);
 
-        return redirect('/');
+        return redirect('/')->with('message', '登録が完了しました。');
     }
 }
