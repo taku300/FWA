@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\LifterForm;
 use App\Models\Lifter;
 use App\Models\Affiliation;
 use App\Services\LifterService;
@@ -18,8 +18,9 @@ class LiftersController extends Controller
     /**
      * @param  App\Services\LifterService  $lifterService
      */
-    public function __construct(LifterService $lifterService)
-    {
+    public function __construct(
+        LifterService $lifterService,
+    ) {
         $this->lifterService = $lifterService;
     }
 
@@ -27,7 +28,7 @@ class LiftersController extends Controller
      * 選手紹介
      * 1 = 男性
      * 2 = 女性
-     * 
+     *
      * @param  array  $manLifters
      * @param  array  $womanLifters
      */
@@ -41,7 +42,7 @@ class LiftersController extends Controller
     public function create()
     {
         $lifters = new Lifter;
-        $affiliation = array_column(Affiliation::all()->toArray(), 'name');
+        $affiliation = array_column(Affiliation::all()->toArray(), 'name', 'id');
         return view('lifters.create')->with([
             'lifters' => $lifters,
             'affiliation' => $affiliation,
@@ -51,10 +52,10 @@ class LiftersController extends Controller
     /**
      * @param  Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(LifterForm $request)
     {
         $this->lifterService->createLifter($request);
-        return redirect('/lifters');
+        return redirect('/lifters')->with('message', '登録が完了しました。');
     }
 
     /**
@@ -68,7 +69,6 @@ class LiftersController extends Controller
             'id' => $id,
             'lifters' => $lifters,
             'affiliation' => $affiliation,
-
         ]);;
     }
 
@@ -76,10 +76,10 @@ class LiftersController extends Controller
      * @param  int  $id
      * @param  Illuminate\Http\Request  $request
      */
-    public function update($id, Request $request)
+    public function update($id, LifterForm $request)
     {
         $this->lifterService->updateLifter($id, $request);
-        return redirect('/lifters');
+        return redirect('/lifters')->with('message', '更新が完了しました。');
     }
 
     /**
@@ -88,6 +88,6 @@ class LiftersController extends Controller
     public function destroy($id)
     {
         $this->lifterService->deleteLifter($id);
-        return redirect('/lifters');
+        return redirect('/lifters')->with('message', '削除が完了しました。');
     }
 }

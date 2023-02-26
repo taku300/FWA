@@ -15,7 +15,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@takuma1996300" />
     <meta property="fb:app_id" content="510703381239094" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- css読み込み -->

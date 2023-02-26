@@ -37,6 +37,19 @@ class News extends Model
     }
 
     /**
+     * news table deleting action
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($news) {
+            $news->news_links()->delete();
+            $news->news_documents()->delete();
+        });
+    }
+
+    /**
      * トップページ用 お知らせ日順 10件
      * 
      * @return collection
@@ -49,5 +62,10 @@ class News extends Model
     public function getBrakingNews()
     {
         return News::where('preliminary_report_flag', 1)->get()->toArray();
+    }
+
+    public function getNewsDetail($id)
+    {
+        return News::with(['result', 'news_links', 'news_documents'])->find($id);
     }
 }

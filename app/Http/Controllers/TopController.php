@@ -6,7 +6,7 @@ use App\Models\News;
 use App\Models\Lifter;
 use App\Services\LifterService;
 use App\Services\TopService;
-use Illuminate\Http\Request;
+use App\Http\Requests\TopForm;
 
 /**
  * トップ画面
@@ -47,7 +47,6 @@ class TopController extends Controller
         $newsList = $this->news->getTopNewsList();
         $lifterList = $this->lifterService->getTopLifterList();
 
-
         return view('top.index')->with(compact('breakingNews', 'newsList', 'lifterList', 'topImagePath'));
     }
 
@@ -59,10 +58,10 @@ class TopController extends Controller
         return view('top.edit')->with(['topLifterList' => $topLifterList, 'allLifterList' => $allLifterList]);
     }
 
-    public function update(Request $request)
+    public function update(TopForm $request)
     {
         $this->topService->topUpdate($request);
 
-        return redirect('/');
+        return redirect('/')->with('message', '更新が完了しました。');
     }
 }
