@@ -1,12 +1,6 @@
 <x-layout.layout>
     <!-- main -->
     <section>
-        <!-- frash message -->
-        @if (session('message'))
-        <div class="">
-            {{ session('message') }}
-        </div>
-        @endif
         <!-- Men -->
         <div class="mt-32 mb-24 sp:mb-12">
             <x-lifters.title textColor="gold">Man</x-lifters.title>

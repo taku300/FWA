@@ -1,12 +1,6 @@
 <x-layout.layout float="apply">
     <!-- main -->
     <section>
-        <!-- frash message -->
-        @if (session('message'))
-        <div class="">
-            {{ session('message') }}
-        </div>
-        @endif
         <div class="min-h-[2500px] flex">
             <div class="w-5/6 pc:w-full">
                 <div class="mt-32 ml-[10.6%] mb-6 s-pc:ml-[5.6%] pc-sp:ml-3">

@@ -5,6 +5,9 @@
 <x-layout.head></x-layout.head>
 <!-- body -->
 <body class="relative">
+    @if (session('message'))
+    <x-layout.flash-message></x-layout.flash-message>
+    @endif
     <!-- header -->
     <x-layout.header></x-layout.header>
     <!-- hero -->

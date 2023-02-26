@@ -1,12 +1,6 @@
 <x-layout.layout>
     <!-- main -->
     <section>
-        <!-- frash message -->
-        @if (session('message'))
-        <div class="">
-            {{ session('message') }}
-        </div>
-        @endif
         <div class="mt-32">
             <x-layout.container>
                 <div class="mb-16">

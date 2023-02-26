@@ -74,15 +74,17 @@ $(document).ready(function () {
         }
     });
 
-    /**
-     * 検索メニュー
-     */
-    var $showSearchMenu = $("#show-search-menu");
-    var $searchMenu = $("#search-menu");
+    var $flashMessage = $("#js-flash-message");
+    var $flashMessageDelete = $("#js-flash-message-delete");
+    $flashMessageDelete.click(function () {
+        $flashMessage.addClass('hidden');
+    })
 
     /**
      * 検索メニューフェードイン
-     */
+    */
+    var $showSearchMenu = $("#show-search-menu");
+    var $searchMenu = $("#search-menu");
     $showSearchMenu.click(function () {
         $searchMenu.fadeIn();
     })
