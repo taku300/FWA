@@ -1,6 +1,12 @@
 <x-layout.top-layout :$topImagePath>
     <!-- TOPICS -->
     <section>
+        <!-- frash message -->
+        @if (session('message'))
+        <div class="">
+            {{ session('message') }}
+        </div>
+        @endif
         <!-- title -->
         <div class="flex justify-center items-center flex-col h-[700px]">
             <x-top.title>
