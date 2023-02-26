@@ -14,10 +14,10 @@ class DeleteFile
             \Storage::delete(\CommonConst::LIFTERS_FILE_PATH_NAME . $fileNames[$path]);
         }
         if ($path == 'requirement_path') {
-            \Storage::delete(\CommonConst::REQUIREMENTS_FILE_PATH_NAME . $fileNames[$path]);
+            \Storage::delete(\CommonConst::REQUIREMENTS_FILE_PATH_NAME . $fileNames);
         }
         if ($path == 'result_path') {
-            \Storage::delete(\CommonConst::RESULTS_FILE_PATH_NAME . $fileNames[$path]);
+            \Storage::delete(\CommonConst::RESULTS_FILE_PATH_NAME . $fileNames);
         }
         if ($path == 'document_path') {
             foreach ($fileNames as $fileName) {

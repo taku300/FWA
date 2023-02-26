@@ -58,6 +58,24 @@ class ResultService
         DB::commit();
     }
 
+    /**
+     * @param  int  $id
+     */
+    public function resultDelete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $result = Result::find($id);
+            \DeleteFile::deleteFilePath('requirement_path', $result->requirement_path);
+            \DeleteFile::deleteFilePath('result_path', $result->result_path);
+            $result->delete();
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
     /** @param  mixed  $file
      *
      * @return  mixed

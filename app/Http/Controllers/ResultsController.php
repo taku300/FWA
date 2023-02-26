@@ -74,4 +74,10 @@ class ResultsController extends Controller
         $this->resultService->updateResult($id, $request);
         return redirect('/results');
     }
+
+    public function destroy($id)
+    {
+        $this->resultService->resultDelete($id);
+        return redirect('/results');
+    }
 }
