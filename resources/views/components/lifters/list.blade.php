@@ -2,14 +2,16 @@
     @foreach($lifters as $value)
     <div class="relative">
         @auth
-        <a href="{{ route('admins.lifters.edit', ['lifter' => $value['id']]) }}">
-            <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
-        </a>
-        <form action="{{ route('admins.lifters.destroy', ['lifter' => $value['id']]) }}" method="post">
-            @method('DELETE')
-            @csrf
-            <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
-        </form>
+        <div class="flex">
+            <a class="mr-1" href="{{ route('admins.lifters.edit', ['lifter' => $value['id']]) }}">
+                <x-parts.button bgColor="black" fontColor="white">編集</x-parts.button>
+            </a>
+            <form action="{{ route('admins.lifters.destroy', ['lifter' => $value['id']]) }}" method="post">
+                @method('DELETE')
+                @csrf
+                <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
+            </form>
+        </div>
         @endauth
         <img src="{{ $value['image_path'] }}" alt="" class="object-cover object-top w-full aspect-[350/400]">
         <div class="absolute top-[70%] left-[5%] w-full aspect-[350/400] bg-black opacity-80 overflow-scroll">
