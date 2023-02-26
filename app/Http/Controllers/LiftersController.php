@@ -55,7 +55,7 @@ class LiftersController extends Controller
     public function store(LifterForm $request)
     {
         $this->lifterService->createLifter($request);
-        return redirect('/lifters');
+        return redirect('/lifters')->with('message', '登録が完了しました。');
     }
 
     /**
@@ -79,7 +79,7 @@ class LiftersController extends Controller
     public function update($id, LifterForm $request)
     {
         $this->lifterService->updateLifter($id, $request);
-        return redirect('/lifters');
+        return redirect('/lifters')->with('message', '更新が完了しました。');
     }
 
     /**
@@ -88,6 +88,6 @@ class LiftersController extends Controller
     public function destroy($id)
     {
         $this->lifterService->deleteLifter($id);
-        return redirect('/lifters');
+        return redirect('/lifters')->with('message', '削除が完了しました。');
     }
 }
