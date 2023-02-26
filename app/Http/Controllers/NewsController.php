@@ -66,7 +66,7 @@ class NewsController extends Controller
     {
         $this->newsService->newsCreate($request);
 
-        return redirect(route('news'));
+        return redirect('/news')->with('message', '登録が完了しました。');
     }
 
     public function show($id)
@@ -90,13 +90,13 @@ class NewsController extends Controller
     {
         $this->newsService->newsUpdate($id, $request);
 
-        return redirect(route('admins.news.edit', ['news' => $id]));
+        return redirect('/news')->with('message', '更新が完了しました。');
     }
 
     public function destroy($id)
     {
         $this->newsService->newsDelete($id);
-        return redirect('/news');
 
+        return redirect('/news')->with('message', '削除が完了しました。');
     }
 }

@@ -27,6 +27,6 @@ class DocumentsController extends Controller
     {
         $this->documentsService->updateDocument($request);
 
-        return redirect(route('admins.documents.edit'));
+        return redirect('/')->with('message', '更新が完了しました。');
     }
 }

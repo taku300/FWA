@@ -67,18 +67,18 @@ class ResultsController extends Controller
     public function store(ResultForm $request)
     {
         $this->resultService->createResult($request);
-        return redirect('/results');
+        return redirect('/results')->with('message', '登録が完了しました。');
     }
 
     public function update($id, ResultForm $request)
     {
         $this->resultService->updateResult($id, $request);
-        return redirect('/results');
+        return redirect('/results')->with('message', '更新が完了しました。');
     }
 
     public function destroy($id)
     {
         $this->resultService->resultDelete($id);
-        return redirect('/results');
+        return redirect('/results')->with('message', '削除が完了しました。');
     }
 }
