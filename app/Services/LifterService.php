@@ -163,7 +163,7 @@ class LifterService
     {
         $datas = $request->all();
         if ($request->file('image_path')) {
-            $path = $request->file('image_path')->store('public/lifter-images');
+            $path = $request->file('image_path')->store(\CommonConst::LIFTERS_FILE_PATH_NAME);
             $datas['image_path'] = basename($path);
         }
         return $datas;
