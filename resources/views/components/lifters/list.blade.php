@@ -13,7 +13,7 @@
             </form>
         </div>
         @endauth
-        <img src="{{ $value['image_path'] }}" alt="" class="object-cover object-top w-full aspect-[350/400]">
+        <img src="{{ $value['image_path'] }}" alt="選手" class="object-cover object-top w-full aspect-[350/400]">
         <div class="absolute top-[70%] left-[5%] w-full aspect-[350/400] bg-black opacity-80 overflow-scroll">
             <ul class="text-white p-4 s-pc:p-3">
                 <li class="font-black text-3xl s-pc:text-2xl mb-10 s-pc:mb-5 sp:mb-2 sp:text-lg"><span>{{ $value['last_name'] }}</span>　<span>{{ $value['first_name'] }}</span></li>
