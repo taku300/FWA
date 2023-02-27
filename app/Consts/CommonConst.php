@@ -7,12 +7,12 @@ class CommonConst
     /**
      * ファイルパス
      */
-    const LIFTERS_FILE_PATH_NAME = 'public/lifter-images/';            // 選手画像
-    const NEWS_FILE_PATH_NAME = 'public/news-documents/';              // お知らせ資料
-    const REQUIREMENTS_FILE_PATH_NAME = 'public/result-requirements/'; // 大会要項
-    const RESULTS_FILE_PATH_NAME = 'public/result-results/';           // 大会結果
-    const TOP_FILE_PATH = 'public/top-images/';                        // トップ画像
-    const ASSOCIATION_DOCUMENT_PATH = 'public/association-documens/';  // 協会資料
+    const LIFTERS_FILE_PATH_NAME = 'lifter-images/';            // 選手画像
+    const NEWS_FILE_PATH_NAME = 'news-documents/';              // お知らせ資料
+    const REQUIREMENTS_FILE_PATH_NAME = 'result-requirements/'; // 大会要項
+    const RESULTS_FILE_PATH_NAME = 'result-results/';           // 大会結果
+    const TOP_FILE_PATH = 'top-images/';                        // トップ画像
+    const ASSOCIATION_DOCUMENT_PATH = 'association-documens/';  // 協会資料
 
     /**
      * top画面用ファイル名
@@ -74,7 +74,7 @@ class CommonConst
 
     /**
      * top画像リスト
-     * 
+     *
      * @param  array
      */
     const TOP_IMAGE_LIST = [
@@ -85,7 +85,7 @@ class CommonConst
 
     /**
      * ドキュメントリスト
-     * 
+     *
      * @param  array
      */
     const DOCUMENT_LIST = [
