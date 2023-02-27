@@ -5,10 +5,13 @@
 <x-layout.head></x-layout.head>
 <!-- body -->
 <body class="relative">
+    @if (session('message'))
+    <x-layout.flash-message></x-layout.flash-message>
+    @endif
     <!-- header -->
     <x-layout.header></x-layout.header>
     <!-- hero -->
-    <x-layout.top-hero></x-layout.top-hero>
+    <x-layout.top-hero :$topImagePath></x-layout.top-hero>
     <!-- sidemenu -->
     <x-layout.side-menu>
         <x-layout.nav></x-layout.nav>

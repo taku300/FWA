@@ -1,23 +1,11 @@
 {
-  "public/images/top/center_parts.png": {
-    "file": "assets/center_parts.90231085.png",
-    "src": "public/images/top/center_parts.png"
-  },
-  "public/images/top/top_center.png": {
-    "file": "assets/top_center.045dc37d.png",
-    "src": "public/images/top/top_center.png"
-  },
-  "public/images/top/top1.png": {
-    "file": "assets/top1.47e701b6.png",
-    "src": "public/images/top/top1.png"
-  },
   "resources/js/app.js": {
     "file": "assets/app.23d6acfe.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.d1a0a8b5.css",
+    "file": "assets/app.89e5b898.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

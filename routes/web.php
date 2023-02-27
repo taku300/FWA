@@ -11,6 +11,7 @@ use App\Http\Controllers\LiftersController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DocumentsController;
+use App\Http\Controllers\AffiliationsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,8 +44,8 @@ Route::resource('/lifters', LiftersController::class, ['only' => ['index']]);
 //お知らせ一覧画面、詳細画面
 Route::resource('/news', NewsController::class, ['only' => ['index', 'show']]);
 //お問い合わせ画面
-Route::resource('/contact', ContactController::class, ['only' => ['index']]);
-
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 //ログインづみ
 Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () {
@@ -55,7 +56,7 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
 
     //トップ画面編集
     Route::get('/top/edit', [TopController::class, 'edit'])->name('top.edit');
-    Route::get('/top/update', [TopController::class, 'update'])->name('top.update');
+    Route::put('/top/update', [TopController::class, 'update'])->name('top.update');
     // Route::resource('/top', TopController::class, ['only' => ['edit', 'update']]);
     //試合・要項結果登録画面CRUD
     Route::resource('/results', ResultsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
@@ -63,13 +64,13 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     Route::resource('/lifters', LiftersController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     //お知らせ登録画面CRUD
     Route::resource('/news', NewsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
-    //メール送信処理
-    Route::resource('/contact', ContactController::class, ['only' => ['store']]);
     //年間計画編集
     Route::resource('/plans', PlansController::class, ['only' => ['update']]);
     //ドキュメント編集
     Route::get('/documents/edit', [DocumentsController::class, 'edit'])->name('documents.edit');
-    Route::get('/documents/update', [DocumentsController::class, 'update'])->name('documents.update');
+    Route::put('/documents/update', [DocumentsController::class, 'update'])->name('documents.update');
+    Route::resource('/affiliations', AffiliationsController::class, ['only' => ['store']]);
+
 });
 
 

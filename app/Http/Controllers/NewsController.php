@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\NewsForm;
 use App\Models\News;
 use App\Services\NewsService;
 use App\Services\NewsLinkService;
@@ -62,15 +62,18 @@ class NewsController extends Controller
      *
      * @param  Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(NewsForm $request)
     {
         $this->newsService->newsCreate($request);
-        return redirect('/news');
+
+        return redirect('/news')->with('message', '登録が完了しました。');
     }
 
     public function show($id)
     {
-        return view('news.show');
+        $newsDetail = $this->news->getNewsDetail($id)->toArray();
+
+        return view('news.show')->with(['newsDetail' => $newsDetail]);
     }
 
     public function edit($id)
@@ -83,8 +86,17 @@ class NewsController extends Controller
     }
 
 
-    public function update($id, Request $request)
+    public function update($id, NewsForm $request)
     {
         $this->newsService->newsUpdate($id, $request);
+
+        return redirect('/news')->with('message', '更新が完了しました。');
+    }
+
+    public function destroy($id)
+    {
+        $this->newsService->newsDelete($id);
+
+        return redirect('/news')->with('message', '削除が完了しました。');
     }
 }

@@ -51,6 +51,26 @@ class LifterService
         return $topLifters;
     }
 
+    public function getTopLifterNameList()
+    {
+        $lifters = $this->lifter->getLifters()->where('top_post_flag', 1)->get();
+        $list = [];
+        foreach ($lifters as $val) {
+            $list[] = ['id' => $val['id']];
+        }
+        return $list;
+    }
+
+    public function getAllLifterNameList()
+    {
+        $lifters = $this->lifter->getLifters()->get();
+        $list = [];
+        foreach ($lifters as $val) {
+            $list[] = ['id' => $val['id'], 'name' => $val['last_name'] . $val['first_name']];
+        }
+        return array_column($list, 'name', 'id');
+    }
+
     /**
      * ヘボン式ローマ字を成形して追加したカラムへ格納
      *
@@ -107,9 +127,26 @@ class LifterService
     {
         DB::beginTransaction();
         try {
-            $datas = $this->getDatas($request);
             $lifter = Lifter::find($id);
+            $datas = $this->getDatas($request);
+            if ($request->file('image_path')) {
+                \DeleteFile::deleteFilePath('image_path', $lifter);
+            }
             $lifter->update($datas);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    public function deleteLifter($id)
+    {
+        DB::beginTransaction();
+        try {
+            $lifter = Lifter::find($id);
+            \DeleteFile::deleteFilePath('image_path', $lifter);
+            $lifter->delete();
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
@@ -125,8 +162,10 @@ class LifterService
     public function getDatas($request): mixed
     {
         $datas = $request->all();
-        $path = $request->file('image_path')->store('public/lifter-images');
-        $datas['image_path'] = basename($path);
+        if ($request->file('image_path')) {
+            $path = $request->file('image_path')->store('public/lifter-images');
+            $datas['image_path'] = basename($path);
+        }
         return $datas;
     }
 }

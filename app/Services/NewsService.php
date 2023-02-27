@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Libs\DeleteFile;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
@@ -26,7 +25,7 @@ class NewsService
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('public/news-documents');
+                    $path = $value['document_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
@@ -51,11 +50,11 @@ class NewsService
             $news->update($request->all());
             // ドキュメント保存
             $deletePath = $this->diffDelete($request, $id, 'news_documents', NewsDocument::query());
-            DeleteFile::deleteFilePath('/news-documents/', $deletePath);
+            \DeleteFile::deleteFilePath('document_path', $deletePath);
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['document_file']->store('public/news-documents');
+                    $path = $value['document_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
@@ -63,6 +62,23 @@ class NewsService
             // リンクの保存
             $this->diffDelete($request, $id, 'news_links', NewsLink::query());
             $news->news_links()->upsert($request->get('news_links') ? $request->get('news_links') : [], ['id'], ['title', 'link_path', 'news_id']);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
+    /**
+     * @param  int  $id
+     */
+    public function newsDelete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $news = News::find($id);
+            \DeleteFile::deleteFilePath('document_path', $news->news_documents);
+            $news->delete();
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
