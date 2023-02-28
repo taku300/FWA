@@ -2,31 +2,101 @@
 
 namespace App\Services;
 
+use App\Models\Document;
+
 class DocumentService
 {
     public function getDocuments()
     {
-        $documents = [
-            1 => \CommonConst::ASSOCIATION_DOCUMENT_PATH . \CommonConst::DOCUMENT_LIST[1],
-            2 => \CommonConst::ASSOCIATION_DOCUMENT_PATH . \CommonConst::DOCUMENT_LIST[2],
-            3 => \CommonConst::ASSOCIATION_DOCUMENT_PATH . \CommonConst::DOCUMENT_LIST[3],
-        ];
-        return $documents;
+        $documentsFile = [];
+        $documents = Document::get();
+        foreach ($documents as $document) {
+            if ($document->document_type === 1) {
+                $documentsFile[1] = \CommonConst::ASSOCIATION_DOCUMENT_PATH . $document->document_path;
+            } else {
+                $documentsFile[1] = '';
+            }
+            if ($document->document_type === 2) {
+                $documentsFile[2] = \CommonConst::ASSOCIATION_DOCUMENT_PATH . $document->document_path;
+            } else {
+                $documentsFile[2] = '';
+            }
+            if ($document->document_type === 3) {
+                $documentsFile[3] = \CommonConst::ASSOCIATION_DOCUMENT_PATH . $document->document_path;
+            } else {
+                $documentsFile[3] = '';
+            }
+        }
+        return $documentsFile;
     }
 
     public function updateDocument($request)
     {
         if (isset($request->document_path_1)) {
-            $request->file(\CommonConst::DOCUMENT_PATH_1)
-                ->storeAs(\CommonConst::ASSOCIATION_DOCUMENT_PATH, \CommonConst::DOCUMENT_LIST[1]);
+            if (Document::where('document_type', 1)->exists()) {
+                $oldDocument = Document::where('document_type', 1)->get();
+                $this->deleteFilePath('document_path', $oldDocument);
+                \DeleteFile::deleteFilePath(\CommonConst::ASSOCIATION_DOCUMENT_PATH, $oldDocument[0]['document_path']);
+                foreach ($oldDocument as $val) {
+                    $val->delete();
+                }
+            }
+            $document = new Document;
+            $document->document_path = $this->getDatas($request, \CommonConst::DOCUMENT_PATH_1, $document);
+            $document->document_type = 1;
+            $document->save();
         }
         if (isset($request->document_path_2)) {
-            $request->file(\CommonConst::DOCUMENT_PATH_2)
-                ->storeAs(\CommonConst::ASSOCIATION_DOCUMENT_PATH, \CommonConst::DOCUMENT_LIST[2]);
+            if (Document::where('document_type', 2)->exists()) {
+                $oldDocument = Document::where('document_type', 2)->get();
+                $this->deleteFilePath('document_path', $oldDocument);
+                \DeleteFile::deleteFilePath(\CommonConst::ASSOCIATION_DOCUMENT_PATH, $oldDocument[0]['document_path']);
+                foreach ($oldDocument as $val) {
+                    $val->delete();
+                }
+            }
+            $document = new Document;
+            $document->document_path = $this->getDatas($request, \CommonConst::DOCUMENT_PATH_2, $document);
+            $document->document_type = 2;
+            $document->save();
         }
         if (isset($request->document_path_3)) {
-            $request->file(\CommonConst::DOCUMENT_PATH_3)
-                ->storeAs(\CommonConst::ASSOCIATION_DOCUMENT_PATH, \CommonConst::DOCUMENT_LIST[3]);
+            if (Document::where('document_type', 3)->exists()) {
+                $oldDocument = Document::where('document_type', 3)->get();
+                $this->deleteFilePath('document_path', $oldDocument);
+                \DeleteFile::deleteFilePath(\CommonConst::ASSOCIATION_DOCUMENT_PATH, $oldDocument[0]['document_path']);
+                foreach ($oldDocument as $val) {
+                    $val->delete();
+                }
+            }
+            $document = new Document;
+            $document->document_path = $this->getDatas($request, \CommonConst::DOCUMENT_PATH_3, $document);
+            $document->document_type = 3;
+            $document->save();
+        }
+    }
+
+    /**
+     * @param  mixed  $file
+     *
+     * @return  mixed
+     */
+    public function getDatas($request, $defaultPath): mixed
+    {
+        if ($request->file($defaultPath)) {
+            $path = $request->file($defaultPath)->store(\CommonConst::ASSOCIATION_DOCUMENT_PATH);
+        }
+        return basename($path);
+    }
+
+    /**
+     * @param  string  $path
+     * @param  mixed  $fileNames
+     */
+    public static function deleteFilePath($path, $fileNames)
+    {
+        foreach ($fileNames as $fileName) {
+            \Storage::delete(\CommonConst::ASSOCIATION_DOCUMENT_PATH . $fileName[$path]);
         }
     }
 }

@@ -113,7 +113,7 @@ class TopService
      *
      * @return  mixed
      */
-    public function getDatas($request, $defaultPath, $model): mixed
+    public function getDatas($request, $defaultPath): mixed
     {
         if ($request->file($defaultPath)) {
             $path = $request->file($defaultPath)->store(\CommonConst::TOP_FILE_PATH);
