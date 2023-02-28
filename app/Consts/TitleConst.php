@@ -13,12 +13,12 @@ class TitleConst
      * @param array
      */
     const TITLE_LIST = [
-        // 現在はどこにも使用しておらず、titleタグにトップの文字が入ってしまうのでコメントアウトする。
-        // 'Top' => [
-        //     0 => 'TOP',
-        //     1 => 'トップ',
-        //     2 => 'images/heros/hero1.png'
-        // ],
+        // トップにはタイトルタグのプレフィクスは必要ないのでから文字にする。s
+        'Top' => [
+            0 => 'TOP',
+            1 => '',
+            2 => 'images/heros/hero1.png'
+        ],
         'About' => [
             0 => 'ABOUT',
             1 => '協会について',
