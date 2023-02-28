@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MailForm extends FormRequest
+class ContactForm extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class MailForm extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -39,6 +39,7 @@ class MailForm extends FormRequest
         return [
             'email' => 'メールアドレス',
             // 'email_confirm' => 'メールアドレス(確認用)',
+            'title' => 'タイトル',
             'content' => '内容',
             'check' => '',
             'last_name' => '氏名：姓',
