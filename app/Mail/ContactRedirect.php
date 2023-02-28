@@ -34,7 +34,6 @@ class ContactRedirect extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('fukuokaweight@gmail.com', '福岡県ウエイトリフティング協会'),
             subject: '【確認】お問い合わせいただきありがとうございます。',
         );
     }
