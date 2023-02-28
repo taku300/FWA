@@ -85,6 +85,9 @@ $(document).ready(function () {
         }
     });
 
+    /**
+     * フラッシュメッセージ
+     */
     var $flashMessage = $("#js-flash-message");
     var $flashMessageDelete = $("#js-flash-message-delete");
     $flashMessageDelete.click(function () {

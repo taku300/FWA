@@ -26,13 +26,13 @@ class FormMacroServiceProvider extends ServiceProvider
         \Form::macro('error', function ($name) {
             $errors = view()->shared('errors');
             if ($errors->has($name)) {
-                return $this->toHtmlString(sprintf('
-                <div class="mb-1">
-                    <div class="max-w-xs bg-gray-800 text-sm text-red-600 rounded-md" role="alert">
-                        <div class="flex p-4">%s</div>
+                return $this->toHtmlString(sprintf("
+                <div class='mb-1'>
+                    <div class='max-w-xs bg-red-100 text-sm border-red-400 text-red-700 rounded-md' role='alert'>
+                        <div class='flex p-4'>%s</div>
                     </div>
                 </div>
-                ', $errors->first($name)));
+                ", $errors->first($name)));
             }
         });
     }
