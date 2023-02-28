@@ -6,7 +6,7 @@
             <div class="relative">
                 <!-- 速報有りのとき速報画像を表示 -->
                 @if($newsDetail['preliminary_report_flag'] === 1)
-                <img class="absolute -left-[5%] sp:-left-[4%] sp:top-3 z-50 h-[250px] sp:h-[146px]" src="{{ asset('images/parts/breaking_news.png') }}" alt="速報">
+                <img class="absolute -left-[5%] sp:-left-[4%] sp:top-3 z-50 h-[250px] sp:h-[146px]" src="{{ asset('images/parts/breaking_news.png') . config('cache.update_date') }}" alt="速報">
                 @endif
                 <div class="pt-[115px] sp:pt-[76px] pb-5 border-b border-black">
                     <p class="font-bold mb-2 pc:text-sm sp:text-xs">{{ $newsDetail['noticed_at'] }}</p>
@@ -17,7 +17,7 @@
                     <x-list.auth :value='$newsDetail'></x-list.auth>
                 </div>
                 @if($newsDetail['preliminary_report_flag'] === 1)
-                <img class="absolute top-0 -right-[5%] sp:-right-[2%] w-[164px] sp:w-[86px] h-[185px] sp:h-[97px] object-contain" src="{{ asset('images/parts/hashibiroko.png') }}" alt="イメージキャラクター">
+                <img class="absolute top-0 -right-[5%] sp:-right-[2%] w-[164px] sp:w-[86px] h-[185px] sp:h-[97px] object-contain" src="{{ asset('images/parts/hashibiroko.png') . config('cache.update_date') }}" alt="イメージキャラクター">
                 @endif
             </div>
             @if ($newsDetail['iframe_path'])
