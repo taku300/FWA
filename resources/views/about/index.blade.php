@@ -23,9 +23,9 @@
                             <dt class="text-sm float-left font-black pb-8">Mail</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">fukuokaweight@gmail.com</dd>
                             <dt class="text-sm float-left font-black pt-[10px] pb-8">定款</dt>
-                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href=""><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') }}" alt=""></a></dd>
+                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href=""><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') }}" alt="大会要項"></a></dd>
                             <dt class="text-sm float-left font-black pt-[10px] pb-8">ガバナンスコード</dt>
-                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href=""><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') }}" alt=""></a></dd>
+                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href=""><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') }}" alt="大会結果"></a></dd>
                         </dl>
                     </div>
                     <div>
@@ -51,7 +51,7 @@
                         <div class="text-center pt-16">
                             <h2 class="text-4xl font-black">ハシビロ公</h2>
                         </div>
-                        <img src="{{ asset('images/parts/hashibiroko.png') }}" alt="ハシビロ公">
+                        <img src="{{ asset('images/parts/hashibiroko.png') }}" alt="イメージキャラクター">
                     </div>
                     <div class="text-2xl pt-14 font-black sp:text-base">
                         <p>キャラクターの元になった動物ハシビロコウは跳べない鳥だ。普段はほとんど動かずじっとしている。しかし、獲物を捉えるときには、脅威の瞬発力を見せる。「いざという時には誰にも負けない強さ」をコンセプトに福岡県のアスリートたちが活躍することを願っている。
