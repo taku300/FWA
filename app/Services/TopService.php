@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Lifter;
+use App\Models\Top;
 use App\Services\LifterService;
 
 class TopService
@@ -50,9 +51,13 @@ class TopService
             $lifter->save();
         }
         if (isset($request->top_image_path_1)) {
-            if ($oldTop = Top::where('img_type', 1)->exists()) {
-                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop->image_path);
-                $oldTop->delete();
+            if (Top::where('img_type', 1)->exists()) {
+                $oldTop = Top::where('img_type', 1)->get();
+                $this->deleteFilePath('image_path', $oldTop);
+                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop[0]['image_path']);
+                foreach ($oldTop as $val) {
+                    $val->delete();
+                }
             }
             $top = new Top;
             $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_1, $top);
@@ -60,9 +65,13 @@ class TopService
             $top->save();
         }
         if (isset($request->top_image_path_2)) {
-            if ($oldTop = Top::where('img_type', 2)->exists()) {
-                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop->image_path);
-                $oldTop->delete();
+            if (Top::where('img_type', 2)->exists()) {
+                $oldTop = Top::where('img_type', 2)->get();
+                $this->deleteFilePath('image_path', $oldTop);
+                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop[0]['image_path']);
+                foreach ($oldTop as $val) {
+                    $val->delete();
+                }
             }
             $top = new Top;
             $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_2, $top);
@@ -70,9 +79,13 @@ class TopService
             $top->save();
         }
         if (isset($request->top_image_path_3)) {
-            if ($oldTop = Top::where('img_type', 3)->exists()) {
-                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop->image_path);
-                $oldTop->delete();
+            if (Top::where('img_type', 3)->exists()) {
+                $oldTop = Top::where('img_type', 3)->get();
+                $this->deleteFilePath('image_path', $oldTop);
+                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop[0]['image_path']);
+                foreach ($oldTop as $val) {
+                    $val->delete();
+                }
             }
             $top = new Top;
             $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_3, $top);
@@ -92,5 +105,16 @@ class TopService
             $path = $request->file($defaultPath)->store(\CommonConst::TOP_FILE_PATH);
         }
         return basename($path);
+    }
+
+    /**
+     * @param  string  $path
+     * @param  mixed  $fileNames
+     */
+    public static function deleteFilePath($path, $fileNames)
+    {
+        foreach ($fileNames as $fileName) {
+            \Storage::delete(\CommonConst::TOP_FILE_PATH . $fileName[$path]);
+        }
     }
 }
