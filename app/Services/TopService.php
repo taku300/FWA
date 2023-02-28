@@ -17,11 +17,25 @@ class TopService
 
     public function getTopImages()
     {
-        $topImages = [
-            1 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[1],
-            2 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[2],
-            3 => \CommonConst::TOP_FILE_PATH . \CommonConst::TOP_IMAGE_LIST[3],
-        ];
+        $topImages = [];
+        $tops = Top::get();
+        foreach ($tops as $top) {
+            if ($top->img_type === 1) {
+                $topImages[1] = \CommonConst::TOP_FILE_PATH . $top->image_path;
+            } else {
+                $topImages[1] = '';
+            }
+            if ($top->img_type === 2) {
+                $topImages[2] = \CommonConst::TOP_FILE_PATH . $top->image_path;
+            } else {
+                $topImages[2] = '';
+            }
+            if ($top->img_type === 3) {
+                $topImages[3] = \CommonConst::TOP_FILE_PATH . $top->image_path;
+            } else {
+                $topImages[3] = '';
+            }
+        }
         return $topImages;
     }
 
