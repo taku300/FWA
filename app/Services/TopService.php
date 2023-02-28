@@ -26,6 +26,7 @@ class TopService
 
     public function topUpdate($request)
     {
+        $datas = $request->all();
         if ($request->top_lifter_1) {
             $keyList = $this->lifterService->getTopLifterNameList();
             if (array_key_exists(0, $keyList)) {
@@ -49,16 +50,47 @@ class TopService
             $lifter->save();
         }
         if (isset($request->top_image_path_1)) {
-            $request->file(\CommonConst::TOP_FILE_PATH_1)
-                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[1]);
+            if ($oldTop = Top::where('img_type', 1)->exists()) {
+                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop->image_path);
+                $oldTop->delete();
+            }
+            $top = new Top;
+            $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_1, $top);
+            $top->img_type = 1;
+            $top->save();
         }
         if (isset($request->top_image_path_2)) {
-            $request->file(\CommonConst::TOP_FILE_PATH_2)
-                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[2]);
+            if ($oldTop = Top::where('img_type', 2)->exists()) {
+                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop->image_path);
+                $oldTop->delete();
+            }
+            $top = new Top;
+            $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_2, $top);
+            $top->img_type = 2;
+            $top->save();
         }
         if (isset($request->top_image_path_3)) {
-            $request->file(\CommonConst::TOP_FILE_PATH_3)
-                ->storeAs(\CommonConst::TOP_FILE_PATH, \CommonConst::TOP_IMAGE_LIST[3]);
+            if ($oldTop = Top::where('img_type', 3)->exists()) {
+                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop->image_path);
+                $oldTop->delete();
+            }
+            $top = new Top;
+            $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_3, $top);
+            $top->img_type = 3;
+            $top->save();
         }
+    }
+
+    /**
+     * @param  mixed  $file
+     *
+     * @return  mixed
+     */
+    public function getDatas($request, $defaultPath, $model): mixed
+    {
+        if ($request->file($defaultPath)) {
+            $path = $request->file($defaultPath)->store(\CommonConst::TOP_FILE_PATH);
+        }
+        return basename($path);
     }
 }
