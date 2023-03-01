@@ -71,13 +71,13 @@
                             <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex">
                                 <span class="hidden pc-sp:inline font-black mr-3">要　項</span>
                                 <a class="mb-5 text-sm block underline" href="{{ asset('storage/' . \CommonConst::REQUIREMENTS_FILE_PATH_NAME . $value['requirement_path']) }}" download="{{ $value['name'] }}.pdf">
-                                    <img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5">
+                                    <img src="{{ 'images/parts/pdf.png' . config('cache.update_date') }}" alt="pdf" class=" w-5 m-auto pc-sp:ml-5">
                                 </a>
                             </li>
                             <li class="p-[10px] shrink-0 w-20 h-11 border-l border-inherit  pc-sp:w-full pc-sp:flex">
                                 <span class="hidden pc-sp:inline font-black mr-3">結　果</span>
                                 <a class="mb-5 text-sm block underline" href="{{ asset('storage/' . \CommonConst::RESULTS_FILE_PATH_NAME . $value['result_path']) }}" download="{{ $value['name'] }}.pdf">
-                                    <img src="images/parts/pdf.png" alt="pdf" class=" w-5 m-auto pc-sp:ml-5">
+                                    <img src="{{ 'images/parts/pdf.png' . config('cache.update_date') }}" alt="pdf" class=" w-5 m-auto pc-sp:ml-5">
                                 </a>
                             </li>
                         </ul>

@@ -4,6 +4,8 @@ use Illuminate\Support\Str;
 
 return [
 
+    'update_date' => '?' . env('UPDATE_DATE', '20220228'),
+
     /*
     |--------------------------------------------------------------------------
     | Default Cache Store
