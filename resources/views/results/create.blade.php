@@ -10,9 +10,11 @@
                     }}
                 </x-parts.title>
                 @if (is_array($results))
-                <a href="{{ route('admins.results.destroy', ['result' => $results['id']]) }}">
+                <form action="{{ route('admins.results.destroy', ['result' => $results['id']]) }}" method="post">
+                    @method('DELETE')
+                    @csrf
                     <x-parts.button bgColor="red" fontColor="white">消去</x-parts.button>
-                </a>
+                </form>
                 @endif
             </div>
             <!-- 遷移先判定のロジック -->
