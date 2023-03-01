@@ -19,25 +19,25 @@ class TopService
     public function getTopImages()
     {
         $topImages = [];
-        $tops = Top::get();
-        foreach ($tops as $top) {
-            if ($top->img_type === 1) {
-                $topImages[1] = \CommonConst::TOP_FILE_PATH . $top->image_path;
-            } else {
-                $topImages[1] = '';
-            }
-            if ($top->img_type === 2) {
-                $topImages[2] = \CommonConst::TOP_FILE_PATH . $top->image_path;
-            } else {
-                $topImages[2] = '';
-            }
-            if ($top->img_type === 3) {
-                $topImages[3] = \CommonConst::TOP_FILE_PATH . $top->image_path;
-            } else {
-                $topImages[3] = '';
-            }
+        if (Top::where('img_type', 1)->exists()) {
+            $topImages[1] = $this->getImages(1);
+        }
+        if (Top::where('img_type', 2)->exists()) {
+            $topImages[2] = $this->getImages(2);
+        }
+        if (Top::where('img_type', 3)->exists()) {
+            $topImages[3] = $this->getImages(3);
+        }
+        if (Top::where('img_type', 4)->exists()) {
+            $topImages[4] = $this->getImages(4);
         }
         return $topImages;
+    }
+
+    public function getImages($num)
+    {
+        $top = Top::where('img_type', $num)->first();
+        return \CommonConst::TOP_FILE_PATH . $top->image_path;
     }
 
     public function topUpdate($request)
