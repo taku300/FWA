@@ -6,28 +6,25 @@ use App\Models\Document;
 
 class DocumentService
 {
-    public function getDocuments()
+    public function getDocumentsPath()
     {
         $documentsFile = [];
-        $documents = Document::get();
-        foreach ($documents as $document) {
-            if ($document->document_type === 1) {
-                $documentsFile[1] = \CommonConst::ASSOCIATION_DOCUMENT_PATH . $document->document_path;
-            } else {
-                $documentsFile[1] = '';
-            }
-            if ($document->document_type === 2) {
-                $documentsFile[2] = \CommonConst::ASSOCIATION_DOCUMENT_PATH . $document->document_path;
-            } else {
-                $documentsFile[2] = '';
-            }
-            if ($document->document_type === 3) {
-                $documentsFile[3] = \CommonConst::ASSOCIATION_DOCUMENT_PATH . $document->document_path;
-            } else {
-                $documentsFile[3] = '';
-            }
+        if (Document::where('img_type', 1)->exists()) {
+            $documentsFile[1] = $this->getDocuments(1);
+        }
+        if (Document::where('img_type', 2)->exists()) {
+            $documentsFile[2] = $this->getDocuments(2);
+        }
+        if (Document::where('img_type', 3)->exists()) {
+            $documentsFile[3] = $this->getDocuments(3);
         }
         return $documentsFile;
+    }
+
+    public function getDocuments($num)
+    {
+        $top = Document::where('document_type', $num)->first();
+        return \CommonConst::ASSOCIATION_DOCUMENT_PATH . $top->document_type;
     }
 
     public function documentUpdate($request)
