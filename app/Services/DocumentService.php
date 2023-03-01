@@ -30,47 +30,47 @@ class DocumentService
         return $documentsFile;
     }
 
+    public function documentUpdate($request)
+    {
+        DB::beginTransaction();
+        try {
+            $this->updateDocument($request);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
+        }
+        DB::commit();
+    }
+
     public function updateDocument($request)
     {
         if (isset($request->document_path_1)) {
-            if (Document::where('document_type', 1)->exists()) {
-                $oldDocument = Document::where('document_type', 1)->get();
-                $this->deleteFilePath('document_path', $oldDocument);
-                foreach ($oldDocument as $val) {
-                    $val->delete();
-                }
-            }
-            $document = new Document;
-            $document->document_path = $this->getDatas($request, \CommonConst::DOCUMENT_PATH_1, $document);
-            $document->document_type = 1;
-            $document->save();
+            $this->saveDocument($request, 1, \CommonConst::DOCUMENT_PATH_1);
         }
         if (isset($request->document_path_2)) {
-            if (Document::where('document_type', 2)->exists()) {
-                $oldDocument = Document::where('document_type', 2)->get();
-                $this->deleteFilePath('document_path', $oldDocument);
-                foreach ($oldDocument as $val) {
-                    $val->delete();
-                }
-            }
-            $document = new Document;
-            $document->document_path = $this->getDatas($request, \CommonConst::DOCUMENT_PATH_2, $document);
-            $document->document_type = 2;
-            $document->save();
+            $this->saveDocument($request, 2, \CommonConst::DOCUMENT_PATH_2);
         }
         if (isset($request->document_path_3)) {
-            if (Document::where('document_type', 3)->exists()) {
-                $oldDocument = Document::where('document_type', 3)->get();
-                $this->deleteFilePath('document_path', $oldDocument);
-                foreach ($oldDocument as $val) {
-                    $val->delete();
-                }
-            }
-            $document = new Document;
-            $document->document_path = $this->getDatas($request, \CommonConst::DOCUMENT_PATH_3, $document);
-            $document->document_type = 3;
-            $document->save();
+            $this->saveDocument($request, 3, \CommonConst::DOCUMENT_PATH_3);
         }
+    }
+
+    public function saveDocument($request, $num, $path)
+    {
+        if (Document::where('document_type', $num)->exists()) {
+            $oldDocument = Document::where('document_type', $num)->first();
+            $this->deleteFilePath('document_path', $oldDocument);
+            $oldDocument->delete();
+        }
+        $this->createDocument($request, $num, $path);
+    }
+
+    public function createDocument($request, $num, $path)
+    {
+        $document = new Document;
+        $document->document_path = $this->getDatas($request, $path, $document);
+        $document->document_type = $num;
+        $document->save();
     }
 
     /**
@@ -92,8 +92,6 @@ class DocumentService
      */
     public static function deleteFilePath($path, $fileNames)
     {
-        foreach ($fileNames as $fileName) {
-            \Storage::delete(\CommonConst::ASSOCIATION_DOCUMENT_PATH . $fileName[$path]);
-        }
+        \Storage::delete(\CommonConst::ASSOCIATION_DOCUMENT_PATH . $fileNames[$path]);
     }
 }
