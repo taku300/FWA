@@ -76,7 +76,7 @@ class TopService
             $this->deleteFilePath('image_path', $oldTop);
             $oldTop->delete();
         }
-        $this->createTops($request, $path, $num);
+        $this->createTops($request, $num, $path);
     }
 
     public function updateTopLifters($request)
