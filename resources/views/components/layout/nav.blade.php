@@ -1,6 +1,6 @@
 <div class="mt-[17px]">
     <a href="{{ route('index') }}">      <!-- トップに遷移 -->
-        <img class="h-[26px] m-auto" src="{{ asset('images/layout/logo_white_strate.png') }}" alt="福岡県ウエイトリフティング協会">
+        <img class="h-[26px] m-auto" src="{{ asset('images/layout/logo_white_strate.png') . config('cache.update_date') }}" alt="福岡県ウエイトリフティング協会">
     </a>
 </div>
 <nav class="text-white mt-[70px] ml-[40px] flex flex-col">
@@ -15,10 +15,12 @@
     <a class="mb-3 mt-3" href="{{ route('lifters.index') }}">選手紹介</a>
     <a class="mb-3 mt-3" href="{{ route('news.index') }}">お知らせ</a>
     <a class="mb-3 mt-3" href="{{ route('contact.index') }}">お問い合わせ</a>
+    @auth
     <a class="mb-3 mt-3" href="{{ route('contact.index') }}">管理者</a>
     <a class="mb-3" href="{{ route('admins.news.create') }}">　お知らせ登録</a>
     <a class="mb-3" href="{{ route('admins.results.create') }}">　大会情報登録</a>
     <a class="mb-3" href="{{ route('admins.lifters.create') }}">　選手登録</a>
     <a class="mb-3" href="{{ route('admins.documents.edit') }}">　ドキュメント編集</a>
     <a class="mb-3" href="{{ route('admins.top.edit') }}">　トップ編集</a>
+    @endauth
 </nav>

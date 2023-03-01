@@ -13,7 +13,7 @@
         </div>
         <div class="fixed top-[25px] left-[25px] sp:top-[16px] sp:left-[16px] z-40">
             <a href="{{ route('index') }}">     <!-- トップに遷移 -->
-                <img class="w-[230px] pc:w-[160px] sp:w-[160px]" src="{{ asset('images/layout/logo_white.png') }}" alt="福岡県ウエイトリフティング協会">
+                <img class="w-[230px] pc:w-[160px] sp:w-[160px]" src="{{ asset('images/layout/logo_white.png') . config('cache.update_date') }}" alt="福岡県ウエイトリフティング協会">
             </a>
         </div>
         <div class="fixed top-[25px] right-[25px] z-40 sp:top-[16px] sp:right-[16px] hover:bg-blue-200 active:bg-blue-300  focus:ring-blue-200">
