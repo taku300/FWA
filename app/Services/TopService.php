@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Lifter;
 use App\Models\Top;
 use App\Services\LifterService;
+use Illuminate\Support\Facades\DB;
 
 class TopService
 {
@@ -41,71 +42,72 @@ class TopService
 
     public function topUpdate($request)
     {
-        $datas = $request->all();
-        if ($request->top_lifter_1) {
-            $keyList = $this->lifterService->getTopLifterNameList();
-            if (array_key_exists(0, $keyList)) {
-                $oldLifter = Lifter::find($keyList[0]['id']);
-                $oldLifter->top_post_flag = 0;
-                $oldLifter->save();
-            }
-            $lifter = Lifter::find($request->top_lifter_1);
-            $lifter->top_post_flag = 1;
-            $lifter->save();
+        DB::beginTransaction();
+        try {
+            $this->updateTopLifters($request);
+            $this->updateTopImages($request);
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->withInput();
         }
-        if ($request->top_lifter_2) {
-            $keyList = $this->lifterService->getTopLifterNameList();
-            if (array_key_exists(1, $keyList)) {
-                $oldLifter = Lifter::find($keyList[1]['id']);
-                $oldLifter->top_post_flag = 0;
-                $oldLifter->save();
-            }
-            $lifter = Lifter::find($request->top_lifter_2);
-            $lifter->top_post_flag = 1;
-            $lifter->save();
-        }
+        DB::commit();
+    }
+
+    public function updateTopImages($request)
+    {
         if (isset($request->top_image_path_1)) {
-            if (Top::where('img_type', 1)->exists()) {
-                $oldTop = Top::where('img_type', 1)->get();
-                $this->deleteFilePath('image_path', $oldTop);
-                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop[0]['image_path']);
-                foreach ($oldTop as $val) {
-                    $val->delete();
-                }
-            }
-            $top = new Top;
-            $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_1, $top);
-            $top->img_type = 1;
-            $top->save();
+            $this->saveTopImages($request, 1, \CommonConst::TOP_FILE_PATH_1);
         }
         if (isset($request->top_image_path_2)) {
-            if (Top::where('img_type', 2)->exists()) {
-                $oldTop = Top::where('img_type', 2)->get();
-                $this->deleteFilePath('image_path', $oldTop);
-                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop[0]['image_path']);
-                foreach ($oldTop as $val) {
-                    $val->delete();
-                }
-            }
-            $top = new Top;
-            $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_2, $top);
-            $top->img_type = 2;
-            $top->save();
+            $this->saveTopImages($request, 2, \CommonConst::TOP_FILE_PATH_2);
         }
         if (isset($request->top_image_path_3)) {
-            if (Top::where('img_type', 3)->exists()) {
-                $oldTop = Top::where('img_type', 3)->get();
-                $this->deleteFilePath('image_path', $oldTop);
-                \DeleteFile::deleteFilePath(\CommonConst::TOP_FILE_PATH, $oldTop[0]['image_path']);
-                foreach ($oldTop as $val) {
-                    $val->delete();
-                }
-            }
-            $top = new Top;
-            $top->image_path = $this->getDatas($request, \CommonConst::TOP_FILE_PATH_3, $top);
-            $top->img_type = 3;
-            $top->save();
+            $this->saveTopImages($request, 3, \CommonConst::TOP_FILE_PATH_3);
         }
+        if (isset($request->top_image_path_4)) {
+            $this->saveTopImages($request, 4, \CommonConst::TOP_FILE_PATH_4);
+        }
+    }
+
+    public function saveTopImages($request, $num, $path)
+    {
+        if (Top::where('img_type', $num)->exists()) {
+            $oldTop = Top::where('img_type', $num)->first();
+            $this->deleteFilePath('image_path', $oldTop);
+            $oldTop->delete();
+        }
+        $this->createTops($request, $path, $num);
+    }
+
+    public function updateTopLifters($request)
+    {
+        if ($request->top_lifter_1) {
+            $this->saveTopLifters($request, 0);
+        }
+        if ($request->top_lifter_2) {
+            $this->saveTopLifters($request, 1);
+        }
+    }
+
+    public function saveTopLifters($request, $num)
+    {
+        $keyList = $this->lifterService->getTopLifterNameList();
+        if (array_key_exists($num, $keyList)) {
+            $oldLifter = Lifter::find($keyList[$num]['id']);
+            $oldLifter->top_post_flag = 0;
+            $oldLifter->save();
+        }
+        $lifter = Lifter::find($request->top_lifter_2);
+        $lifter->top_post_flag = 1;
+        $lifter->save();
+    }
+
+    public function createTops($request, $num, $path)
+    {
+        $top = new Top;
+        $top->image_path = $this->getDatas($request, $path, $top);
+        $top->img_type = $num;
+        $top->save();
     }
 
     /**
@@ -125,10 +127,8 @@ class TopService
      * @param  string  $path
      * @param  mixed  $fileNames
      */
-    public static function deleteFilePath($path, $fileNames)
+    public static function deleteFilePath($path, $fileName)
     {
-        foreach ($fileNames as $fileName) {
-            \Storage::delete(\CommonConst::TOP_FILE_PATH . $fileName[$path]);
-        }
+        \Storage::delete(\CommonConst::TOP_FILE_PATH . $fileName[$path]);
     }
 }

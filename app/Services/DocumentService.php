@@ -36,7 +36,6 @@ class DocumentService
             if (Document::where('document_type', 1)->exists()) {
                 $oldDocument = Document::where('document_type', 1)->get();
                 $this->deleteFilePath('document_path', $oldDocument);
-                \DeleteFile::deleteFilePath(\CommonConst::ASSOCIATION_DOCUMENT_PATH, $oldDocument[0]['document_path']);
                 foreach ($oldDocument as $val) {
                     $val->delete();
                 }
@@ -50,7 +49,6 @@ class DocumentService
             if (Document::where('document_type', 2)->exists()) {
                 $oldDocument = Document::where('document_type', 2)->get();
                 $this->deleteFilePath('document_path', $oldDocument);
-                \DeleteFile::deleteFilePath(\CommonConst::ASSOCIATION_DOCUMENT_PATH, $oldDocument[0]['document_path']);
                 foreach ($oldDocument as $val) {
                     $val->delete();
                 }
@@ -64,7 +62,6 @@ class DocumentService
             if (Document::where('document_type', 3)->exists()) {
                 $oldDocument = Document::where('document_type', 3)->get();
                 $this->deleteFilePath('document_path', $oldDocument);
-                \DeleteFile::deleteFilePath(\CommonConst::ASSOCIATION_DOCUMENT_PATH, $oldDocument[0]['document_path']);
                 foreach ($oldDocument as $val) {
                     $val->delete();
                 }

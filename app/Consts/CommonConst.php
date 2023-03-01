@@ -23,6 +23,8 @@ class CommonConst
     const TOP_FILE_PATH_NAME_2 = 'top_image_path_2.png'; // top画像2
     const TOP_FILE_PATH_3 = 'top_image_path_3';
     const TOP_FILE_PATH_NAME_3 = 'top_image_path_3.png'; // top画像3
+    const TOP_FILE_PATH_4 = 'top_image_path_4';
+    const TOP_FILE_PATH_NAME_4 = 'top_image_path_4.png'; // top画像4
 
     /**
      * ドキュメント
