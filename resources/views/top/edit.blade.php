@@ -46,7 +46,7 @@
                         {{ Form::error('top_image_path_4') }}
                     </li>
                     <li class="flex mb-4">
-                        {{ Form::label('top_image_path_4', 'TOP3', ['class' => 'shrink-0 w-24']) }}
+                        {{ Form::label('top_image_path_4', 'TOP4', ['class' => 'shrink-0 w-24']) }}
                         {{ Form::file('top_image_path_4', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
                     </li>
                 </ul>
