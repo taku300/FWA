@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Document;
+use Illuminate\Support\Facades\DB;
 
 class DocumentService
 {
