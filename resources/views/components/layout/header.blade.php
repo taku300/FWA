@@ -16,7 +16,7 @@
                 <p class="js-header-parts-text text-[10px] text-white font-black text-shadow">福岡県ウエイトリフティング協会</p>
                 <p class="js-header-parts-text text-[16px] text-white font-black text-shadow pc:text-[14px]">Fukuoka Weightlifting</p>
                 <p class="js-header-parts-text text-[16px] text-white font-black text-shadow pc:text-[14px]">Association</p>
-                <img class="js-header-parts-img mt-3 w-[50px] pc:w-[30px]" src="{{ asset('images/layout/logo_w_s.png') . config('cache.update_date') }}" alt="福岡県ウエイトリフティング協会">
+                <img class="js-header-parts-img mt-3 w-[50px] pc:w-[30px]" src="{{ asset('images/layout/logo_w_s.png') . config('cache.update_date') }}" alt="福岡県ウエイトリフティング協会ロゴ">
             </a>
         </div>
         <div class="hamburger fixed top-[35px] right-[25px] z-40 sp:top-[16px] sp:right-[16px] hover:bg-blue-200 active:bg-blue-300  focus:ring-blue-200">
