@@ -4,6 +4,7 @@ namespace App\Consts;
 
 class WeightClassConst
 {
+    // 男性用階級
     const MAN_CLASS_LIST = [
         1 => '55kg級',
         2 => '61kg級',
@@ -16,6 +17,8 @@ class WeightClassConst
         9 => '109kg級',
         10 => '109kg超級'
     ];
+
+    // 女性用階級
     const WOMAN_CLASS_LIST = [
         1 => '45kg級',
         2 => '49kg級',
@@ -28,6 +31,8 @@ class WeightClassConst
         9 => '87kg級',
         10 => '87kg超級'
     ];
+
+    // 階級選択用
     const CLASS_LIST = [
         1 => '55kg級',
         2 => '61kg級',
