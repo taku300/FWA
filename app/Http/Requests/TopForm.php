@@ -29,7 +29,7 @@ class TopForm extends FormRequest
             'top_image_path_1' => ['file'],
             'top_image_path_2' => ['file'],
             'top_image_path_3' => ['file'],
-            'top_image_path_3' => ['file'],
+            'top_image_path_4' => ['file'],
         ];
     }
 
