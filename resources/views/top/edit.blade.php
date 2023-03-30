@@ -42,6 +42,13 @@
                         {{ Form::label('top_image_path_3', 'TOP3', ['class' => 'shrink-0 w-24']) }}
                         {{ Form::file('top_image_path_3', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
                     </li>
+                    <li class="mb-4">
+                        {{ Form::error('top_image_path_4') }}
+                    </li>
+                    <li class="flex mb-4">
+                        {{ Form::label('top_image_path_4', 'TOP4', ['class' => 'shrink-0 w-24']) }}
+                        {{ Form::file('top_image_path_4', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
+                    </li>
                 </ul>
                 <div class=" mt-20 flex justify-center">
                     <x-parts.form-button bgColor='black'>更新</x-parts.form-button>
