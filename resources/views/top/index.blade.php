@@ -70,7 +70,7 @@
             </div>
             <!-- ota -->
             <div class="absolute top-[2700px] left-[4.5%] sp:top-[1850px] sp:left-[10%]">
-                <img class="w-[518px] pc:w-[350px] sp:w-[200px]" src="{{ asset('images/top/ota.jpg') }}" alt="">
+                <img class="w-[518px] pc:w-[350px] sp:w-[200px]" src="{{ asset('images/top/ota.jpg') . config('cache.update_date') }}" alt="">
                 <div class="absolute top-[25%] left-[70%] sp:left-[50%]">
                     <div class="w-[500px] h-[500px]  pc:w-[400px] pc:h-[450px] sp:w-[200px] sp:h-[400px] text-white">
                         <div>
@@ -118,7 +118,7 @@
                         </div>
                         <div class=" flex-1 flex justify-center items-center">
                             <a class="" href="https://fukuokasports.org/">
-                                <img class="w-[90%] aspect-[65/35] m-auto" src="{{ asset('images/top/f_sports.png') }}" alt="公益財団法人福岡県スポーツ推進基金">
+                                <img class="w-[90%] aspect-[65/35] m-auto" src="{{ asset('images/top/f_sports.png') . config('cache.update_date') }}" alt="公益財団法人福岡県スポーツ推進基金">
                             </a>
                         </div>
                     </div>

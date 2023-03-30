@@ -82,14 +82,14 @@ class TopService
     public function updateTopLifters($request)
     {
         if ($request->top_lifter_1) {
-            $this->saveTopLifters($request, 0);
+            $this->saveTopLifters($request, 0, 'top_lifter_1');
         }
         if ($request->top_lifter_2) {
-            $this->saveTopLifters($request, 1);
+            $this->saveTopLifters($request, 1, 'top_lifter_2');
         }
     }
 
-    public function saveTopLifters($request, $num)
+    public function saveTopLifters($request, $num, $column)
     {
         $keyList = $this->lifterService->getTopLifterNameList();
         if (array_key_exists($num, $keyList)) {
@@ -97,7 +97,7 @@ class TopService
             $oldLifter->top_post_flag = 0;
             $oldLifter->save();
         }
-        $lifter = Lifter::find($request->top_lifter_2);
+        $lifter = Lifter::find($request->$column);
         $lifter->top_post_flag = 1;
         $lifter->save();
     }

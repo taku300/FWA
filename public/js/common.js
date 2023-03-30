@@ -14,6 +14,8 @@ $(document).ready(function () {
      * ロゴ背景の透明度の調整
      */
     var $headerPartsLoge = $(".js-header-parts-logo");
+    var $headerPartsText = $(".js-header-parts-text");
+    var $headerPartsImg = $(".js-header-parts-img");
     console.log('ScrollTop is ' + $(window).scrollTop());
 
     /**
@@ -21,6 +23,8 @@ $(document).ready(function () {
      */
     if ($(window).scrollTop() >= 550) {
         $headerPartsLoge.addClass("hidden");
+        $headerPartsText.addClass("hidden");
+        $headerPartsImg.removeClass("mt-3");
     }
 
     /**
@@ -29,8 +33,12 @@ $(document).ready(function () {
     $(window).scroll(function () {
         if ($(this).scrollTop() >= 550) {
             $headerPartsLoge.addClass("hidden");
+            $headerPartsText.addClass("hidden");
+            $headerPartsImg.removeClass("mt-3");
         } else {
             $headerPartsLoge.removeClass("hidden");
+            $headerPartsText.removeClass("hidden");
+            $headerPartsImg.addClass("mt-3");
         }
     });
 
