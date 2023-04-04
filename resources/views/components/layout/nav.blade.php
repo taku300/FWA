@@ -1,6 +1,6 @@
 <div class="mt-[17px]">
     <a href="{{ route('index') }}">      <!-- トップに遷移 -->
-        <img class="h-[26px] m-auto" src="{{ asset('images/layout/logo_white_strate.png') . config('cache.update_date') }}" alt="福岡県ウエイトリフティング協会">
+        <img class=" w-16 m-auto" src="{{ asset('images/layout/logo_w.png') . config('cache.update_date') }}" alt="福岡県ウエイトリフティング協会ロゴ">
     </a>
 </div>
 <nav class="text-white mt-[70px] ml-[40px] flex flex-col">

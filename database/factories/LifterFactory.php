@@ -26,7 +26,7 @@ class LifterFactory extends Factory
             'category' => $this->faker->numberBetween(1, 5),
             'affiliation_id' => $this->faker->numberBetween(1, 5),
             'weight_class' => $this->faker->numberBetween(1, 20),
-            'image_path' => $this->faker->image(public_path('storage/' . \CommonConst::LIFTERS_FILE_PATH_NAME), 640, 480, null, false),
+            'image_path' => $this->faker->image(public_path(\CommonConst::LIFTERS_FILE_PATH_NAME), 640, 480, null, false),
         ];
     }
 

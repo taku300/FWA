@@ -23,7 +23,7 @@
     </section>
 
     <!-- image-center -->
-    <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-center bg-cover" style="background-image: url({{ asset('images/top/top_center.png') }});">
+    <div class="mt-[330px] mb-[330px] h-[627px] w-full bg-center bg-cover" style="background-image: url({{ isset($topImagePath[4]) ? \Storage::url($topImagePath[4]) : 'images/top/top_center.png'}});">
     </div>
 
     <!-- lifters -->
