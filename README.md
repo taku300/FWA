@@ -1,6 +1,5 @@
 <p align="center">
-<a href=""><img src="/public/images/layout/logo_white_strate.png" width="400" alt="福岡県ウエイトリフティング協会ロゴ"></a>
-<a href=""><img src="/public/images/top/top1.png" width="400" alt="福岡県ウエイトリフティング協会トップ画像"></a><br>
+<a href=""><img src="/public/images/layout/logo_b.png" width="200" alt="福岡県ウエイトリフティング協会ロゴ"></a>
 </p>
 <br>
 
