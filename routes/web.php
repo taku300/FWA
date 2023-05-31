@@ -79,6 +79,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+# サイトマップのルート
+Route::get('/sitemap', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
 
 require __DIR__.'/auth.php';
 
