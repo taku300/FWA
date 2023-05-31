@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['middleware' => 'basicauth'], function(){
 //ログインなし
 //トップ画面
 Route::resource('/', TopController::class, ['only' => ['index']]);
@@ -79,4 +80,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
+
+});
