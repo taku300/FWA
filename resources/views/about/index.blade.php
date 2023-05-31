@@ -35,12 +35,8 @@
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">守昌宏</dd>
                             <dt class="text-sm float-left font-black pb-8">理事長</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">福田登美男</dd>
-                            <dt class="text-sm float-left font-black pb-8">常務理事</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
-                            <dt class="text-sm float-left font-black pb-8">理事</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
                             <dt class="text-sm float-left font-black pb-8">監事</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
+                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">松原誠</dd>
                         </dl>
                     </div>
                 </div>
