@@ -18,9 +18,9 @@
                             <dt class="text-sm float-left font-black pb-8">創立</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">1948（昭和23年）4月1日</dd>
                             <dt class="text-sm float-left font-black pb-8">所在地</dt>
-                            <dd class="text-sm pl-[20%] sp:pl-[25%]">北九州市八幡西区元城町一番一号</dd>
+                            <dd class="text-sm pl-[20%] sp:pl-[25%]">福岡県北九州市八幡西区元城町1-1</dd>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">福岡県立八幡中央高等学校</dd>
-                            <dt class="text-sm float-left font-black pb-8">Mail</dt>
+                            <dt class="text-sm float-left font-black pb-8">メール</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">fukuokaweight@gmail.com</dd>
                             <dt class="text-sm float-left font-black pt-[10px] pb-8">定款</dt>
                             <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href=""><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') . config('cache.update_date') }}" alt="大会要項"></a></dd>
@@ -32,9 +32,9 @@
                         <h2 class="text-4xl font-black -translate-x-5 sp:-translate-x-0">役員名簿</h2>
                         <dl class="pt-10">
                             <dt class="text-sm float-left font-black pb-8">会長</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
+                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">守昌宏</dd>
                             <dt class="text-sm float-left font-black pb-8">理事長</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
+                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">福田登美男</dd>
                             <dt class="text-sm float-left font-black pb-8">常務理事</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">テキスト</dd>
                             <dt class="text-sm float-left font-black pb-8">理事</dt>
@@ -48,18 +48,13 @@
                 <div class="w-[50%] sp:w-full sp:mt-24">
                     <div>
                         <h2 class="text-4xl font-black -translate-x-5 sp:-translate-x-0">キャラクター紹介</h2>
-                        <div class="text-center pt-16">
-                            <h2 class="text-4xl font-black">ハシビロ公</h2>
+                        <div class="text-center pt-8">
+                            <h2 class="text-2xl font-black">ハシビロ公</h2>
                         </div>
-                        <img src="{{ asset('images/parts/hashibiroko.png') . config('cache.update_date') }}" alt="イメージキャラクター">
+                        <img src="{{ asset('images/parts/hashibiroko.png') . config('cache.update_date') }}" alt="イメージキャラクター" class="w-[200px] m-auto mt-3">
                     </div>
-                    <div class="text-2xl pt-14 font-black sp:text-base">
+                    <div class="text-sm pt-3 font-black">
                         <p>キャラクターの元になった動物ハシビロコウは跳べない鳥だ。普段はほとんど動かずじっとしている。しかし、獲物を捉えるときには、脅威の瞬発力を見せる。「いざという時には誰にも負けない強さ」をコンセプトに福岡県のアスリートたちが活躍することを願っている。
-                            <br>
-                            <br>
-                            ※補足
-                            <br>
-                            実はこのハシビロ公、体に「FukuokaWeightliftingAssociation」の頭文字「FWA」が隠れているのだが未だ発見できたものはいないらしい。
                         </p>
                     </div>
                 </div>
