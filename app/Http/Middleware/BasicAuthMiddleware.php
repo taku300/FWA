@@ -18,8 +18,7 @@ class BasicAuthMiddleware
     {
         $username = $request->getUser();
         $password = $request->getPassword();
-
-        if ($username == 'fwa' && $password == 'fukuokawl') {
+        if (!config('basic.basic_flg') | ($username == config('basic.basic_user') && $password == config('basic.basic_password'))) {
             return $next($request);
         }
 
