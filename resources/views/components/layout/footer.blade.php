@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                             <td>MAIL</td>
-                            <td>https://fukuoka-weight.com/</td>
+                            <td>fukuokaweight@gmail.com</td>
                         </tr>
                     </tbody>
                 </table>
