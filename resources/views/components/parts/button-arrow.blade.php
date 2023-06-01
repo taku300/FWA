@@ -6,7 +6,9 @@
     if (!function_exists("getBgColorArrowButton")) {
         function getBgColorArrowButton($theme) {
             return match ($theme) {
-                "black" => "bg-black",
+                "black" => "bg-black hover:bg-black/80",
+                "red" => "bg-red-600 hover:bg-red-500",
+
             };
         }
     }

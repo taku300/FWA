@@ -30,16 +30,16 @@
                             <td class="w-[80px] mb-[8px] align-top sp:w-[60px]">Address</td>
                             <td>
                                 〒806-0015<br>
-                                福岡県北九州市早田西区元城町1-1
+                                福岡県北九州市八幡西区元城町1-1
                             </td>
                         </tr>
                         <tr>
-                            <td>TEL</td>
+                            <td>Tel</td>
                             <td>080-3870-0816</td>
                         </tr>
                         <tr>
-                            <td>MAIL</td>
-                            <td>https://fukuoka-weight.com/</td>
+                            <td>Mail</td>
+                            <td>fukuokaweight@gmail.com</td>
                         </tr>
                     </tbody>
                 </table>

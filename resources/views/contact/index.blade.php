@@ -72,7 +72,7 @@
                 </li>
                 <li class="flex items-center mb-4">
                     {{ Form::checkbox('check', 1, old('check', false ), ['class'=>'align-top border-slate-300 rounded-md' ]) }}
-                    {{ Form::label('check', '当協会の「個人情報保護方針」に同意します。', ['class' => 'shrink-0 font-bold ml-5']) }}
+                    {{ Form::label('check', '当協会の「個人情報保護方針」に同意します。', ['class' => 'font-bold ml-5']) }}
                 </li>
             </ul>
             </x-layout.container>

@@ -32,9 +32,9 @@ Route::resource('/', TopController::class, ['only' => ['index']]);
 //協会概要画面
 Route::resource('/about', AboutController::class, ['only' => ['index']]);
 //協会の歩み画面
-Route::resource('/history', HistoryController::class, ['only' => ['index']]);
+// Route::resource('/history', HistoryController::class, ['only' => ['index']]);
 //年間計画画面
-Route::resource('/plans', PlansController::class, ['only' => ['index']]);
+// Route::resource('/plans', PlansController::class, ['only' => ['index']]);
 //試合・要項結果一覧画面
 Route::resource('/results', ResultsController::class, ['only' => ['index']]);
 //大会記録一覧画面
@@ -78,6 +78,9 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+# サイトマップのルート
+Route::get('/sitemap', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 
 
 require __DIR__.'/auth.php';
