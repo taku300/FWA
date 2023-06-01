@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(resource_path('views/vendor/sitemap'), 'sitemap');
+
     }
 }
