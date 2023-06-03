@@ -2,16 +2,42 @@
 
 namespace App\Services;
 
+use App\Models\Iframe;
 use App\Models\Lifter;
 use App\Services\LifterService;
 
 class TopService
 {
-    public $lifterService;
+    /**
+     * 選手関連支援クラス
+     */
+    private LifterService $lifterService;
 
-    public function __construct(LifterService $lifterService)
-    {
+    /**
+     * iframeモデル
+     */
+    private Iframe $iframe;
+
+    /**
+     * コンストラクタ
+     */
+    public function __construct(
+        LifterService $lifterService,
+        Iframe $iframe,
+    ) {
         $this->lifterService = $lifterService;
+        $this->iframe = $iframe;
+    }
+
+    /**
+     * @param TopForm $request リクエスト
+     */
+    public function editTop(TopForm $request)
+    {
+        // iframe登録処理、失敗時エラーメッセージ表示
+        if(!$this->iframe->createIframe($request)) {
+            return redirect()->route('top.edit')->with('message', 'iframe登録処理失敗');
+        }
     }
 
     public function getTopImages()
