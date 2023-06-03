@@ -22,10 +22,18 @@
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">福岡県立八幡中央高等学校</dd>
                             <dt class="text-sm float-left font-black pb-8">Mail</dt>
                             <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">fukuokaweight@gmail.com</dd>
+                            @if(\Storage::exists($documents[1]))
                             <dt class="text-sm float-left font-black pt-[10px] pb-8">定款</dt>
-                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href="{{ \Storage::url($documents[1]) }}" download="articles_of_incorporation.pdf"><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') . config('cache.update_date') }}" alt="大会要項"></a></dd>
+                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href="{{ \Storage::url($documents[1]) }}" download="articles_of_incorporation.pdf"><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') . config('cache.update_date') }}" alt="定款"></a></dd>
+                            @endif
+                            @if(\Storage::exists($documents[2]))
                             <dt class="text-sm float-left font-black pt-[10px] pb-8">ガバナンスコード</dt>
-                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href="{{ \Storage::url($documents[2]) }}" download="governance_code.pdf"><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') . config('cache.update_date') }}" alt="大会結果"></a></dd>
+                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href="{{ \Storage::url($documents[2]) }}" download="governance_code.pdf"><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') . config('cache.update_date') }}" alt="ガバナンスコード"></a></dd>
+                            @endif
+                            @if(\Storage::exists($documents[3]))
+                            <dt class="text-sm float-left font-black pt-[10px] pb-8">年間計画</dt>
+                            <dd class="pl-[35%] pb-8 sp:pl-[40%]"><a href="{{ \Storage::url($documents[3]) }}" download="yearly_schedule.pdf"><img class="w-[29px] h-[40px]" src="{{ asset('images/parts/pdf.png') . config('cache.update_date') }}" alt="年間計画"></a></dd>
+                            @endif
                         </dl>
                     </div>
                     <div>
