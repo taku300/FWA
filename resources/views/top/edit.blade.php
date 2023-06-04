@@ -44,7 +44,7 @@
                     </li>
                     <li class="flex mb-4">
                         {{ Form::label('iframe_path', 'iframe', ['class' => 'shrink-0 w-24']) }}
-                        {{ Form::text('iframe_path', ['placeholder'=>'iframe pathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
+                        {{ Form::text('iframe_path', null, ['placeholder'=>'iframe pathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     </li>
                 </ul>
                 <div class=" mt-20 flex justify-center">

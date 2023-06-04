@@ -2,13 +2,24 @@
 
 namespace App\Models;
 
-use App\Http\Requests\TopForm;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Iframe extends Model
 {
     use HasFactory;
+
+    /**
+     * モデルと関連しているテーブル
+     *
+     * @var string
+     */
+    protected $table = 'iframes';
+
+    protected $fillable = [
+        'iframe_path',
+        'iframe_display_flg',
+    ];
 
     /**
      * 表示フラグ off
@@ -25,30 +36,16 @@ class Iframe extends Model
     const SHOW = 1;
 
     /**
-     * モデルと関連しているテーブル
-     *
-     * @var string
-     */
-    protected $table = 'iframes';
-
-    protected $fillable = [
-        'iframe_path',
-        'iframe_display_flg',
-    ];
-
-    /**
      * iframe新規登録
-     * 
-     * @param  TopForm $request リクエスト
      * 
      * @return bool
      */
-    public function createIframe(TopForm $request): bool
+    public function createIframe($request): bool
     {
         // 登録するデータをセット
-        $formDatas[
+        $formDatas = [
             'iframe_path' => $request->only(['iframe_path']),
-            'iframe_display_flg' => self::SHOW;
+            'iframe_display_flg' => self::SHOW,
         ];
 
         // iframe登録処理
@@ -75,10 +72,7 @@ class Iframe extends Model
         }
 
         // 表示フラグが1のものを取得し、ステータスを0に変更
-        foreach($this->getOldIframe() as $val) {
-            $oldIframe->iframe_display_flg = self::HIDE;
-            $oldIframe->save();
-        }
+        $this->getOldIframe()->update(['iframe_display_flg' => self::HIDE]);
     }
 
     /**

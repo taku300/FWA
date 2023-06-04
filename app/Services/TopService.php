@@ -29,17 +29,6 @@ class TopService
         $this->iframe = $iframe;
     }
 
-    /**
-     * @param TopForm $request リクエスト
-     */
-    public function editTop(TopForm $request)
-    {
-        // iframe登録処理、失敗時エラーメッセージ表示
-        if(!$this->iframe->createIframe($request)) {
-            return redirect()->route('top.edit')->with('message', 'iframe登録処理失敗');
-        }
-    }
-
     public function getTopImages()
     {
         $topImages = [
@@ -52,6 +41,11 @@ class TopService
 
     public function topUpdate($request)
     {
+        // iframe登録処理、失敗時エラーメッセージ表示
+        if(!$this->iframe->createIframe($request)) {
+            return redirect()->route('top.edit')->with('message', 'iframe登録処理失敗');
+        }
+
         if ($request->top_lifter_1) {
             $keyList = $this->lifterService->getTopLifterNameList();
             if (array_key_exists(0, $keyList)) {
