@@ -42,6 +42,13 @@
                         {{ Form::label('top_image_path_3', 'TOP3', ['class' => 'shrink-0 w-24']) }}
                         {{ Form::file('top_image_path_3', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
                     </li>
+                    <li class="mb-4">
+                        {{ Form::error('top_image_path_4') }}
+                    </li>
+                    <li class="flex mb-4">
+                        {{ Form::label('top_image_path_4', 'TOP4', ['class' => 'shrink-0 w-24']) }}
+                        {{ Form::file('top_image_path_4', ['accept' => '.png, , .jpg, .jpeg', 'class' => '' ]) }}
+                    </li>
                     <li class="flex mb-4">
                         {{ Form::label('iframe_path', 'iframe', ['class' => 'shrink-0 w-24']) }}
                         {{ Form::text('iframe_path', null, ['placeholder'=>'iframe pathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}

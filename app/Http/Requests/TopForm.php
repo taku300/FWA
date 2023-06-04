@@ -29,6 +29,7 @@ class TopForm extends FormRequest
             'top_image_path_1' => ['file'],
             'top_image_path_2' => ['file'],
             'top_image_path_3' => ['file'],
+            'top_image_path_4' => ['file'],
             'iframe_path' => 'url',
         ];
     }
@@ -41,6 +42,7 @@ class TopForm extends FormRequest
             'top_image_path_1' => 'トップ写真１',
             'top_image_path_2' => 'トップ写真２',
             'top_image_path_3' => 'トップ写真３',
+            'top_image_path_4' => 'トップ写真４',
             'iframe_path' => 'iframe',
         ];
     }
