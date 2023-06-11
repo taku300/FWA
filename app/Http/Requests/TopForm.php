@@ -26,11 +26,11 @@ class TopForm extends FormRequest
         return [
             'top_lifter_1' => ['nullable', 'integer', 'different:top_lifter_2'],
             'top_lifter_2' => ['nullable', 'integer', 'different:top_lifter_1'],
-            'top_image_path_1' => ['file'],
-            'top_image_path_2' => ['file'],
-            'top_image_path_3' => ['file'],
-            'top_image_path_4' => ['file'],
-            'iframe_path' => 'url',
+            'top_image_path_1' => ['nullable', 'image'],
+            'top_image_path_2' => ['nullable', 'image'],
+            'top_image_path_3' => ['nullable', 'image'],
+            'top_image_path_4' => ['nullable', 'image'],
+            'iframe_path' => ['nullable', 'url'],
         ];
     }
 

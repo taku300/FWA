@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Iframe;
 use App\Models\Lifter;
 use App\Models\Top;
+use App\Http\Requests\TopForm;
 use App\Services\LifterService;
 use Illuminate\Support\Facades\DB;
 
@@ -55,7 +56,7 @@ class TopService
         return \CommonConst::TOP_FILE_PATH . $top->image_path;
     }
 
-    public function topUpdate($request)
+    public function topUpdate(TopForm $request)
     {
         // iframe登録処理、失敗時エラーメッセージ表示
         if (!$this->iframe->saveIframe($request)) {
@@ -126,7 +127,7 @@ class TopService
     {
         $top = new Top;
         $top->image_path = $this->getDatas($request, $path, $top);
-        $top->img_type = $num;
+        $top->order_num = $num;
         $top->save();
     }
 

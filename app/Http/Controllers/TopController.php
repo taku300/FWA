@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Lifter;
+use App\Models\Top;
 use App\Services\LifterService;
 use App\Services\TopService;
 use App\Http\Requests\TopForm;
