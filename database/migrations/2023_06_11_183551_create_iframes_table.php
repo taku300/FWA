@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('iframes', function (Blueprint $table) {
             $table->id();
             $table->string('iflame_path');
-            $table->tinyInteger('iframe_display_flg')->default(0);
         });
     }
 

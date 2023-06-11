@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('iframes', function (Blueprint $table) {
-            $table->id();
-            $table->string('iflame_path');
-            $table->tinyInteger('iframe_display_flg')->default(0);
+        Schema::table('tops', function (Blueprint $table) {
+            $table->string('image_path');
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iframes');
+        //
     }
 };

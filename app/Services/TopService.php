@@ -25,7 +25,7 @@ class TopService
      */
     public function __construct(
         LifterService $lifterService,
-        Iframe $iframe,
+        Iframe $iframe
     ) {
         $this->lifterService = $lifterService;
         $this->iframe = $iframe;
@@ -34,16 +34,16 @@ class TopService
     public function getTopImages()
     {
         $topImages = [];
-        if (Top::where('img_type', 1)->exists()) {
+        if (Top::where('order_num', 1)->exists()) {
             $topImages[1] = $this->getImages(1);
         }
-        if (Top::where('img_type', 2)->exists()) {
+        if (Top::where('order_num', 2)->exists()) {
             $topImages[2] = $this->getImages(2);
         }
-        if (Top::where('img_type', 3)->exists()) {
+        if (Top::where('order_num', 3)->exists()) {
             $topImages[3] = $this->getImages(3);
         }
-        if (Top::where('img_type', 4)->exists()) {
+        if (Top::where('order_num', 4)->exists()) {
             $topImages[4] = $this->getImages(4);
         }
         return $topImages;
@@ -51,38 +51,17 @@ class TopService
 
     public function getImages($num)
     {
-        $top = Top::where('img_type', $num)->first();
+        $top = Top::where('order_num', $num)->first();
         return \CommonConst::TOP_FILE_PATH . $top->image_path;
     }
 
     public function topUpdate($request)
     {
         // iframe登録処理、失敗時エラーメッセージ表示
-        if(!$this->iframe->createIframe($request)) {
-            return redirect()->route('top.edit')->with('message', 'iframe登録処理失敗');
+        if (!$this->iframe->saveIframe($request)) {
+            return redirect()->route('admins.top.edit')->with('message', 'iframe登録処理失敗');
         }
 
-        if ($request->top_lifter_1) {
-            $keyList = $this->lifterService->getTopLifterNameList();
-            if (array_key_exists(0, $keyList)) {
-                $oldLifter = Lifter::find($keyList[0]['id']);
-                $oldLifter->top_post_flag = 0;
-                $oldLifter->save();
-            }
-            $lifter = Lifter::find($request->top_lifter_1);
-            $lifter->top_post_flag = 1;
-            $lifter->save();
-        }
-        if ($request->top_lifter_2) {
-            $keyList = $this->lifterService->getTopLifterNameList();
-            if (array_key_exists(1, $keyList)) {
-                $oldLifter = Lifter::find($keyList[1]['id']);
-                $oldLifter->top_post_flag = 0;
-                $oldLifter->save();
-            }
-            $lifter = Lifter::find($request->top_lifter_2);
-            $lifter->top_post_flag = 1;
-            $lifter->save();
         DB::beginTransaction();
         try {
             $this->updateTopLifters($request);
@@ -112,8 +91,8 @@ class TopService
 
     public function saveTopImages($request, $num, $path)
     {
-        if (Top::where('img_type', $num)->exists()) {
-            $oldTop = Top::where('img_type', $num)->first();
+        if (Top::where('order_num', $num)->exists()) {
+            $oldTop = Top::where('order_num', $num)->first();
             $this->deleteFilePath('image_path', $oldTop);
             $oldTop->delete();
         }
@@ -156,7 +135,7 @@ class TopService
      *
      * @return  mixed
      */
-    public function getDatas($request, $defaultPath): mixed
+    public function getDatas($request, $defaultPath)
     {
         if ($request->file($defaultPath)) {
             $path = $request->file($defaultPath)->store(\CommonConst::TOP_FILE_PATH);
