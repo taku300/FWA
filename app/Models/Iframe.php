@@ -20,8 +20,6 @@ class Iframe extends Model
         'iframe_path',
     ];
 
-    public $timestamps = false;
-
     /**
      * iframe登録処理
      * 
@@ -32,16 +30,30 @@ class Iframe extends Model
         // iframe登録処理
         try {
             // id = 1固定
-            if($this->where('id', 1)->exists()) {
-                $this->update($request->only(['iframe_path']));
-            } else if(!$this->where('id', 1)->exists()) {
-                $this->create($request->only(['iframe_path']));
-            }
+            $insertData = [
+                'id' => 1,
+                'iframe_path' => $request->iframe_path,
+            ];
+
+            $iframe = Iframe::upsert($insertData, ['id'], ['iframe_path']);
         } catch(\Exception $e) {
             logger()->info(['iframe登録処理失敗', $e->getMessage()]);
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * iframe url取得
+     * 
+     * @return string|bool
+     */
+    public function getIframePath(): string | bool
+    {
+        if($this->find(1)) {
+            return $this->find(1)->iframe_path;
+        }
+        return false;
     }
 }

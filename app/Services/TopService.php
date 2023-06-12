@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\TopForm;
+use App\Models\Iframe;
 use App\Models\Lifter;
 use App\Models\Top;
 use App\Services\LifterService;
@@ -57,13 +58,9 @@ class TopService
 
     public function topUpdate(TopForm $request)
     {
-        // iframe登録処理、失敗時エラーメッセージ表示
-        if (!$this->iframe->saveIframe($request)) {
-            return redirect()->route('admins.top.edit')->with('message', 'iframe登録処理失敗');
-        }
-
         DB::beginTransaction();
         try {
+            $this->iframe->saveIframe($request);
             $this->updateTopLifters($request);
             $this->updateTopImages($request);
         } catch (Exception $e) {
