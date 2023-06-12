@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\TopForm;
 use App\Models\Lifter;
 use App\Models\Top;
 use App\Services\LifterService;
@@ -9,11 +10,25 @@ use Illuminate\Support\Facades\DB;
 
 class TopService
 {
-    public $lifterService;
+    /**
+     * 選手関連支援クラス
+     */
+    private LifterService $lifterService;
 
-    public function __construct(LifterService $lifterService)
-    {
+    /**
+     * iframeモデル
+     */
+    private Iframe $iframe;
+
+    /**
+     * コンストラクタ
+     */
+    public function __construct(
+        LifterService $lifterService,
+        Iframe $iframe
+    ) {
         $this->lifterService = $lifterService;
+        $this->iframe = $iframe;
     }
 
     public function getTopImages()
@@ -40,8 +55,13 @@ class TopService
         return \CommonConst::TOP_FILE_PATH . $top->image_path;
     }
 
-    public function topUpdate($request)
+    public function topUpdate(TopForm $request)
     {
+        // iframe登録処理、失敗時エラーメッセージ表示
+        if (!$this->iframe->saveIframe($request)) {
+            return redirect()->route('admins.top.edit')->with('message', 'iframe登録処理失敗');
+        }
+
         DB::beginTransaction();
         try {
             $this->updateTopLifters($request);

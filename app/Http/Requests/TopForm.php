@@ -26,10 +26,11 @@ class TopForm extends FormRequest
         return [
             'top_lifter_1' => ['nullable', 'integer', 'different:top_lifter_2'],
             'top_lifter_2' => ['nullable', 'integer', 'different:top_lifter_1'],
-            'top_image_path_1' => ['file'],
-            'top_image_path_2' => ['file'],
-            'top_image_path_3' => ['file'],
-            'top_image_path_4' => ['file'],
+            'top_image_path_1' => ['nullable', 'file'],
+            'top_image_path_2' => ['nullable', 'file'],
+            'top_image_path_3' => ['nullable', 'file'],
+            'top_image_path_4' => ['nullable', 'file'],
+            'iframe_path' => ['nullable', 'url'],
         ];
     }
 
@@ -42,6 +43,7 @@ class TopForm extends FormRequest
             'top_image_path_2' => 'トップ写真２',
             'top_image_path_3' => 'トップ写真３',
             'top_image_path_4' => 'トップ写真４',
+            'iframe_path' => 'iframe path',
         ];
     }
 }
