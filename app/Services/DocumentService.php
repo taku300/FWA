@@ -25,7 +25,7 @@ class DocumentService
     public function getDocuments($num)
     {
         $top = Document::where('document_type', $num)->first();
-        return \CommonConst::ASSOCIATION_DOCUMENT_PATH . $top->document_type;
+        return \CommonConst::ASSOCIATION_DOCUMENT_PATH . $top->document_path;
     }
 
     public function documentUpdate($request)
