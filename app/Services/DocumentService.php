@@ -10,13 +10,13 @@ class DocumentService
     public function getDocumentsPath()
     {
         $documentsFile = [];
-        if (Document::where('img_type', 1)->exists()) {
+        if (Document::where('document_type', 1)->exists()) {
             $documentsFile[1] = $this->getDocuments(1);
         }
-        if (Document::where('img_type', 2)->exists()) {
+        if (Document::where('document_type', 2)->exists()) {
             $documentsFile[2] = $this->getDocuments(2);
         }
-        if (Document::where('img_type', 3)->exists()) {
+        if (Document::where('document_type', 3)->exists()) {
             $documentsFile[3] = $this->getDocuments(3);
         }
         return $documentsFile;
