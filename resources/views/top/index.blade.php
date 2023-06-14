@@ -114,7 +114,7 @@
                 <div class="flex-1 flex items-center">
                     <div class="w-[65%] h-5/6 mx-auto bg-white flex flex-col pc:w-[90%]">
                         <div class=" flex-1 flex justify-center items-center">
-                            <iframe class="w-[90%] aspect-[560/320]" src="https://www.youtube.com/embed/OGPG-b5OOg0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe class="w-[90%] aspect-[560/320]" @if($iframePath) src="{{ $iframePath }}" @else src="https://www.youtube.com/embed/OGPG-b5OOg0" @endif title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                         <div class=" flex-1 flex justify-center items-center">
                             <a class="" href="https://fukuokasports.org/">
