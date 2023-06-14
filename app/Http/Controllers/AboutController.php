@@ -31,7 +31,7 @@ class AboutController extends Controller
     public function index()
     {
         // 協会概要資料取得
-        $documents = $this->documentService->getDocuments();
+        $documents = $this->documentService->getDocumentsPath();
 
         return view('about.index')->with(compact('documents'));
     }
