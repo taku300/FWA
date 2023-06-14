@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Iframe;
 use App\Models\News;
 use App\Models\Lifter;
 use App\Services\LifterService;
@@ -14,22 +15,26 @@ use App\Http\Requests\TopForm;
  */
 class TopController extends Controller
 {
+    public $iframe;
     public $news;
     public $lifter;
     public $lifterService;
     public $topService;
 
     /**
+     * @param  \App\Models\Iframe  $iframe
      * @param  \App\Models\News  $news
      * @param  \App\Models\Lifter  $lifter
      * @param  \App\Models\LifterService  $lifterService
      */
     public function __construct(
+        Iframe $iframe,
         News $news,
         Lifter $lifter,
         LifterService $lifterService,
         TopService $topService
     ) {
+        $this->iframe = $iframe;
         $this->news = $news;
         $this->lifter = $lifter;
         $this->lifterService = $lifterService;
@@ -42,12 +47,13 @@ class TopController extends Controller
      */
     public function index()
     {
+        $iframePath = $this->iframe->getIframePath();
         $topImagePath = $this->topService->getTopImages();
         $breakingNews = $this->news->getBrakingNews();
         $newsList = $this->news->getTopNewsList();
         $lifterList = $this->lifterService->getTopLifterList();
 
-        return view('top.index')->with(compact('breakingNews', 'newsList', 'lifterList', 'topImagePath'));
+        return view('top.index')->with(compact('iframePath', 'breakingNews', 'newsList', 'lifterList', 'topImagePath'));
     }
 
     public function edit()
