@@ -40,11 +40,39 @@
                         <h2 class="text-4xl font-black -translate-x-5 sp:-translate-x-0">役員名簿</h2>
                         <dl class="pt-10">
                             <dt class="text-sm float-left font-black pb-8">会長</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">守昌宏</dd>
-                            <dt class="text-sm float-left font-black pb-8">理事長</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">福田登美男</dd>
+                            <dd class="text-sm pl-48 pb-8">守昌宏</dd>
+                            <dt class="text-sm float-left font-black pb-8">副会長</dt>
+                            <dd class="text-sm pl-48 pb-8">小役丸秀一</dd>
+                            <dt class="text-sm float-left font-black pb-8">副会長</dt>
+                            <dd class="text-sm pl-48 pb-8">村上幸一</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事長兼強化委員長</dt>
+                            <dd class="text-sm pl-48 pb-8">福田登美男</dd>
+                            <dt class="text-sm float-left font-black pb-8">事務局長兼理事</dt>
+                            <dd class="text-sm pl-48 pb-8">信原正弥</dd>
+                            <dt class="text-sm float-left font-black pb-8">高体連専門委員長兼理事</dt>
+                            <dd class="text-sm pl-48 pb-8">太田和臣</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">大庭広行</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">金田拓郎</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">朝井俊一</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">大津久忠</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">石橋光作</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">楠元正順</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">森晴堂</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">片山栄一</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">郷森孝文</dd>
+                            <dt class="text-sm float-left font-black pb-8">理事</dt>
+                            <dd class="text-sm pl-48 pb-8">柳田瑞稀</dd>
                             <dt class="text-sm float-left font-black pb-8">監事</dt>
-                            <dd class="text-sm pl-[20%] pb-8 sp:pl-[25%]">松原誠</dd>
+                            <dd class="text-sm pl-48 pb-8">松原誠</dd>
                         </dl>
                     </div>
                 </div>
