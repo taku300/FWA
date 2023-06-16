@@ -639,6 +639,7 @@ class ComposerStaticInit2cfe74706695506dc29cdc1a683cdde6
         'App\\Mail\\NewUserIntroduction' => __DIR__ . '/../..' . '/app/Mail/NewUserIntroduction.php',
         'App\\Models\\Affiliation' => __DIR__ . '/../..' . '/app/Models/Affiliation.php',
         'App\\Models\\Document' => __DIR__ . '/../..' . '/app/Models/Document.php',
+        'App\\Models\\Iframe' => __DIR__ . '/../..' . '/app/Models/Iframe.php',
         'App\\Models\\Lifter' => __DIR__ . '/../..' . '/app/Models/Lifter.php',
         'App\\Models\\News' => __DIR__ . '/../..' . '/app/Models/News.php',
         'App\\Models\\NewsDocument' => __DIR__ . '/../..' . '/app/Models/NewsDocument.php',

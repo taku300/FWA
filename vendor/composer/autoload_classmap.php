@@ -64,6 +64,7 @@ return array(
     'App\\Mail\\NewUserIntroduction' => $baseDir . '/app/Mail/NewUserIntroduction.php',
     'App\\Models\\Affiliation' => $baseDir . '/app/Models/Affiliation.php',
     'App\\Models\\Document' => $baseDir . '/app/Models/Document.php',
+    'App\\Models\\Iframe' => $baseDir . '/app/Models/Iframe.php',
     'App\\Models\\Lifter' => $baseDir . '/app/Models/Lifter.php',
     'App\\Models\\News' => $baseDir . '/app/Models/News.php',
     'App\\Models\\NewsDocument' => $baseDir . '/app/Models/NewsDocument.php',

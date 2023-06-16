@@ -3,6 +3,7 @@
 /public/storage
 /public/sitemap.xml
 /storage/*.key
+vendor
 .env
 .env.backup
 .env.production
