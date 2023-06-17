@@ -6,7 +6,7 @@
         <p class="mt-7 text-3xl pc:text-2xl sp:text-xl">{{ $lifterList['last_name'] }} {{ $lifterList['first_name'] }}</p>
         <p class="mt-8 text-2xl pc:text-1xl sp:text-base">{{ $lifterList['affiliation']['name'] }}</p>
         <div class="absolute bottom-0 text-2xl pc:text-1xl sp:text-base">
-            <p>{{ $lifterList['performance'] }}</p>
+            <p>{!! nl2br($lifterList['performance']) !!}</p>
         </div>
     </div>
 </div>
