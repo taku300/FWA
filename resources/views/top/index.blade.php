@@ -78,7 +78,7 @@
                         </div>
                         <div class="pl-16 pc:pl-7">
                             <p class="mt-7 text-3xl pc:text-2xl sp:text-base">ロンドンオリンピック出場</p>
-                            <p class="mt-3 text-2xl pc:text-1xl sp:text-base">全日本選手権○連覇</p>
+                            <p class="mt-3 text-2xl pc:text-1xl sp:text-base">全日本選手権10連覇</p>
                             <!-- pc -->
                             <div class="absolute bottom-0 text-2xl pc:text-xl sp:hidden">
                                 <p>現在は教員として<br>若手選手を支える福岡のスーパースター</p>
