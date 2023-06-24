@@ -70,7 +70,7 @@
                             <dt class="text-sm float-left font-black pb-8">理事</dt>
                             <dd class="text-sm pl-48 pb-8">郷森孝文</dd>
                             <dt class="text-sm float-left font-black pb-8">理事</dt>
-                            <dd class="text-sm pl-48 pb-8">柳田瑞稀</dd>
+                            <dd class="text-sm pl-48 pb-8">柳田瑞季</dd>
                             <dt class="text-sm float-left font-black pb-8">監事</dt>
                             <dd class="text-sm pl-48 pb-8">松原誠</dd>
                         </dl>
