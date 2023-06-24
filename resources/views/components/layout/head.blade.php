@@ -11,7 +11,7 @@
     <meta property="og:title" content="福岡県ウエイトリフティング協会の公式ホームページです。" />
     <meta property="og:description" content="福岡県協会の概要、試合結果、速報等の発信を行っております。" />
     <meta property="og:site_name" content="{{ config('app.name') }}" />
-    <meta property="og:image" content="{{ asset('images/seo/ogp.png') . config('cache.update_date') }}/>
+    <meta property="og:image" content="{{ asset('images/seo/ogp.png') . config('cache.update_date') }}"/>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@takuma1996300" />
     <meta property="fb:app_id" content="510703381239094" />
