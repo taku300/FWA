@@ -3,7 +3,7 @@
  */
 $(function() {
     // ボタン制御
-    // 追加ボタン
+    // お知らせ資料追加ボタン
     var newsId = $('#news-id').data('news-id')
     $('.js-add-document').on('click', function() {
         var newListNum = $(this).parent().parent().children().length - 1;
@@ -37,6 +37,8 @@ $(function() {
         // 作成したHTML要素を追加
         clone.appendTo($(this).parent().parent());
     });
+
+    // お知らせリンク追加ボタン
     $('.js-add-link').on('click', function() {
         var newListNum = $(this).parent().parent().children().length - 1;
         // HTMLのコピー作成
@@ -68,6 +70,37 @@ $(function() {
         // 作成したHTML要素を追加
         clone.appendTo($(this).parent().parent());
     });
+
+    // お知らせ画像追加ボタン
+    $('.js-add-image').on('click', function() {
+        var newListNum = $(this).parent().parent().children().length - 1;
+        // HTMLのコピー作成
+        var clone = $(this).parent().clone(true);
+        var label = clone.find('label');
+        // コピーしたinput定義
+        var input = clone.children('input');
+
+        if ($(this).parent().parent().children().length == 1) {
+            $(this).parent().find('label').addClass('hidden')
+            $(this).parent().find('button').addClass('hidden')
+        }
+        // コピーしたinputに値が履いている場合引き継がれるので空にする
+        console.log(input.eq(0));
+        label.attr('for', `news_images[${newListNum}][news_image_path]`);
+        label.attr('name', `news_images[${newListNum}][news_image_path]`);
+        input.val('');
+        input.eq(0).attr('name', `news_images[${newListNum}][id]`);
+        input.eq(0).val(null);
+        input.eq(1).attr('name', `news_images[${newListNum}][news_image_path]`);
+        input.eq(1).removeClass('hidden');
+        input.eq(2).attr('name', `news_images[${newListNum}][news_id]`);
+        input.eq(2).val(newsId);
+        clone.find('button').removeClass('hidden');
+
+        // 作成したHTML要素を追加
+        clone.appendTo($(this).parent().parent());
+    });
+
     // 削除ボタン
     $('.js-del').on('click', function() {
         console.log($(this).parent().parent().children().length)
@@ -78,6 +111,7 @@ $(function() {
         var target = $(this).parent();
             target.remove();
     });
+
     // fileの値変更時にボタン表示
     $('.file').on('change', function(){
         fileName = $(this).prop('files')[0].name;
