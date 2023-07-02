@@ -18,9 +18,14 @@ class NewsService
     {
         DB::beginTransaction();
         try {
+            // お知らせ登録
             $news = new News($request->all());
             $news->save();
+
+            // お知らせリンク登録
             $news->news_links()->createMany($request->get('news_links') ? $request->get('news_links') : []);
+
+            // お知らせ資料登録
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
@@ -29,6 +34,16 @@ class NewsService
                 }
             }
             $news->news_documents()->createMany($newsDocuments);
+
+            // お知らせ画像登録
+            $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
+            if ($files = $request->file('news_images')) {
+                foreach ($files as $key => $value) {
+                    $path = $value['news_image_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
+                    $newsDocuments[$key]['news_image_path'] = basename($path);
+                }
+            }
+            $news->news_documents()->createMany($newsImages);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
