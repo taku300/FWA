@@ -18,7 +18,6 @@ class NewsService
     {
         DB::beginTransaction();
         try {
-            // dd($request->file('news_documents'));
             $news = new News($request->all());
             $news->save();
             $news->news_links()->createMany($request->get('news_links') ? $request->get('news_links') : []);
