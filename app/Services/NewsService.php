@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Http\Requests\NewsForm;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
@@ -12,9 +13,9 @@ class NewsService
     /**
      * お知らせ新規登録
      *
-     * @param  Illuminate\Http\Request  $request
+     * @param NewsForm $request
      */
-    public function newsCreate($request)
+    public function newsCreate(NewsForm $request)
     {
         DB::beginTransaction();
         try {

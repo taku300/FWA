@@ -60,7 +60,7 @@ class NewsController extends Controller
     /**
      * お知らせ新規登録処理
      *
-     * @param  Illuminate\Http\Request  $request
+     * @param NewsForm $request
      */
     public function store(NewsForm $request)
     {
