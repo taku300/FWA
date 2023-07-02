@@ -7,6 +7,8 @@ use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
 use App\Models\NewsLink;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class NewsService
 {
@@ -38,6 +40,7 @@ class NewsService
 
             // お知らせ画像登録
             $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
+            dd($newsImages);
             if ($files = $request->file('news_images')) {
                 foreach ($files as $key => $value) {
                     $path = $value['news_image_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
@@ -53,10 +56,10 @@ class NewsService
     }
 
     /**
-     * @param  int  $id
-     * @param  object  $request
+     * @param  int       $id
+     * @param  NewsForm  $request
      */
-    public function newsUpdate($id, $request)
+    public function newsUpdate(int $id, NewsForm $request)
     {
 
         DB::beginTransaction();
@@ -87,7 +90,7 @@ class NewsService
     /**
      * @param  int  $id
      */
-    public function newsDelete($id)
+    public function newsDelete(int $id)
     {
         DB::beginTransaction();
         try {
@@ -102,12 +105,12 @@ class NewsService
     }
 
     /**
-     * @param  int  $id
-     * @param  object  $request
-     * @param  mixed  $tableName
-     * @param  mixed  App\Models\**  $model
+     * @param  NewsForm  $request
+     * @param  int       $id
+     * @param  string    $tableName
+     * @param  Builder   $model
      */
-    public function diffDelete($request, $id, $tableName, $model)
+    public function diffDelete(NewsForm $request, int $id, string $tableName, Builder $model)
     {
         $newDatas = array_column($request->get($tableName) ? $request->get($tableName) : [], 'id');
         $oldDatas = array_column($model->where('news_id', $id)->get()->toArray(), 'id');
