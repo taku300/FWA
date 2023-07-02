@@ -8,11 +8,17 @@ use App\Models\NewsLink;
 use App\Models\NewsDocument;
 use App\Models\Result;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class News extends Model
 {
     use HasFactory;
+
+    /**
+     * fillable
+     */
     protected $fillable = [
         'category',
         'noticed_at',
@@ -23,19 +29,44 @@ class News extends Model
         'iframe_path'
     ];
 
-    public function result()
+    /**
+     * リレーション 大会
+     * 
+     * @return HasOne
+     */
+    public function result(): HasOne
     {
         return $this->hasOne(Result::class);
     }
 
-    public function news_links()
+    /**
+     * リレーション お知らせリンク
+     * 
+     * @return HasMany
+     */
+    public function news_links(): HasMany
     {
         return $this->hasMany(NewsLink::class);
     }
 
-    public function news_documents()
+    /**
+     * リレーション お知らせ資料
+     * 
+     * @return HasMany
+     */
+    public function news_documents(): HasMany
     {
         return $this->hasMany(NewsDocument::class);
+    }
+
+    /**
+     * リレーション お知らせ画像
+     * 
+     * @return HasMany
+     */
+    public function news_images(): HasMany
+    {
+        return $this->hasMany(NewsImage::class);
     }
 
     /**
@@ -48,6 +79,7 @@ class News extends Model
         static::deleting(function ($news) {
             $news->news_links()->delete();
             $news->news_documents()->delete();
+            $news->news_images()->delete();
         });
     }
 
