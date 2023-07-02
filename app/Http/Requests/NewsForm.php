@@ -24,7 +24,6 @@ class NewsForm extends FormRequest
      */
     public function rules()
     {
-        // dd(Request::all());s
         return [
             'category' => 'required',
             'noticed_at' => ['bail', 'required', 'date'],
@@ -39,6 +38,8 @@ class NewsForm extends FormRequest
             'news_links' => 'array',
             'news_links.*.title' => ['required_with:news_links.*.link_path', 'string'],
             'news_links.*.link_path' => ['required_with:news_links.*.title', 'string'],
+            'news_documents' => 'array',
+            'news_images.*.news_image_path' => 'string',
         ];
     }
 
@@ -55,6 +56,7 @@ class NewsForm extends FormRequest
             'news_documents.*.document_path' => '資料ファイル',
             'news_links.*.title' => 'リンクタイトル',
             'news_links.*.link_path' => 'リンクファイル',
+            'news_images.*.news_image_path' => '画像ファイル',
         ];
     }
 }
