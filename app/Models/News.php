@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\NewsLink;
 use App\Models\NewsDocument;
 use App\Models\Result;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class News extends Model
 {
@@ -50,21 +52,32 @@ class News extends Model
     }
 
     /**
-     * トップページ用 お知らせ日順 10件
+     *  お知らせ一覧 10件
      * 
-     * @return collection
+     * @return LengthAwarePaginator
      */
-    public function getTopNewsList()
+    public function getNewsList(): LengthAwarePaginator
     {
         return News::orderBy('noticed_at', 'DESC')->paginate('15');
     }
 
-    public function getBrakingNews()
+    /**
+     * お知らせ一覧 速報取得
+     * 
+     * @return array
+     */
+    public function getBrakingNews(): array
     {
-        return News::where('preliminary_report_flag', 1)->get()->toArray();
+        return News::where('preliminary_report_flag', 1)->orderBy('noticed_at', 'DESC')->get()->toArray();
     }
 
-    public function getNewsDetail($id)
+    /**
+     * お知らせ 詳細取得
+     * 
+     * @param  $id   お知らせID
+     * @return Collection
+     */
+    public function getNewsDetail($id): Collection
     {
         return News::with(['result', 'news_links', 'news_documents'])->find($id);
     }

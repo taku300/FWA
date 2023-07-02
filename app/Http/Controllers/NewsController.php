@@ -40,7 +40,7 @@ class NewsController extends Controller
     public function index()
     {
         $breakingNews = $this->news->getBrakingNews();
-        $newsList = $this->news->getTopNewsList();
+        $newsList = $this->news->getNewsList();
 
         return view('news.index')->with(['newsList' => $newsList, 'breakingNews' => $breakingNews]);
     }
