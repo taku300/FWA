@@ -172,7 +172,7 @@
                     {{ Form::label("", '画像', ['class' => !empty($news['news_images']) ? 'hidden shrink-0 w-44' : 'shrink-0 w-44']) }}
                     {{ Form::file("", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'hidden file w-full']) }}
                     {{ Form::hidden('')}}
-                    <button type="button" class="{{!empty($news['news_images']) ? 'hidden' : ''}} js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
+                    <button type="button" class="{{!empty($news['news_images']) ? 'hidden' : ''}} js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @foreach ($news['news_images'] as $key => $news_images)
@@ -181,7 +181,7 @@
                     {{ Form::label("news_images[$key][news_image_file]", '画像', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::file("news_images[$key][news_image_file]", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'file w-full']) }}
                     {{ Form::hidden("news_images[$key][news_id]", $news['id'] )}}
-                    <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
+                    <button type="button" class="js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endforeach
@@ -191,7 +191,7 @@
                     {{ Form::label("", '画像', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::file("", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'hidden file w-full']) }}
                     {{ Form::hidden('')}}
-                    <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
+                    <button type="button" class="js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endif
