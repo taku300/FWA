@@ -111,6 +111,6 @@ class News extends Model
      */
     public function getNewsDetail($id): Collection
     {
-        return News::with(['result', 'news_links', 'news_documents'])->find($id);
+        return News::with(['result', 'news_links', 'news_documents', 'news_images'])->find($id);
     }
 }
