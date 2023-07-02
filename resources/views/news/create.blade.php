@@ -84,6 +84,7 @@
             </ul>
             <ul>
                 <li class="mb-4">
+                    {{ Form::error('news_documents.*.title') }}
                     {{ Form::error('news_documents.*.document_path') }}
                 </li>
                 @if (is_array($news))
@@ -163,14 +164,13 @@
             </ul>
             <ul>
                 <li class="mb-4">
-                    {{ Form::error('news_images.*.title') }}
                     {{ Form::error('news_images.*.news_image_path') }}
                 </li>
                 @if (is_array($news))
                 <li class="w-full flex items-center mb-4">
                     {{ Form::hidden('' )}}
                     {{ Form::label("", '画像', ['class' => !empty($news['news_images']) ? 'hidden shrink-0 w-44' : 'shrink-0 w-44']) }}
-                    {{ Form::file("", ['accept' => '.pdf', 'class' => 'hidden file w-full']) }}
+                    {{ Form::file("", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'hidden file w-full']) }}
                     {{ Form::hidden('')}}
                     <button type="button" class="{{!empty($news['news_images']) ? 'hidden' : ''}} js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
@@ -179,7 +179,7 @@
                 <li class="w-full flex items-center mb-4">
                     {{ Form::hidden("news_images[$key][id]", $news_images['id'] )}}
                     {{ Form::label("news_images[$key][news_image_file]", '画像', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::file("news_images[$key][news_image_file]", ['accept' => '.pdf', 'class' => 'file w-full']) }}
+                    {{ Form::file("news_images[$key][news_image_file]", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'file w-full']) }}
                     {{ Form::hidden("news_images[$key][news_id]", $news['id'] )}}
                     <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
@@ -189,7 +189,7 @@
                 <li class="w-full flex items-center mb-4">
                     {{ Form::hidden('' )}}
                     {{ Form::label("", '画像', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::file("", ['accept' => '.pdf', 'class' => 'hidden file w-full']) }}
+                    {{ Form::file("", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'hidden file w-full']) }}
                     {{ Form::hidden('')}}
                     <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
