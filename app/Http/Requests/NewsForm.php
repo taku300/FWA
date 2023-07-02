@@ -38,7 +38,7 @@ class NewsForm extends FormRequest
             'news_links' => 'array',
             'news_links.*.title' => ['required_with:news_links.*.link_path', 'string'],
             'news_links.*.link_path' => ['required_with:news_links.*.title', 'string'],
-            'news_documents' => 'array',
+            'news_images' => 'array',
             'news_images.*.news_image_path' => 'string',
         ];
     }
