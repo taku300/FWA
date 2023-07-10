@@ -100,7 +100,7 @@ class NewsService
                 }
             }
             // お知らせ画像の更新
-            $tes = $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id']);
+            $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id']);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
