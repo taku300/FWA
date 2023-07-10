@@ -6,6 +6,7 @@ use App\Http\Requests\NewsForm;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
 use App\Models\NewsDocument;
+use App\Models\NewsImage;
 use App\Models\NewsLink;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -54,6 +55,8 @@ class NewsService
     }
 
     /**
+     * お知らせ更新
+     * 
      * @param  int       $id
      * @param  NewsForm  $request
      */
@@ -62,22 +65,42 @@ class NewsService
 
         DB::beginTransaction();
         try {
+            // お知らせ更新
             $news = News::find($id);
             $news->update($request->all());
-            // ドキュメント保存
+
+            // お知らせ資料の古いパスを削除
             $deletePath = $this->diffDelete($request, $id, 'news_documents', NewsDocument::query());
             \DeleteFile::deleteFilePath('document_path', $deletePath);
+            // お知らせ資料のパラメータ取得
             $newsDocuments = $request->get('news_documents') ? $request->get('news_documents') : [];
+            // パス抜き出し
             if ($files = $request->file('news_documents')) {
                 foreach ($files as $key => $value) {
                     $path = $value['document_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
                     $newsDocuments[$key]['document_path'] = basename($path);
                 }
             }
+            // お知らせ資料の更新
             $news->news_documents()->upsert($newsDocuments, ['id'], ['title', 'document_path', 'news_id']);
-            // リンクの保存
-            $this->diffDelete($request, $id, 'news_links', NewsLink::query());
+
+            // お知らせリンクの更新
             $news->news_links()->upsert($request->get('news_links') ? $request->get('news_links') : [], ['id'], ['title', 'link_path', 'news_id']);
+
+            // お知らせ画像の古いパスを取得
+            $deletePath = $this->diffDelete($request, $id, 'news_images', NewsImage::query());
+            \DeleteFile::deleteFilePath('news_images_path', $deletePath);
+            // お知らせ画像のパラメータ取得
+            $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
+            // パス抜き出し
+            if ($files = $request->file('news_images')) {
+                foreach ($files as $key => $value) {
+                    $path = $value['news_images_path']->store(\CommonConst::NEWS_FILE_PATH_NAME);
+                    $newsImages[$key]['news_images_path'] = basename($path);
+                }
+            }
+            // お知らせ画像の更新
+            $tes = $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id']);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
