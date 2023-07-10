@@ -86,12 +86,12 @@ $(function() {
         }
         // コピーしたinputに値が履いている場合引き継がれるので空にする
         console.log(input.eq(0));
-        label.attr('for', `news_images[${newListNum}][news_image_path]`);
-        label.attr('name', `news_images[${newListNum}][news_image_path]`);
+        label.attr('for', `news_images[${newListNum}][news_images_path]`);
+        label.attr('name', `news_images[${newListNum}][news_images_path]`);
         input.val('');
         input.eq(0).attr('name', `news_images[${newListNum}][id]`);
         input.eq(0).val(null);
-        input.eq(1).attr('name', `news_images[${newListNum}][news_image_path]`);
+        input.eq(1).attr('name', `news_images[${newListNum}][news_images_path]`);
         input.eq(1).removeClass('hidden');
         input.eq(2).attr('name', `news_images[${newListNum}][news_id]`);
         input.eq(2).val(newsId);

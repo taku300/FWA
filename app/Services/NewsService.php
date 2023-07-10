@@ -39,15 +39,14 @@ class NewsService
             $news->news_documents()->createMany($newsDocuments);
 
             // お知らせ画像登録
-            $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
-            dd($newsImages);
             if ($files = $request->file('news_images')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['news_image_file']->store(\CommonConst::NEWS_FILE_PATH_NAME);
-                    $newsDocuments[$key]['news_image_path'] = basename($path);
+                    $path = $value['news_images_path']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
+                    $newsImages[$key]['news_images_path'] = basename($path);
                 }
             }
-            $news->news_documents()->createMany($newsImages);
+            $tes = $news->news_images()->createMany($newsImages);
+            dd($tes);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
