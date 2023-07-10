@@ -45,8 +45,7 @@ class NewsService
                     $newsImages[$key]['news_images_path'] = basename($path);
                 }
             }
-            $tes = $news->news_images()->createMany($newsImages);
-            dd($tes);
+            $news->news_images()->createMany($newsImages);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
