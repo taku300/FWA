@@ -178,8 +178,8 @@
                 @foreach ($news['news_images'] as $key => $news_images)
                 <li class="w-full flex items-center mb-4">
                     {{ Form::hidden("news_images[$key][id]", $news_images['id'] )}}
-                    {{ Form::label("news_images[$key][news_images_file]", '画像', ['class' => 'shrink-0 w-44']) }}
-                    {{ Form::file("news_images[$key][news_images_file]", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'file w-full']) }}
+                    {{ Form::label("news_images[$key][news_images_path]", '画像', ['class' => 'shrink-0 w-44']) }}
+                    {{ Form::file("news_images[$key][news_images_path]", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'file w-full']) }}
                     {{ Form::hidden("news_images[$key][news_id]", $news['id'] )}}
                     <button type="button" class="js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>

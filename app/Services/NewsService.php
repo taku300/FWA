@@ -95,7 +95,7 @@ class NewsService
             // パス抜き出し
             if ($files = $request->file('news_images')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['news_images_path']->store(\CommonConst::NEWS_FILE_PATH_NAME);
+                    $path = $value['news_images_path']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
                     $newsImages[$key]['news_images_path'] = basename($path);
                 }
             }

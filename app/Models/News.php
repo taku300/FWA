@@ -107,9 +107,9 @@ class News extends Model
      * お知らせ 詳細取得
      * 
      * @param  $id   お知らせID
-     * @return Collection
+     * @return News
      */
-    public function getNewsDetail($id): Collection
+    public function getNewsDetail($id): News
     {
         return News::with(['result', 'news_links', 'news_documents', 'news_images'])->find($id);
     }
