@@ -11,7 +11,7 @@
                 <div class="pt-[115px] sp:pt-[76px] pb-5 border-b border-black">
                     <p class="font-bold mb-2 pc:text-sm sp:text-xs">{!! nl2br(e($newsDetail['noticed_at'])) !!}</p>
                     <p class="text-xl pc:text-lg sp:text-sm">{{ $newsDetail['title'] }}</p>
-                    <p class="opacity-60 mt-1 pc:text-sm sp:text-xs">{!! nl2br(e($newsDetail['detail'])) ? nl2br(e('※ ' . $newsDetail['detail'])) : '' !!}</p>
+                    <p class="opacity-60 mt-1 pc:text-sm sp:text-xs">{!! nl2br(e($newsDetail['note'])) ? nl2br(e('※ ' . $newsDetail['note'])) : '' !!}</p>
                 </div>
                 <div class="absolute right-0 top-0 z-10">
                     <x-list.auth :value='$newsDetail'></x-list.auth>
