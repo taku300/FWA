@@ -92,15 +92,18 @@ class NewsService
             \DeleteFile::deleteFilePath('news_images_path', $deletePath);
             // お知らせ画像のパラメータ取得
             $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
-            // パス抜き出し
-            if ($files = $request->file('news_images')) {
-                foreach ($files as $key => $value) {
-                    $path = $value['news_images_path']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
-                    $newsImages[$key]['news_images_path'] = basename($path);
+            // news_images_pathに値がセットされている場合は更新処理実行
+            if (array_key_exists('news_images_path', $newsImages)) {
+                // パス抜き出し
+                if ($files = $request->file('news_images')) {
+                    foreach ($files as $key => $value) {
+                        $path = $value['news_images_path']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
+                        $newsImages[$key]['news_images_path'] = basename($path);
+                    }
                 }
+                // お知らせ画像の更新
+                $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id']);
             }
-            // お知らせ画像の更新
-            $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id']);
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
