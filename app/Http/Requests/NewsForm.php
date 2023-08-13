@@ -30,7 +30,7 @@ class NewsForm extends FormRequest
             'noticed_at' => ['bail', 'required', 'date'],
             'title' => ['bail', 'required', 'max:255'],
             'note' => 'max:255',
-            'detail' => 'max:255',
+            'detail' => '',
             'iframe_path' => 'max:255',
             'preliminary_report_flag' => 'required',
             'news_documents' => 'array',
