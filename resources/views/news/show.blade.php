@@ -9,9 +9,9 @@
                 <img class="absolute -left-[5%] sp:-left-[4%] sp:top-3 z-50 h-[250px] sp:h-[146px]" src="{{ asset('images/parts/breaking_news.png') . config('cache.update_date') }}" alt="速報">
                 @endif
                 <div class="pt-[115px] sp:pt-[76px] pb-5 border-b border-black">
-                    <p class="font-bold mb-2 pc:text-sm sp:text-xs">{{ $newsDetail['noticed_at'] }}</p>
+                    <p class="font-bold mb-2 pc:text-sm sp:text-xs">{!! nl2br(e($newsDetail['noticed_at'])) !!}</p>
                     <p class="text-xl pc:text-lg sp:text-sm">{{ $newsDetail['title'] }}</p>
-                    <p class="opacity-60 mt-1 pc:text-sm sp:text-xs">{{ $newsDetail['noticed_at'] ? '※ ' . $newsDetail['noticed_at'] : '' }}</p>
+                    <p class="opacity-60 mt-1 pc:text-sm sp:text-xs">{!! nl2br(e($newsDetail['note'])) ? nl2br(e('※ ' . $newsDetail['note'])) : '' !!}</p>
                 </div>
                 <div class="absolute right-0 top-0 z-10">
                     <x-list.auth :value='$newsDetail'></x-list.auth>
@@ -30,7 +30,7 @@
                 @if ($newsDetail['detail'])
                 <div class="mb-7">
                     <h2 class="mb-2 text-lg font-black">詳細</h2>
-                    <p class="text-sm">{{ $newsDetail['detail'] }}</p>
+                    <p class="text-sm">{!! nl2br(e($newsDetail['detail'])) !!}</p>
                 </div>
                 @endif
                 @if ($newsDetail['news_documents'])
