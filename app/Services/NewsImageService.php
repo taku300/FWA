@@ -15,6 +15,10 @@ class NewsImageService
         $newsImage = NewsImage::find($id);
         $imagePath = $newsImage->news_images_path;
 
+        if (!$imagePath) {
+            return true;
+        }
+
         // 該当レコード削除
         try {
             $newsImage->delete();

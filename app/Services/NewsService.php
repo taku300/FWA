@@ -43,7 +43,7 @@ class NewsService
             // お知らせ画像登録
             if ($files = $request->file('news_images')) {
                 foreach ($files as $key => $value) {
-                    $path = $value['news_images_path']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
+                    $path = $value['news_images_file']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
                     $newsImages[$key]['news_images_path'] = basename($path);
                 }
             }
@@ -87,17 +87,26 @@ class NewsService
             // お知らせリンクの更新
             $news->news_links()->upsert($request->get('news_links') ? $request->get('news_links') : [], ['id'], ['title', 'link_path', 'news_id']);
 
-            // お知らせ画像の古いパスを取得
-            $deletePath = $this->diffDelete($request, $id, 'news_images', NewsImage::query());
-            \DeleteFile::deleteFilePath('news_images_path', $deletePath);
             // お知らせ画像のパラメータ取得
             $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
+            // お知らせ画像の古いパスを削除
+            $oldNewsImages = NewsImage::where('news_id', $id)->get();
+            if ($oldNewsImages) {
+                foreach ($oldNewsImages as $key => $oldNewsImage) {
+                    if ($request->file('news_images') && array_key_exists($key, $request->file('news_images'))) {
+                        $oldPath = $oldNewsImage->news_images_path;
+                        if (\Storage::exists(\CommonConst::NEWS_IMAGE_PATH_NAME . "/{$oldPath}")) {
+                            \Storage::delete(\CommonConst::NEWS_IMAGE_PATH_NAME . "/{$oldPath}");
+                        }
+                    }
+                }
+            }
             // news_images_pathに値がセットされている場合は更新処理実行
             if ($request->file('news_images')) {
                 // パス抜き出し
                 if ($files = $request->file('news_images')) {
                     foreach ($files as $key => $value) {
-                        $path = $value['news_images_path']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
+                        $path = $value['news_images_file']->store(\CommonConst::NEWS_IMAGE_PATH_NAME);
                         $newsImages[$key]['news_images_path'] = basename($path);
                     }
                 }

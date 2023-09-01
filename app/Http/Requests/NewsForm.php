@@ -39,8 +39,8 @@ class NewsForm extends FormRequest
             'news_links.*.title' => ['required_with:news_links.*.link_path', 'string'],
             'news_links.*.link_path' => ['required_with:news_links.*.title', 'string'],
             'news_images' => 'array',
-            'news_images.*.news_images_path' => ['required_with:news_images.*.news_image_title', 'image'],
-            'news_images.*.news_image_title' => ['required_with:news_images.*.news_images_path', 'string'],
+            'news_images.*.news_images_path' => ['required_with:news_images.*.news_image_title', 'string'],
+            'news_images.*.news_image_title' => ['required_with:news_images.*.news_images_path'],
         ];
     }
 
@@ -57,6 +57,7 @@ class NewsForm extends FormRequest
             'news_documents.*.document_path' => '資料ファイル',
             'news_links.*.title' => 'リンクタイトル',
             'news_links.*.link_path' => 'リンクファイル',
+            'news_images.*.news_images_file' => '画像ファイル',
             'news_images.*.news_images_path' => '画像ファイル',
             'news_images.*.news_image_title' => '画像タイトル',
         ];

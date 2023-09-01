@@ -84,6 +84,7 @@ $(function() {
             $(this).parent().find('label').addClass('hidden')
             $(this).parent().find('button').addClass('hidden')
         }
+
         // コピーしたinputに値が履いている場合引き継がれるので空にする
         console.log(input.eq(0));
         label.attr('for', `news_images[${newListNum}][news_images_path]`);
@@ -94,7 +95,7 @@ $(function() {
         input.eq(1).attr('id', `news_images[${newListNum}][news_image_title]`);
         input.eq(1).attr('name', `news_images[${newListNum}][news_image_title]`);
         input.eq(1).removeClass('hidden');
-        input.eq(2).attr('name', `news_images[${newListNum}][news_images_path]`);
+        input.eq(2).attr('name', `news_images[${newListNum}][news_images_file]`);
         input.eq(2).removeClass('hidden');
         input.eq(3).attr('name', `news_images[${newListNum}][news_images_path]`);
         input.eq(4).attr('name', `news_images[${newListNum}][news_id]`);
