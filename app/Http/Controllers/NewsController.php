@@ -40,7 +40,7 @@ class NewsController extends Controller
     public function index()
     {
         $breakingNews = $this->news->getBrakingNews();
-        $newsList = $this->news->getTopNewsList();
+        $newsList = $this->news->getNewsList();
 
         return view('news.index')->with(['newsList' => $newsList, 'breakingNews' => $breakingNews]);
     }
@@ -60,7 +60,7 @@ class NewsController extends Controller
     /**
      * お知らせ新規登録処理
      *
-     * @param  Illuminate\Http\Request  $request
+     * @param NewsForm $request
      */
     public function store(NewsForm $request)
     {
@@ -78,7 +78,7 @@ class NewsController extends Controller
 
     public function edit($id)
     {
-        $news = News::with('news_documents', 'news_links')->find($id)->toArray();
+        $news = News::with('news_documents', 'news_links', 'news_images')->find($id)->toArray();
         return view('news.create', [
             'id' => $id,
             'news' => $news,
