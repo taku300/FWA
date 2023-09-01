@@ -9,6 +9,7 @@ use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\RecordsController;
 use App\Http\Controllers\LiftersController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsImageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\AffiliationsController;
@@ -64,6 +65,7 @@ Route::middleware('auth')->prefix('admins')->name('admins.')->group(function () 
     Route::resource('/lifters', LiftersController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     //お知らせ登録画面CRUD
     Route::resource('/news', NewsController::class, ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::post('/news/image/{id}/delete', [NewsImageController::class, 'delete']);
     //年間計画編集
     Route::resource('/plans', PlansController::class, ['only' => ['update']]);
     //ドキュメント編集

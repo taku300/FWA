@@ -91,10 +91,14 @@ $(function() {
         input.val('');
         input.eq(0).attr('name', `news_images[${newListNum}][id]`);
         input.eq(0).val(null);
-        input.eq(1).attr('name', `news_images[${newListNum}][news_images_path]`);
+        input.eq(1).attr('id', `news_images[${newListNum}][news_image_title]`);
+        input.eq(1).attr('name', `news_images[${newListNum}][news_image_title]`);
         input.eq(1).removeClass('hidden');
-        input.eq(2).attr('name', `news_images[${newListNum}][news_id]`);
-        input.eq(2).val(newsId);
+        input.eq(2).attr('name', `news_images[${newListNum}][news_images_path]`);
+        input.eq(2).removeClass('hidden');
+        input.eq(3).attr('name', `news_images[${newListNum}][news_images_path]`);
+        input.eq(4).attr('name', `news_images[${newListNum}][news_id]`);
+        input.eq(4).val(newsId);
         clone.find('button').removeClass('hidden');
 
         // 作成したHTML要素を追加
@@ -110,6 +114,34 @@ $(function() {
         }
         var target = $(this).parent();
             target.remove();
+    });
+
+    // 削除ボタン：お知らせ画像
+    $('.js-del-image').on('click', function () {
+        var newsId = $(this).parent().find('input:first').val();
+        var changeButtons = $(this).parent().parent();
+        var target = $(this).parent();
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            type: "POST",
+            url: `/admins/news/image/${newsId}/delete`,
+            dataType: "json",
+        }).then(function (res) {
+            console.log(res);
+            if (res) {
+                if (changeButtons.children().length == 3) {
+                    changeButtons.find('label').removeClass('hidden')
+                    changeButtons.find('button').eq(0).removeClass('hidden')
+                }
+                target.remove();
+            } else {
+                alert('削除処理に失敗しました。');
+            }
+        });
     });
 
     // fileの値変更時にボタン表示

@@ -39,6 +39,7 @@ class NewsService
             }
             $news->news_documents()->createMany($newsDocuments);
 
+            $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
             // お知らせ画像登録
             if ($files = $request->file('news_images')) {
                 foreach ($files as $key => $value) {
@@ -62,7 +63,6 @@ class NewsService
      */
     public function newsUpdate(int $id, NewsForm $request)
     {
-
         DB::beginTransaction();
         try {
             // お知らせ更新
@@ -93,7 +93,7 @@ class NewsService
             // お知らせ画像のパラメータ取得
             $newsImages = $request->get('news_images') ? $request->get('news_images') : [];
             // news_images_pathに値がセットされている場合は更新処理実行
-            if (array_key_exists('news_images_path', $newsImages)) {
+            if ($request->file('news_images')) {
                 // パス抜き出し
                 if ($files = $request->file('news_images')) {
                     foreach ($files as $key => $value) {
@@ -102,13 +102,21 @@ class NewsService
                     }
                 }
                 // お知らせ画像の更新
-                $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id']);
+                $news->news_images()->upsert($newsImages, ['id'], ['news_images_path', 'news_id', 'news_image_title']);
             }
         } catch (Exception $e) {
             DB::rollback();
             return back()->withInput();
         }
         DB::commit();
+    }
+
+    /**
+     * お知らせ画像削除
+     */
+    public function newsImageDelete()
+    {
+        // 
     }
 
     /**

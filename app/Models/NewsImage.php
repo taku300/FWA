@@ -18,6 +18,7 @@ class NewsImage extends Model
     // fillable
     protected $fillable = [
         'news_images_path',
-        'news_id'
+        'news_id',
+        'news_image_title',
     ];
 }
