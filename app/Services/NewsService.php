@@ -121,14 +121,6 @@ class NewsService
     }
 
     /**
-     * お知らせ画像削除
-     */
-    public function newsImageDelete()
-    {
-        // 
-    }
-
-    /**
      * @param  int  $id
      */
     public function newsDelete(int $id)
@@ -137,6 +129,9 @@ class NewsService
         try {
             $news = News::find($id);
             \DeleteFile::deleteFilePath('document_path', $news->news_documents);
+            foreach ($news->news_images()->get() as $newsImage) {
+                $this->storageFileDelete($newsImage->news_images_path);
+            }
             $news->delete();
         } catch (Exception $e) {
             DB::rollback();
@@ -159,5 +154,30 @@ class NewsService
         $path = $model->where('news_id', $id)->get();
         $model->whereIn('id', $delete_links)->delete();
         return $path;
+    }
+
+    /**
+     * storage内のファイル削除処理
+     */
+    private function storageFileDelete(string $filePath)
+    {
+        // pathを定義
+        $path = \CommonConst::NEWS_IMAGE_PATH_NAME . "/{$filePath}";
+
+        // ファイルの存在確認
+        if (!\Storage::exists($path)) {
+            return false;
+        }
+
+        // ファイル削除
+        try {
+            \Storage::delete($path);
+        } catch (\Exception $e) {
+            logs()->error($e->getMessage());
+            return false;
+        }
+
+        // 処理結果返却
+        return \Storage::exists($path) ? false : true;
     }
 }
