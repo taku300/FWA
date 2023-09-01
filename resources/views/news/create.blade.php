@@ -92,10 +92,10 @@
                     {{ Form::label("", '資料', ['class' => !empty($news['news_documents']) ? 'hidden shrink-0 w-44' : 'shrink-0 w-44']) }}
                     {{ Form::hidden('' )}}
                     {{ Form::text("", null, ['placeholder'=>'資料名を入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1' ]) }}
-                    {{ Form::file("", ['accept' => '.pdf', 'class' => 'hidden file w-full']) }}
+                    {{ Form::file("", ['accept' => '.pdf', 'class' => 'hidden file w-full ml-1']) }}
                     {{ Form::hidden('' )}}
                     {{ Form::hidden('',  )}}
-                    <button type="button" class="{{ !empty($news['news_documents']) ? 'hidden' : '' }} js-add-document border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
+                    <button type="button" class="{{ !empty($news['news_documents']) ? 'hidden' : '' }} js-add-document border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @foreach ($news['news_documents'] as $key => $news_documents)
@@ -103,10 +103,10 @@
                     {{ Form::label("news_documents[$key][title]", '資料', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::hidden("news_documents[$key][id]", $news_documents['id'] )}}
                     {{ Form::text("news_documents[$key][title]", null, ['placeholder'=>'資料名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1' ]) }}
-                    {{ Form::file("news_documents[$key][document_file]", ['accept' => '.pdf', 'class' => 'file w-full']) }}
+                    {{ Form::file("news_documents[$key][document_file]", ['accept' => '.pdf', 'class' => 'file w-full ml-1']) }}
                     {{ Form::hidden("news_documents[$key][document_path]", $news_documents['document_path'] )}}
                     {{ Form::hidden("news_documents[$key][news_id]", $news['id'] )}}
-                    <button type="button" class="js-add-document border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
+                    <button type="button" class="js-add-document border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endforeach
@@ -115,10 +115,10 @@
                     {{ Form::label("", '資料', ['class' => 'shrink-0 w-44']) }}
                     {{ Form::hidden('' )}}
                     {{ Form::text("", null, ['placeholder'=>'資料名を入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md mb-1' ]) }}
-                    {{ Form::file("", ['accept' => '.pdf', 'class' => 'hidden file w-full']) }}
+                    {{ Form::file("", ['accept' => '.pdf', 'class' => 'hidden file ml-1 w-full']) }}
                     {{ Form::hidden('' )}}
                     {{ Form::hidden('',  )}}
-                    <button type="button" class="js-add-document border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
+                    <button type="button" class="js-add-document border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endif
@@ -135,7 +135,7 @@
                     {{ Form::text("", null, ['placeholder'=>'リンク名を入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
                     {{ Form::text('', null, ['placeholder'=>'リンクpathを入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::hidden('')}}
-                    <button type="button" class="{{!empty($news['news_links']) ? 'hidden' : ''}} js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
+                    <button type="button" class="{{!empty($news['news_links']) ? 'hidden' : ''}} js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @foreach ($news['news_links'] as $key => $news_links)
@@ -145,7 +145,7 @@
                     {{ Form::text("news_links[$key][title]", null, ['placeholder'=>'リンク名を入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
                     {{ Form::text("news_links[$key][link_path]", null, ['placeholder'=>'リンクpathを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::hidden("news_links[$key][news_id]", $news['id'] )}}
-                    <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
+                    <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endforeach
@@ -156,11 +156,51 @@
                     {{ Form::text("", null, ['placeholder'=>'リンク名を入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
                     {{ Form::text('', null, ['placeholder'=>'リンクpathを入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md' ]) }}
                     {{ Form::hidden('')}}
-                    <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mr-1">+</button>
+                    <button type="button" class="js-add-link border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
                     <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
                 </li>
                 @endif
 
+            </ul>
+            <ul>
+                <li class="mb-4">
+                    {{ Form::error('news_images.*.news_images_path') }}
+                </li>
+                @if (is_array($news) && array_key_exists('news_images', $news))
+                <li class="w-full flex items-center mb-4">
+                    {{ Form::hidden('' )}}
+                    {{ Form::label("", '画像', ['class' => !empty($news['news_images']) ? 'hidden shrink-0 w-44' : 'shrink-0 w-44']) }}
+                    {{ Form::text("", null, ['placeholder'=>'画像タイトルを入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
+                    {{ Form::file("", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'hidden file w-full']) }}
+                    {{ Form::hidden('')}}
+                    {{ Form::hidden('')}}
+                    <button type="button" class="{{!empty($news['news_images']) ? 'hidden' : ''}} js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
+                    <button type="button" class="hidden js-del-image border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
+                </li>
+                @foreach ($news['news_images'] as $key => $news_images)
+                <li class="w-full flex items-center mb-4">
+                    {{ Form::hidden("news_images[$key][id]", $news_images['id'] )}}
+                    {{ Form::label("news_images[$key][news_images_path]", '画像', ['class' => 'shrink-0 w-44']) }}
+                    {{ Form::text("news_images[$key][news_image_title]", null, ['placeholder'=>'画像タイトルを入力', 'class' => 'w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
+                    {{ Form::file("news_images[$key][news_images_file]", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'file w-full']) }}
+                    {{ Form::hidden("news_images[$key][news_images_path]", $news_images['news_images_path'] )}}
+                    {{ Form::hidden("news_images[$key][news_id]", $news['id'] )}}
+                    <button type="button" class="js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
+                    <button type="button" class="js-del-image border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
+                </li>
+                @endforeach
+                @else
+                <li class="w-full flex items-center mb-4">
+                    {{ Form::hidden('' )}}
+                    {{ Form::label("", '画像', ['class' => 'shrink-0 w-44']) }}
+                    {{ Form::text("", null, ['placeholder'=>'画像タイトルを入力', 'class' => 'hidden w-full placeholder:text-slate-400 border-slate-300 rounded-md mr-1' ]) }}
+                    {{ Form::file("", ['accept' => '.png, , .jpg, .jpeg', 'class' => 'hidden file w-full']) }}
+                    {{ Form::hidden('')}}
+                    {{ Form::hidden('')}}
+                    <button type="button" class="js-add-image border border-blue-500 text-blue-500 w-16 h-7 rounded-lg mx-1">+</button>
+                    <button type="button" class="hidden js-del border border-red-500 text-red-500 w-16 h-7 rounded-lg">-</button>
+                </li>
+                @endif
             </ul>
             <div class=" mt-20 flex justify-center">
                 <x-parts.form-button bgColor='black'>{{ !is_array($news) ? '登録する' : '編集する' }}</x-parts.form-button>

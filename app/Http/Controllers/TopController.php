@@ -50,7 +50,7 @@ class TopController extends Controller
         $iframePath = $this->iframe->getIframePath();
         $topImagePath = $this->topService->getTopImages();
         $breakingNews = $this->news->getBrakingNews();
-        $newsList = $this->news->getTopNewsList();
+        $newsList = $this->news->getNewsList();
         $lifterList = $this->lifterService->getTopLifterList();
 
         return view('top.index')->with(compact('iframePath', 'breakingNews', 'newsList', 'lifterList', 'topImagePath'));

@@ -9,6 +9,7 @@ class CommonConst
      */
     const LIFTERS_FILE_PATH_NAME = 'lifter-images/';            // 選手画像
     const NEWS_FILE_PATH_NAME = 'news-documents/';              // お知らせ資料
+    const NEWS_IMAGE_PATH_NAME = 'news-images';                 // お知らせ画像
     const REQUIREMENTS_FILE_PATH_NAME = 'result-requirements/'; // 大会要項
     const RESULTS_FILE_PATH_NAME = 'result-results/';           // 大会結果
     const TOP_FILE_PATH = 'top-images/';                        // トップ画像

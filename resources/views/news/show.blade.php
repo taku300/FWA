@@ -49,7 +49,15 @@
                     @endforeach
                     @endif
                 </div>
-
+                <div class="pt-16 grid grid-cols-3 gap-x-8 sp:gap-x-4 gap-y-[calc(((100vw_*_0.78_-_(32px_*_2))_/_3)_*_400/350_*_0.8)] s-pc:gap-y-[calc(((100vw_*_0.88_-_(32px_*_2))_/_3)_*_400/350_*_0.8)] sp:grid-cols-2 sp:gap-y-[calc(((100vw_*_0.94_-_(16px_*_2))_/_2)_*_400/350_*_0.8)]">
+                    @if ($newsDetail['news_images'])
+                    @foreach($newsDetail['news_images'] as $newsImage)
+                    <div class="relative">
+                        <img src="{{ \Storage::url(\CommonConst::NEWS_IMAGE_PATH_NAME . '/' . $newsImage['news_images_path']) }}" alt="お知らせ画像" class="object-cover object-top w-full aspect-[350/400]">
+                    </div>
+                    @endforeach
+                    @endif
+                </div>
             </div>
         </x-layout.container>
     </section>
